@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import { Layers, Plus, Sparkles, X, CheckCircle2 } from 'lucide-react';
 
@@ -95,11 +95,11 @@ export const AdminRangesPage: React.FC = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-            Rangos de Numeración
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+            Rangos de NumeraciÃ³n
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Definición de correlativos y generación masiva de cartas
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            DefiniciÃ³n de correlativos y generaciÃ³n masiva de cartas
           </p>
         </div>
         <button className="btn-primary" onClick={() => setCreateRangeModal(true)}>
@@ -116,7 +116,7 @@ export const AdminRangesPage: React.FC = () => {
       )}
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando rangos...
         </div>
       ) : (
@@ -129,20 +129,20 @@ export const AdminRangesPage: React.FC = () => {
                     <Layers size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>{r.name}</h3>
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                    <h3 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>{r.name}</h3>
+                    <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>
                       Rango: {r.range_start} - {r.range_end}
                     </span>
                   </div>
                 </div>
-                <span className="badge badge-available">🟢 Activo</span>
+                <span className="badge badge-available">ðŸŸ¢ Activo</span>
               </div>
 
               {/* Stats */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', background: 'var(--bg-surface-elevated)', padding: '0.85rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
                 <div>
-                  <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Generadas</span>
-                  <p style={{ fontWeight: 800, color: '#f8fafc', fontSize: '1.1rem' }}>{r.total_count || 0}</p>
+                  <span style={{ fontSize: '0.7rem', color: '#1a1a1a', textTransform: 'uppercase' }}>Generadas</span>
+                  <p style={{ fontWeight: 800, color: '#1a1a1a', fontSize: '1.1rem' }}>{r.total_count || 0}</p>
                 </div>
                 <div>
                   <span style={{ fontSize: '0.7rem', color: '#34d399', textTransform: 'uppercase' }}>Disponibles</span>
@@ -178,15 +178,15 @@ export const AdminRangesPage: React.FC = () => {
         <div className="modal-overlay" onClick={() => setCreateRangeModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Crear Nuevo Rango de Numeración</h3>
-              <button onClick={() => setCreateRangeModal(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Crear Nuevo Rango de NumeraciÃ³n</h3>
+              <button onClick={() => setCreateRangeModal(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
 
             <form onSubmit={handleCreateRange}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
                   Nombre del Rango
                 </label>
                 <input
@@ -201,8 +201,8 @@ export const AdminRangesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
-                    Número Inicial
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
+                    NÃºmero Inicial
                   </label>
                   <input
                     type="number"
@@ -214,8 +214,8 @@ export const AdminRangesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
-                    Número Final
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
+                    NÃºmero Final
                   </label>
                   <input
                     type="number"
@@ -247,10 +247,10 @@ export const AdminRangesPage: React.FC = () => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Generar Cartas Masivas</h3>
-                <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>{selectedRange.name}</p>
+                <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Generar Cartas Masivas</h3>
+                <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>{selectedRange.name}</p>
               </div>
-              <button onClick={() => setGenerateModal(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setGenerateModal(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
@@ -258,8 +258,8 @@ export const AdminRangesPage: React.FC = () => {
             <form onSubmit={handleGenerateCards}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
-                    Desde el N.º
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
+                    Desde el N.Âº
                   </label>
                   <input
                     type="number"
@@ -271,8 +271,8 @@ export const AdminRangesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
-                    Hasta el N.º
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
+                    Hasta el N.Âº
                   </label>
                   <input
                     type="number"
@@ -285,8 +285,8 @@ export const AdminRangesPage: React.FC = () => {
                 </div>
               </div>
 
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginBottom: '1.5rem' }}>
-                Las cartas ya existentes no serán duplicadas gracias a la restricción UNIQUE(company_id, number).
+              <p style={{ fontSize: '0.8rem', color: '#1a1a1a', marginBottom: '1.5rem' }}>
+                Las cartas ya existentes no serÃ¡n duplicadas gracias a la restricciÃ³n UNIQUE(company_id, number).
               </p>
 
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
@@ -304,3 +304,7 @@ export const AdminRangesPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

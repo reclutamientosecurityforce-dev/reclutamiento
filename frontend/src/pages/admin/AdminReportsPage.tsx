@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { api } from '../../api/client';
 import { FileSpreadsheet, Download, FileText, Filter, CheckCircle2 } from 'lucide-react';
 
@@ -40,11 +40,11 @@ export const AdminReportsPage: React.FC = () => {
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-          Reportes y Exportación
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+          Reportes y ExportaciÃ³n
         </h1>
-        <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-          Generación oficial de reportes en formatos ejecutivos con datos en tiempo real
+        <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+          GeneraciÃ³n oficial de reportes en formatos ejecutivos con datos en tiempo real
         </p>
       </div>
 
@@ -69,34 +69,34 @@ export const AdminReportsPage: React.FC = () => {
 
       {/* Filter Section */}
       <div className="glass-panel" style={{ padding: '1.75rem', marginBottom: '2rem' }}>
-        <h3 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <Filter size={18} color="#818cf8" />
           <span>Filtros para el Reporte</span>
         </h3>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
               Estado de las Cartas
             </label>
             <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ width: '100%' }}>
               <option value="">Todos los Estados</option>
-              <option value="available">🟢 Disponibles</option>
-              <option value="used">🔴 Utilizadas</option>
-              <option value="reserved">🟡 Reservadas</option>
-              <option value="cancelled">⚫ Anuladas</option>
+              <option value="available">ðŸŸ¢ Disponibles</option>
+              <option value="used">ðŸ”´ Utilizadas</option>
+              <option value="reserved">ðŸŸ¡ Reservadas</option>
+              <option value="cancelled">âš« Anuladas</option>
             </select>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
               Fecha Desde
             </label>
             <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} style={{ width: '100%' }} />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
               Fecha Hasta
             </label>
             <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} style={{ width: '100%' }} />
@@ -113,11 +113,11 @@ export const AdminReportsPage: React.FC = () => {
               <FileText size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Documento PDF</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Formato ejecutivo listo para imprimir</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>Documento PDF</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Formato ejecutivo listo para imprimir</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
             Genera un informe formal en PDF con membrete corporativo de Security Force S.A.C., tabla de trazabilidad y resumen.
           </p>
           <button
@@ -138,12 +138,12 @@ export const AdminReportsPage: React.FC = () => {
               <FileSpreadsheet size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Libro de Excel (.xlsx)</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Hoja de cálculo estructurada</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>Libro de Excel (.xlsx)</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Hoja de cÃ¡lculo estructurada</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-            Exporta todas las columnas operativas con anchos de celda ajustados para análisis contable y de auditoría interna.
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+            Exporta todas las columnas operativas con anchos de celda ajustados para anÃ¡lisis contable y de auditorÃ­a interna.
           </p>
           <button
             className="btn-primary"
@@ -163,12 +163,12 @@ export const AdminReportsPage: React.FC = () => {
               <FileText size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Archivo CSV</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Valores separados por coma (UTF-8 con BOM)</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>Archivo CSV</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Valores separados por coma (UTF-8 con BOM)</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-            Formato plano compatible para integración con ERPs y bases de datos externas de la corporación.
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+            Formato plano compatible para integraciÃ³n con ERPs y bases de datos externas de la corporaciÃ³n.
           </p>
           <button
             className="btn-primary"
@@ -184,3 +184,7 @@ export const AdminReportsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

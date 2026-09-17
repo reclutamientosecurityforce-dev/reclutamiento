@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Briefcase,
@@ -140,11 +140,11 @@ export const JobOpeningsPage: React.FC = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Convocatorias y Requerimientos
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Gestión de vacantes de seguridad por sede y cliente de Security Force S.A.C.
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            GestiÃ³n de vacantes de seguridad por sede y cliente de Security Force S.A.C.
           </p>
         </div>
         <button className="btn-primary" onClick={() => setModalOpen(true)}>
@@ -160,11 +160,11 @@ export const JobOpeningsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Filtros por Categoría */}
+      {/* Filtros por CategorÃ­a */}
       <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#94a3b8', fontSize: '0.8rem', marginRight: '0.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a', fontSize: '0.8rem', marginRight: '0.5rem' }}>
           <Layers size={15} />
-          <span>Categoría:</span>
+          <span>CategorÃ­a:</span>
         </div>
         <button
           onClick={() => setSelectedCategoryFilter('all')}
@@ -172,8 +172,8 @@ export const JobOpeningsPage: React.FC = () => {
             padding: '0.4rem 0.85rem',
             borderRadius: '6px',
             border: selectedCategoryFilter === 'all' ? '1px solid #dc2626' : '1px solid #374151',
-            background: selectedCategoryFilter === 'all' ? 'rgba(220,38,38,0.2)' : 'rgba(255,255,255,0.02)',
-            color: selectedCategoryFilter === 'all' ? '#ffffff' : '#94a3b8',
+            background: selectedCategoryFilter === 'all' ? 'rgba(220,38,38,0.2)' : 'rgba(100,100,100,0.02)',
+            color: selectedCategoryFilter === 'all' ? '#e8e8f0' : '#666666',
             fontSize: '0.78rem',
             fontWeight: 700,
             cursor: 'pointer',
@@ -189,8 +189,8 @@ export const JobOpeningsPage: React.FC = () => {
               padding: '0.4rem 0.85rem',
               borderRadius: '6px',
               border: selectedCategoryFilter === c.id ? `1px solid ${c.color_hex || '#3b82f6'}` : '1px solid #374151',
-              background: selectedCategoryFilter === c.id ? `${c.color_hex || '#3b82f6'}22` : 'rgba(255,255,255,0.02)',
-              color: selectedCategoryFilter === c.id ? '#ffffff' : '#94a3b8',
+              background: selectedCategoryFilter === c.id ? `${c.color_hex || '#3b82f6'}22` : 'rgba(100,100,100,0.02)',
+              color: selectedCategoryFilter === c.id ? '#e8e8f0' : '#666666',
               fontSize: '0.78rem',
               fontWeight: 700,
               cursor: 'pointer',
@@ -202,11 +202,11 @@ export const JobOpeningsPage: React.FC = () => {
       </div>
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando convocatorias...
         </div>
       ) : openings.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#64748b' }}>
+        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#0f1419' }}>
           No hay convocatorias registradas. Crea la primera para recibir postulantes.
         </div>
       ) : (
@@ -229,27 +229,27 @@ export const JobOpeningsPage: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <h3 style={{ fontSize: '1.2rem', color: '#f8fafc' }}>{op.title}</h3>
+                    <h3 style={{ fontSize: '1.2rem', color: '#1a1a1a' }}>{op.title}</h3>
                   </div>
                   <span className={`badge ${isFilled ? 'badge-cancelled' : 'badge-available'}`}>
-                    {isFilled ? '⚫ Cubierta' : '🟢 Abierta'}
+                    {isFilled ? 'âš« Cubierta' : 'ðŸŸ¢ Abierta'}
                   </span>
                 </div>
 
                 {op.client_name && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#cbd5e1', fontSize: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a', fontSize: '0.85rem' }}>
                     <Building size={15} color="#38bdf8" />
                     <span>Cliente: <strong>{op.client_name}</strong></span>
                   </div>
                 )}
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.825rem', color: '#94a3b8' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.825rem', color: '#1a1a1a' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                    <MapPin size={14} color="#94a3b8" />
+                    <MapPin size={14} color="#666666" />
                     <span>{op.location}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                    <Clock size={14} color="#94a3b8" />
+                    <Clock size={14} color="#666666" />
                     <span>{op.shift_type || '12x12'}</span>
                   </div>
                   {op.salary_offered && (
@@ -263,18 +263,18 @@ export const JobOpeningsPage: React.FC = () => {
                 {/* Progress bar */}
                 <div style={{ background: 'var(--bg-surface-elevated)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '0.4rem' }}>
-                    <span style={{ color: '#94a3b8' }}>Vacantes Cubiertas:</span>
-                    <strong style={{ color: isFilled ? '#34d399' : '#f8fafc' }}>
+                    <span style={{ color: '#1a1a1a' }}>Vacantes Cubiertas:</span>
+                    <strong style={{ color: isFilled ? '#34d399' : '#e8e8f0' }}>
                       {op.filled_count} de {op.vacancies_count} ({progress}%)
                     </strong>
                   </div>
-                  <div style={{ height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '9999px', overflow: 'hidden' }}>
+                  <div style={{ height: '6px', background: 'rgba(100,100,100,0.08)', borderRadius: '9999px', overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: `${progress}%`, background: isFilled ? '#10b981' : 'linear-gradient(90deg, #4f46e5, #818cf8)', borderRadius: '9999px' }} />
                   </div>
                 </div>
 
                 {/* Acciones de Prefiltro, Publicar y Ranking */}
-                <div style={{ display: 'flex', gap: '0.4rem', marginTop: 'auto', paddingTop: '0.5rem', borderTop: '1px solid #1e1e1e' }}>
+                <div style={{ display: 'flex', gap: '0.4rem', marginTop: 'auto', paddingTop: '0.5rem', borderTop: '1px solid #d8d8e0' }}>
                   <button
                     onClick={() => setConfigOpening(op)}
                     style={{
@@ -283,9 +283,9 @@ export const JobOpeningsPage: React.FC = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: 4,
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid #2a2a2a',
-                      color: '#cbd5e1',
+                      background: 'rgba(100,100,100,0.04)',
+                      border: '1px solid #c8c8d0',
+                      color: '#1a1a1a',
                       padding: '0.45rem',
                       borderRadius: '0.5rem',
                       cursor: 'pointer',
@@ -315,7 +315,7 @@ export const JobOpeningsPage: React.FC = () => {
                       fontSize: '0.75rem',
                       fontWeight: 700,
                     }}
-                    title="Crear o ver publicaciones de captación para esta convocatoria"
+                    title="Crear o ver publicaciones de captaciÃ³n para esta convocatoria"
                   >
                     <Megaphone size={13} />
                     <span>Publicar</span>
@@ -350,7 +350,7 @@ export const JobOpeningsPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── MODAL NUEVA CONVOCATORIA ────────────────────────────────────────── */}
+      {/* â”€â”€â”€ MODAL NUEVA CONVOCATORIA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {modalOpen && (
         <div className="modal-overlay" onClick={() => setModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem', maxWidth: '600px' }}>
@@ -360,11 +360,11 @@ export const JobOpeningsPage: React.FC = () => {
                   <Briefcase size={20} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Crear Requerimiento / Convocatoria</h3>
-                  <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Security Force S.A.C.</p>
+                  <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Crear Requerimiento / Convocatoria</h3>
+                  <p style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>Security Force S.A.C.</p>
                 </div>
               </div>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
@@ -372,15 +372,15 @@ export const JobOpeningsPage: React.FC = () => {
             <form onSubmit={handleCreateOpening}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                    Categoría de Puesto <span style={{ color: '#ef4444' }}>*</span>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                    CategorÃ­a de Puesto <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <select
                     value={categoryId}
                     onChange={(e) => setCategoryId(e.target.value)}
                     style={{ width: '100%' }}
                   >
-                    <option value="">-- Sin Categoría Específica --</option>
+                    <option value="">-- Sin CategorÃ­a EspecÃ­fica --</option>
                     {categories.map((c, idx) => (
                       <option key={c.id || `cat-option-${idx}`} value={c.id}>
                         {c.name}
@@ -390,7 +390,7 @@ export const JobOpeningsPage: React.FC = () => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', paddingTop: '1.2rem' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#cbd5e1', cursor: 'pointer' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#1a1a1a', cursor: 'pointer' }}>
                     <input
                       type="checkbox"
                       checked={createFromTemplate}
@@ -403,8 +403,8 @@ export const JobOpeningsPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Título del Puesto / Convocatoria <span style={{ color: '#ef4444' }}>*</span>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  TÃ­tulo del Puesto / Convocatoria <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input
                   type="text"
@@ -418,7 +418,7 @@ export const JobOpeningsPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Tipo de Puesto
                   </label>
                   <select value={positionType} onChange={(e) => setPositionType(e.target.value)} style={{ width: '100%' }}>
@@ -430,7 +430,7 @@ export const JobOpeningsPage: React.FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Cliente / Unidad
                   </label>
                   <input
@@ -445,8 +445,8 @@ export const JobOpeningsPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.85rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                    Sede / Ubicación <span style={{ color: '#ef4444' }}>*</span>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                    Sede / UbicaciÃ³n <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
                     type="text"
@@ -458,7 +458,7 @@ export const JobOpeningsPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Vacantes Requeridas <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -471,7 +471,7 @@ export const JobOpeningsPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Salario Ofertado (S/.)
                   </label>
                   <input
@@ -486,7 +486,7 @@ export const JobOpeningsPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                   Jornada / Turno
                 </label>
                 <input
@@ -499,13 +499,13 @@ export const JobOpeningsPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Descripción y Requisitos del Puesto
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  DescripciÃ³n y Requisitos del Puesto
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Detallar requisitos de carné SUCAMEC, experiencia mínima, etc..."
+                  placeholder="Detallar requisitos de carnÃ© SUCAMEC, experiencia mÃ­nima, etc..."
                   rows={3}
                   style={{ width: '100%' }}
                 />
@@ -524,7 +524,7 @@ export const JobOpeningsPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── MODAL DE CONFIGURACIÓN DE REGLAS Y PESOS ────────────────────── */}
+      {/* â”€â”€â”€ MODAL DE CONFIGURACIÃ“N DE REGLAS Y PESOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {configOpening && (
         <RequirementConfigModal
           openingId={configOpening.id}
@@ -536,7 +536,7 @@ export const JobOpeningsPage: React.FC = () => {
         />
       )}
 
-      {/* ─── MODAL DE RANKING Y TOP CANDIDATOS ─────────────────────────────── */}
+      {/* â”€â”€â”€ MODAL DE RANKING Y TOP CANDIDATOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {rankingOpening && (
         <div className="modal-overlay" onClick={() => setRankingOpening(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem', maxWidth: '850px' }}>
@@ -546,39 +546,39 @@ export const JobOpeningsPage: React.FC = () => {
                   <Award size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Ranking Oficial de Candidatos — Prefiltro</h3>
-                  <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>{rankingOpening.title}</p>
+                  <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Ranking Oficial de Candidatos â€” Prefiltro</h3>
+                  <p style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>{rankingOpening.title}</p>
                 </div>
               </div>
-              <button onClick={() => setRankingOpening(null)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setRankingOpening(null)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
 
             {rankingLoading ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#94a3b8' }}>
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#1a1a1a' }}>
                 Calculando ranking explicable...
               </div>
             ) : rankingList.length === 0 ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#64748b' }}>
-                No hay postulantes registrados en esta convocatoria aún.
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#0f1419' }}>
+                No hay postulantes registrados en esta convocatoria aÃºn.
               </div>
             ) : (
               <div style={{ overflowX: 'auto', maxHeight: '60vh' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                      <th style={{ padding: '0.75rem 1rem' }}>Posición</th>
+                    <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                      <th style={{ padding: '0.75rem 1rem' }}>PosiciÃ³n</th>
                       <th style={{ padding: '0.75rem 1rem' }}>Candidato</th>
                       <th style={{ padding: '0.75rem 1rem' }}>Estado Prefiltro</th>
                       <th style={{ padding: '0.75rem 1rem' }}>Compatibilidad</th>
                       <th style={{ padding: '0.75rem 1rem' }}>Exp. Acreditada</th>
-                      <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>Rúbrica</th>
+                      <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>RÃºbrica</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rankingList.map((cand, idx) => (
-                      <tr key={cand.application_id || `rank-${idx}`} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                      <tr key={cand.application_id || `rank-${idx}`} style={{ borderBottom: '1px solid rgba(100,100,100,0.04)' }}>
                         <td style={{ padding: '0.75rem 1rem' }}>
                           <span style={{
                             display: 'inline-block',
@@ -589,7 +589,7 @@ export const JobOpeningsPage: React.FC = () => {
                             lineHeight: '26px',
                             fontWeight: 800,
                             fontSize: '0.8rem',
-                            background: cand.rankPosition === 1 ? '#eab308' : cand.rankPosition === 2 ? '#94a3b8' : cand.rankPosition === 3 ? '#b45309' : '#1e1e1e',
+                            background: cand.rankPosition === 1 ? '#eab308' : cand.rankPosition === 2 ? '#666666' : cand.rankPosition === 3 ? '#b45309' : '#d8d8e0',
                             color: cand.rankPosition <= 3 ? '#000' : '#fff',
                           }}>
                             #{cand.rankPosition}
@@ -597,18 +597,18 @@ export const JobOpeningsPage: React.FC = () => {
                         </td>
                         <td style={{ padding: '0.75rem 1rem' }}>
                           <div style={{ fontWeight: 700, color: '#fff' }}>{cand.first_name} {cand.last_name}</div>
-                          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>DNI: {cand.document_number} · Cel: {cand.phone}</div>
+                          <div style={{ fontSize: '0.72rem', color: '#0f1419' }}>DNI: {cand.document_number} Â· Cel: {cand.phone}</div>
                         </td>
                         <td style={{ padding: '0.75rem 1rem' }}>
-                          {cand.prefilter_status === 'eligible' && <span style={{ color: '#22c55e', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(34,197,94,0.12)', padding: '2px 8px', borderRadius: '12px' }}>🟢 APTO</span>}
-                          {cand.prefilter_status === 'review' && <span style={{ color: '#f59e0b', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(245,158,11,0.12)', padding: '2px 8px', borderRadius: '12px' }}>🟡 REVISAR</span>}
-                          {cand.prefilter_status === 'ineligible' && <span style={{ color: '#ef4444', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(239,68,68,0.12)', padding: '2px 8px', borderRadius: '12px' }}>🔴 NO APTO</span>}
-                          {(!cand.prefilter_status || cand.prefilter_status === 'pending') && <span style={{ color: '#94a3b8', fontSize: '0.75rem' }}>⚪ PENDIENTE</span>}
+                          {cand.prefilter_status === 'eligible' && <span style={{ color: '#22c55e', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(34,197,94,0.12)', padding: '2px 8px', borderRadius: '12px' }}>ðŸŸ¢ APTO</span>}
+                          {cand.prefilter_status === 'review' && <span style={{ color: '#f59e0b', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(245,158,11,0.12)', padding: '2px 8px', borderRadius: '12px' }}>ðŸŸ¡ REVISAR</span>}
+                          {cand.prefilter_status === 'ineligible' && <span style={{ color: '#ef4444', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(239,68,68,0.12)', padding: '2px 8px', borderRadius: '12px' }}>ðŸ”´ NO APTO</span>}
+                          {(!cand.prefilter_status || cand.prefilter_status === 'pending') && <span style={{ color: '#1a1a1a', fontSize: '0.75rem' }}>âšª PENDIENTE</span>}
                         </td>
                         <td style={{ padding: '0.75rem 1rem' }}>
                           <strong style={{ fontSize: '1rem', color: '#fff' }}>{cand.prefilter_score || 0}%</strong>
                         </td>
-                        <td style={{ padding: '0.75rem 1rem', color: '#cbd5e1' }}>
+                        <td style={{ padding: '0.75rem 1rem', color: '#1a1a1a' }}>
                           {Math.floor((cand.total_accredited_exp_months || 0) / 12)}a {(cand.total_accredited_exp_months || 0) % 12}m
                         </td>
                         <td style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>
@@ -629,7 +629,7 @@ export const JobOpeningsPage: React.FC = () => {
                             }}
                           >
                             <Eye size={13} />
-                            <span>Ver Rúbrica</span>
+                            <span>Ver RÃºbrica</span>
                           </button>
                         </td>
                       </tr>
@@ -642,7 +642,7 @@ export const JobOpeningsPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── MODAL DE EVALUACIÓN INDIVIDUAL (RÚBRICA Y OVERRIDES) ─────────────── */}
+      {/* â”€â”€â”€ MODAL DE EVALUACIÃ“N INDIVIDUAL (RÃšBRICA Y OVERRIDES) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {evalAppId && (
         <EvaluationModal
           applicationId={evalAppId}
@@ -652,3 +652,9 @@ export const JobOpeningsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+

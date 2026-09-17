@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Phone,
@@ -31,12 +31,12 @@ interface ApplicationItem {
 }
 
 const STAGES = [
-  { id: 'registered', label: '1. Registro Inicial', color: '#94a3b8' },
-  { id: 'phone_screening', label: '2. Filtro Telefónico', color: '#818cf8' },
-  { id: 'psychological_eval', label: '3. Psicotécnico', color: '#38bdf8' },
+  { id: 'registered', label: '1. Registro Inicial', color: '#1a1a1a' },
+  { id: 'phone_screening', label: '2. Filtro TelefÃ³nico', color: '#818cf8' },
+  { id: 'psychological_eval', label: '3. PsicotÃ©cnico', color: '#38bdf8' },
   { id: 'background_check', label: '4. Antecedentes', color: '#fbbf24' },
   { id: 'interview', label: '5. Entrevista', color: '#f59e0b' },
-  { id: 'medical_exam', label: '6. Examen Médico', color: '#f43f5e' },
+  { id: 'medical_exam', label: '6. Examen MÃ©dico', color: '#f43f5e' },
   { id: 'approved', label: '7. Aprobados Aptos', color: '#34d399' },
   { id: 'hired', label: '8. Contratados', color: '#c084fc' },
 ];
@@ -109,16 +109,16 @@ export const SelectionPipelinePage: React.FC = () => {
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-          Tablero de Selección (Pipeline)
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+          Tablero de SelecciÃ³n (Pipeline)
         </h1>
-        <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-          Seguimiento visual de postulantes por cada fase de evaluación de seguridad
+        <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+          Seguimiento visual de postulantes por cada fase de evaluaciÃ³n de seguridad
         </p>
       </div>
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando tablero pipeline...
         </div>
       ) : (
@@ -152,7 +152,7 @@ export const SelectionPipelinePage: React.FC = () => {
               >
                 {/* Stage Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid ' + stage.color, paddingBottom: '0.5rem' }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#f8fafc' }}>{stage.label}</span>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#1a1a1a' }}>{stage.label}</span>
                   <span
                     style={{
                       background: 'rgba(255, 255, 255, 0.08)',
@@ -170,7 +170,7 @@ export const SelectionPipelinePage: React.FC = () => {
                 {/* Candidate Cards */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minHeight: '100px' }}>
                   {stageApps.length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '1.5rem 0', color: '#64748b', fontSize: '0.75rem' }}>
+                    <div style={{ textAlign: 'center', padding: '1.5rem 0', color: '#0f1419', fontSize: '0.75rem' }}>
                       Sin postulantes
                     </div>
                   ) : (
@@ -189,7 +189,7 @@ export const SelectionPipelinePage: React.FC = () => {
                         }}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                          <span style={{ fontWeight: 700, color: '#f8fafc', fontSize: '0.875rem' }}>
+                          <span style={{ fontWeight: 700, color: '#1a1a1a', fontSize: '0.875rem' }}>
                             {app.candidate_name}
                           </span>
                           {app.stage_score && (
@@ -203,11 +203,11 @@ export const SelectionPipelinePage: React.FC = () => {
                           DNI: {app.candidate_dni}
                         </div>
 
-                        <div style={{ fontSize: '0.72rem', color: '#cbd5e1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          🏢 {app.job_title}
+                        <div style={{ fontSize: '0.72rem', color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          ðŸ¢ {app.job_title}
                         </div>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.72rem', color: '#94a3b8' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.72rem', color: '#1a1a1a' }}>
                           <Phone size={12} />
                           <span>{app.candidate_phone}</span>
                         </div>
@@ -237,43 +237,43 @@ export const SelectionPipelinePage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── MODAL EVALUAR / AVANZAR ETAPA ──────────────────────────────────── */}
+      {/* â”€â”€â”€ MODAL EVALUAR / AVANZAR ETAPA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedApp && (
         <div className="modal-overlay" onClick={() => setSelectedApp(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem', maxWidth: '540px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Evaluación y Cambio de Etapa</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>EvaluaciÃ³n y Cambio de Etapa</h3>
                 <p style={{ fontSize: '0.85rem', color: '#818cf8', fontWeight: 600 }}>
                   {selectedApp.candidate_name} (DNI {selectedApp.candidate_dni})
                 </p>
               </div>
-              <button onClick={() => setSelectedApp(null)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setSelectedApp(null)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
 
             <form onSubmit={handleAdvanceSubmit}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Siguiente Etapa / Decisión
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  Siguiente Etapa / DecisiÃ³n
                 </label>
                 <select value={targetStage} onChange={(e) => setTargetStage(e.target.value)} style={{ width: '100%' }}>
-                  <option value="phone_screening">2. Filtro Telefónico</option>
-                  <option value="psychological_eval">3. Evaluación Psicológica</option>
-                  <option value="background_check">4. Verificación de Antecedentes</option>
+                  <option value="phone_screening">2. Filtro TelefÃ³nico</option>
+                  <option value="psychological_eval">3. EvaluaciÃ³n PsicolÃ³gica</option>
+                  <option value="background_check">4. VerificaciÃ³n de Antecedentes</option>
                   <option value="interview">5. Entrevista Personal</option>
-                  <option value="medical_exam">6. Examen Médico Ocupacional</option>
-                  <option value="approved">🟢 7. APROBADO APTO (Listo para contratación)</option>
-                  <option value="hired">🟣 8. CONTRATADO (Ingreso a planilla)</option>
-                  <option value="rejected">🔴 DESCARTADO / NO APTO</option>
+                  <option value="medical_exam">6. Examen MÃ©dico Ocupacional</option>
+                  <option value="approved">ðŸŸ¢ 7. APROBADO APTO (Listo para contrataciÃ³n)</option>
+                  <option value="hired">ðŸŸ£ 8. CONTRATADO (Ingreso a planilla)</option>
+                  <option value="rejected">ðŸ”´ DESCARTADO / NO APTO</option>
                 </select>
               </div>
 
               {targetStage !== 'rejected' ? (
                 <div style={{ marginBottom: '1rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                    Calificación de la Etapa (0 a 100)
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                    CalificaciÃ³n de la Etapa (0 a 100)
                   </label>
                   <input
                     type="number"
@@ -293,7 +293,7 @@ export const SelectionPipelinePage: React.FC = () => {
                     type="text"
                     value={rejectionReason}
                     onChange={(e) => setRejectionReason(e.target.value)}
-                    placeholder="Ej: Antecedente policial observado / No cumple estatura / Desaprobó test"
+                    placeholder="Ej: Antecedente policial observado / No cumple estatura / DesaprobÃ³ test"
                     required
                     style={{ width: '100%' }}
                   />
@@ -301,13 +301,13 @@ export const SelectionPipelinePage: React.FC = () => {
               )}
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Observaciones de la Evaluación
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  Observaciones de la EvaluaciÃ³n
                 </label>
                 <textarea
                   value={observations}
                   onChange={(e) => setObservations(e.target.value)}
-                  placeholder="Detalles sobre el desempeño en la prueba o entrevista..."
+                  placeholder="Detalles sobre el desempeÃ±o en la prueba o entrevista..."
                   rows={3}
                   style={{ width: '100%' }}
                 />
@@ -318,7 +318,7 @@ export const SelectionPipelinePage: React.FC = () => {
                   Cancelar
                 </button>
                 <button type="submit" className="btn-primary" disabled={actionLoading}>
-                  {actionLoading ? 'Guardando...' : 'Confirmar Decisión'}
+                  {actionLoading ? 'Guardando...' : 'Confirmar DecisiÃ³n'}
                 </button>
               </div>
             </form>
@@ -328,3 +328,7 @@ export const SelectionPipelinePage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

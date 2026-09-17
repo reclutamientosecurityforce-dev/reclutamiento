@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
@@ -88,12 +88,12 @@ export const PublicationPage: React.FC = () => {
         const res = await api.get<PublicPublicationDetail>(`/public/p/${slug}`);
         setData(res);
 
-        // Actualizar título y Meta Tags de Open Graph dinámicamente
+        // Actualizar tÃ­tulo y Meta Tags de Open Graph dinÃ¡micamente
         if (res?.publication) {
           const pub = res.publication;
           document.title = `${pub.og_title || pub.publication_title} | Security Force P&V`;
 
-          // Registrar visualización de manera transparente con UTMs
+          // Registrar visualizaciÃ³n de manera transparente con UTMs
           const utmSource = searchParams.get('utm_source') || searchParams.get('source') || undefined;
           const utmMedium = searchParams.get('utm_medium') || searchParams.get('medium') || undefined;
           const utmCampaign = searchParams.get('utm_campaign') || searchParams.get('campaign') || undefined;
@@ -109,8 +109,8 @@ export const PublicationPage: React.FC = () => {
             .catch(() => {});
         }
       } catch (err: any) {
-        console.error('Error al cargar publicación:', err);
-        setErrorMsg(err.message || 'La publicación solicitada no existe o no está disponible.');
+        console.error('Error al cargar publicaciÃ³n:', err);
+        setErrorMsg(err.message || 'La publicaciÃ³n solicitada no existe o no estÃ¡ disponible.');
       } finally {
         setLoading(false);
       }
@@ -123,7 +123,7 @@ export const PublicationPage: React.FC = () => {
     if (!data?.publication) return;
     const pub = data.publication;
 
-    // Preservar UTMs en la redirección al asistente
+    // Preservar UTMs en la redirecciÃ³n al asistente
     const qParams = new URLSearchParams(searchParams);
     qParams.set('publicationSlug', pub.slug);
 
@@ -146,13 +146,13 @@ export const PublicationPage: React.FC = () => {
     return (
       <div style={{ minHeight: '100vh', background: '#090d16', color: '#f8fafc' }}>
         <PublicHeader />
-        <div style={{ maxWidth: '600px', margin: '4rem auto', padding: '2rem', background: '#111827', borderRadius: '16px', border: '1px solid #1f2937', textAlign: 'center' }}>
+        <div style={{ maxWidth: '600px', margin: '4rem auto', padding: '2rem', background: '#e8e8f0827', borderRadius: '16px', border: '1px solid #d8d8e0', textAlign: 'center' }}>
           <AlertTriangle size={48} color="#f87171" style={{ margin: '0 auto 1rem', display: 'block' }} />
           <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.75rem' }}>
             Convocatoria no encontrada
           </h2>
           <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-            {errorMsg || 'El enlace puede haber caducado o la publicación ya no está disponible.'}
+            {errorMsg || 'El enlace puede haber caducado o la publicaciÃ³n ya no estÃ¡ disponible.'}
           </p>
           <button
             onClick={() => navigate('/postular')}
@@ -175,7 +175,7 @@ export const PublicationPage: React.FC = () => {
       <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '1.5rem 1rem' }}>
         {/* Banner / Portada */}
         {pub.banner_url && (
-          <div style={{ width: '100%', height: '260px', borderRadius: '16px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid #1f2937' }}>
+          <div style={{ width: '100%', height: '260px', borderRadius: '16px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid #d8d8e0' }}>
             <img src={pub.banner_url} alt={pub.publication_title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         )}
@@ -183,12 +183,12 @@ export const PublicationPage: React.FC = () => {
         {/* Hero Card */}
         <div
           style={{
-            background: 'linear-gradient(180deg, #111827 0%, #0c121e 100%)',
-            border: '1px solid #1f2937',
+            background: 'linear-gradient(180deg, #e8e8f0827 0%, #0c121e 100%)',
+            border: '1px solid #d8d8e0',
             borderRadius: '20px',
             padding: '2rem',
             marginBottom: '1.75rem',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+            boxShadow: '0 20px 40px rgba(100,100,100,0.5)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -231,7 +231,7 @@ export const PublicationPage: React.FC = () => {
             </div>
 
             <span style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'monospace' }}>
-              Cód. Ref: {pub.slug}
+              CÃ³d. Ref: {pub.slug}
             </span>
           </div>
 
@@ -241,13 +241,13 @@ export const PublicationPage: React.FC = () => {
           </h1>
 
           {/* Main Attributes Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', background: '#0f172a', border: '1px solid #1f2937', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(220,38,38,0.15)', color: '#f87171' }}>
                 <MapPin size={18} />
               </div>
               <div>
-                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Ubicación</span>
+                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>UbicaciÃ³n</span>
                 <strong style={{ fontSize: '0.9rem', color: '#f8fafc' }}>{pub.location}</strong>
               </div>
             </div>
@@ -257,7 +257,7 @@ export const PublicationPage: React.FC = () => {
                 <Clock size={18} />
               </div>
               <div>
-                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Régimen / Turno</span>
+                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>RÃ©gimen / Turno</span>
                 <strong style={{ fontSize: '0.9rem', color: '#f8fafc' }}>{pub.shift_type || '12x12 Rotativo'}</strong>
               </div>
             </div>
@@ -267,7 +267,7 @@ export const PublicationPage: React.FC = () => {
                 <DollarSign size={18} />
               </div>
               <div>
-                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Remuneración</span>
+                <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>RemuneraciÃ³n</span>
                 <strong style={{ fontSize: '0.9rem', color: '#f8fafc' }}>
                   {pub.salary_offered ? `S/ ${pub.salary_offered.toFixed(2)}` : 'Planilla Completa'}
                 </strong>
@@ -301,7 +301,7 @@ export const PublicationPage: React.FC = () => {
                 padding: '1.1rem 2rem',
                 borderRadius: '12px',
                 background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: '1px solid rgba(100,100,100,0.2)',
                 color: '#ffffff',
                 fontSize: '1.15rem',
                 fontWeight: 900,
@@ -329,7 +329,7 @@ export const PublicationPage: React.FC = () => {
         {/* 2-Columns Body: Beneficios y Requisitos Oficiales */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
           {/* Beneficios */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '1.5rem' }}>
+          <div style={{ background: '#e8e8f0827', border: '1px solid #d8d8e0', borderRadius: '16px', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
               <div style={{ padding: '0.4rem', borderRadius: '6px', background: 'rgba(234,179,8,0.15)', color: '#facc15' }}>
                 <Gift size={18} />
@@ -358,7 +358,7 @@ export const PublicationPage: React.FC = () => {
           </div>
 
           {/* Requisitos Oficiales */}
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '1.5rem' }}>
+          <div style={{ background: '#e8e8f0827', border: '1px solid #d8d8e0', borderRadius: '16px', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
               <div style={{ padding: '0.4rem', borderRadius: '6px', background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
                 <FileText size={18} />
@@ -377,7 +377,7 @@ export const PublicationPage: React.FC = () => {
                       padding: '0.75rem',
                       background: '#0f172a',
                       borderRadius: '8px',
-                      border: '1px solid #1f2937',
+                      border: '1px solid #d8d8e0',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
@@ -395,20 +395,20 @@ export const PublicationPage: React.FC = () => {
                 ))
               ) : (
                 <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-                  • Secundaria completa acreditada
+                  â€¢ Secundaria completa acreditada
                   <br />
-                  • DNI vigente y sin antecedentes policiales
+                  â€¢ DNI vigente y sin antecedentes policiales
                   <br />
-                  • Deseable experiencia previa en seguridad o servicio militar
+                  â€¢ Deseable experiencia previa en seguridad o servicio militar
                 </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* Sugerencias de otras convocatorias si esta cerró */}
+        {/* Sugerencias de otras convocatorias si esta cerrÃ³ */}
         {!isAvailable && data.otherOpenings && data.otherOpenings.length > 0 && (
-          <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '1.5rem' }}>
+          <div style={{ background: '#e8e8f0827', border: '1px solid #d8d8e0', borderRadius: '16px', padding: '1.5rem' }}>
             <h3 style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff', marginBottom: '1rem' }}>
               Otras convocatorias abiertas que te pueden interesar:
             </h3>
@@ -421,7 +421,7 @@ export const PublicationPage: React.FC = () => {
                     display: 'block',
                     padding: '1rem',
                     background: '#0f172a',
-                    border: '1px solid #1f2937',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '10px',
                     textDecoration: 'none',
                     color: 'inherit',
@@ -431,7 +431,7 @@ export const PublicationPage: React.FC = () => {
                     {other.title}
                   </strong>
                   <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
-                    📍 {other.location} | 🕒 {other.shift_type || '12x12'}
+                    ðŸ“ {other.location} | ðŸ•’ {other.shift_type || '12x12'}
                   </div>
                 </Link>
               ))}
@@ -442,3 +442,5 @@ export const PublicationPage: React.FC = () => {
     </div>
   );
 };
+
+

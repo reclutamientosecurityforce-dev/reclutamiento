@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { api } from '../../api/client';
 import { 
   Phone, 
@@ -53,8 +53,8 @@ export const CompanySettingsPage: React.FC = () => {
           });
         }
       } catch (err) {
-        console.error('Error al cargar información de contacto:', err);
-        setErrorMsg('Error al cargar información de contacto');
+        console.error('Error al cargar informaciÃ³n de contacto:', err);
+        setErrorMsg('Error al cargar informaciÃ³n de contacto');
       } finally {
         setLoading(false);
       }
@@ -69,11 +69,11 @@ export const CompanySettingsPage: React.FC = () => {
 
     try {
       await api.put('/recruitment/companies/contact', contactData);
-      setSuccessMsg('Información de contacto actualizada correctamente');
+      setSuccessMsg('InformaciÃ³n de contacto actualizada correctamente');
       setTimeout(() => setSuccessMsg(null), 3000);
     } catch (err: any) {
       console.error('Error al guardar:', err);
-      setErrorMsg(err.message || 'Error al actualizar información de contacto');
+      setErrorMsg(err.message || 'Error al actualizar informaciÃ³n de contacto');
     } finally {
       setSaving(false);
     }
@@ -85,7 +85,7 @@ export const CompanySettingsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#080808', color: '#fff', padding: '2rem' }}>
+      <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#333333', padding: '2rem' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', paddingTop: '4rem' }}>
           Cargando configuración...
         </div>
@@ -94,10 +94,10 @@ export const CompanySettingsPage: React.FC = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#333333' }}>
       {/* Header */}
       <div style={{ 
-        background: '#0d0d0d', 
+        background: '#f5f5f7', 
         borderBottom: '1px solid rgba(220, 38, 38, 0.2)', 
         padding: '1.5rem 2rem' 
       }}>
@@ -108,7 +108,7 @@ export const CompanySettingsPage: React.FC = () => {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#888',
+                color: '#888888',
                 cursor: 'pointer',
                 padding: '0.5rem',
                 display: 'flex',
@@ -121,7 +121,7 @@ export const CompanySettingsPage: React.FC = () => {
               fontFamily: "'Barlow Condensed', sans-serif", 
               fontSize: '1.8rem', 
               fontWeight: 900, 
-              color: '#fff',
+              color: '#1a1a1a',
               textTransform: 'uppercase',
               margin: 0
             }}>
@@ -136,9 +136,9 @@ export const CompanySettingsPage: React.FC = () => {
               fontSize: '0.9rem',
               fontWeight: 600,
               borderRadius: '6px',
-              background: saving ? '#666' : '#DC2626',
+              background: saving ? '#c8c8d0' : '#DC2626',
               border: '1px solid #DC2626',
-              color: '#fff',
+              color: saving ? '#888888' : '#fff',
               cursor: saving ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -191,7 +191,7 @@ export const CompanySettingsPage: React.FC = () => {
       {/* Content */}
       <div style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
         <div style={{ 
-          background: '#0d0d0d', 
+          background: '#f5f5f7', 
           border: '1px solid rgba(220, 38, 38, 0.2)', 
           borderRadius: '12px', 
           padding: '2rem' 
@@ -204,11 +204,11 @@ export const CompanySettingsPage: React.FC = () => {
             paddingBottom: '1rem',
             borderBottom: '1px solid rgba(220, 38, 38, 0.2)'
           }}>
-            Información de Contacto Pública
+            InformaciÃ³n de Contacto PÃºblica
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-            {/* Teléfono */}
+            {/* TelÃ©fono */}
             <div>
               <label style={{ 
                 display: 'block', 
@@ -219,7 +219,7 @@ export const CompanySettingsPage: React.FC = () => {
                 textTransform: 'uppercase'
               }}>
                 <Phone size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                Teléfono
+                TelÃ©fono
               </label>
               <input
                 type="text"
@@ -229,8 +229,8 @@ export const CompanySettingsPage: React.FC = () => {
                 style={{
                   width: '100%',
                   padding: '0.75rem',
-                  background: '#0a0a0a',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: '#f5f5f7',
+                  border: '1px solid rgba(100,100,100,0.1)',
                   borderRadius: '6px',
                   color: '#fff',
                   fontSize: '0.9rem',
@@ -259,8 +259,8 @@ export const CompanySettingsPage: React.FC = () => {
                 style={{
                   width: '100%',
                   padding: '0.75rem',
-                  background: '#0a0a0a',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: '#f5f5f7',
+                  border: '1px solid rgba(100,100,100,0.1)',
                   borderRadius: '6px',
                   color: '#fff',
                   fontSize: '0.9rem',
@@ -279,7 +279,7 @@ export const CompanySettingsPage: React.FC = () => {
                 textTransform: 'uppercase'
               }}>
                 <Mail size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                Correo Electrónico
+                Correo ElectrÃ³nico
               </label>
               <input
                 type="email"
@@ -289,8 +289,8 @@ export const CompanySettingsPage: React.FC = () => {
                 style={{
                   width: '100%',
                   padding: '0.75rem',
-                  background: '#0a0a0a',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: '#f5f5f7',
+                  border: '1px solid rgba(100,100,100,0.1)',
                   borderRadius: '6px',
                   color: '#fff',
                   fontSize: '0.9rem',
@@ -299,7 +299,7 @@ export const CompanySettingsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Dirección */}
+          {/* DirecciÃ³n */}
           <div style={{ marginTop: '1.5rem' }}>
             <label style={{ 
               display: 'block', 
@@ -310,18 +310,18 @@ export const CompanySettingsPage: React.FC = () => {
               textTransform: 'uppercase'
             }}>
               <MapPin size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-              Dirección
+              DirecciÃ³n
             </label>
             <input
               type="text"
               value={contactData.address}
               onChange={(e) => handleChange('address', e.target.value)}
-              placeholder="Av. Principal 123, Lima, Perú"
+              placeholder="Av. Principal 123, Lima, PerÃº"
               style={{
                 width: '100%',
                 padding: '0.75rem',
-                background: '#0a0a0a',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: '#f5f5f7',
+                border: '1px solid rgba(100,100,100,0.1)',
                 borderRadius: '6px',
                 color: '#fff',
                 fontSize: '0.9rem',
@@ -340,7 +340,7 @@ export const CompanySettingsPage: React.FC = () => {
               textTransform: 'uppercase'
             }}>
               <Clock size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-              Horario de Atención
+              Horario de AtenciÃ³n
             </label>
             <input
               type="text"
@@ -350,8 +350,8 @@ export const CompanySettingsPage: React.FC = () => {
               style={{
                 width: '100%',
                 padding: '0.75rem',
-                background: '#0a0a0a',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: '#f5f5f7',
+                border: '1px solid rgba(100,100,100,0.1)',
                 borderRadius: '6px',
                 color: '#fff',
                 fontSize: '0.9rem',
@@ -395,8 +395,8 @@ export const CompanySettingsPage: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: '#0a0a0a',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: '#f5f5f7',
+                    border: '1px solid rgba(100,100,100,0.1)',
                     borderRadius: '6px',
                     color: '#fff',
                     fontSize: '0.9rem',
@@ -425,8 +425,8 @@ export const CompanySettingsPage: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: '#0a0a0a',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: '#f5f5f7',
+                    border: '1px solid rgba(100,100,100,0.1)',
                     borderRadius: '6px',
                     color: '#fff',
                     fontSize: '0.9rem',
@@ -455,8 +455,8 @@ export const CompanySettingsPage: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: '#0a0a0a',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: '#f5f5f7',
+                    border: '1px solid rgba(100,100,100,0.1)',
                     borderRadius: '6px',
                     color: '#fff',
                     fontSize: '0.9rem',
@@ -477,10 +477,12 @@ export const CompanySettingsPage: React.FC = () => {
             color: '#34d399'
           }}>
             <CheckCircle2 size={16} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-            Estos datos se mostrarán en la página de contacto público en /contacto
+            Estos datos se mostrarÃ¡n en la pÃ¡gina de contacto pÃºblico en /contacto
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+

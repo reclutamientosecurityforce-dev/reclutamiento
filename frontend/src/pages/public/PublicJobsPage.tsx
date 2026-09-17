@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
@@ -57,31 +57,31 @@ export const PublicJobsPage: React.FC = () => {
 
   // CMS Dynamic Content States
   const [heroCms, setHeroCms] = useState({
-    eyebrow: 'ÚNETE A NUESTRO EQUIPO',
+    eyebrow: 'ÃšNETE A NUESTRO EQUIPO',
     title: 'PROTEGEMOS',
-    subtitle: 'LO QUE MÁS IMPORTA',
-    description: 'Buscamos personas comprometidas, responsables y con vocación de servicio para formar parte de nuestro equipo.',
+    subtitle: 'LO QUE MÃS IMPORTA',
+    description: 'Buscamos personas comprometidas, responsables y con vocaciÃ³n de servicio para formar parte de nuestro equipo.',
     primary_cta_text: 'VER CONVOCATORIAS',
     primary_cta_url: '#convocatorias',
-    secondary_cta_text: 'CONOCE MÁS DE NOSOTROS',
+    secondary_cta_text: 'CONOCE MÃS DE NOSOTROS',
     secondary_cta_url: '/postular/nosotros',
   });
 
   const [howToApplyCms, setHowToApplyCms] = useState({
-    title: '¿CÓMO PUEDES POSTULAR?',
-    description: 'Nuestro proceso de postulación es simple y rápido. Sigue estos pasos para aplicar a cualquier vacante.',
+    title: 'Â¿CÃ“MO PUEDES POSTULAR?',
+    description: 'Nuestro proceso de postulaciÃ³n es simple y rÃ¡pido. Sigue estos pasos para aplicar a cualquier vacante.',
     steps: [
       { step_number: '01', title: 'Elige tu vacante', description: 'Explora nuestras convocatorias y selecciona el puesto que mejor se adapte a tu perfil.' },
-      { step_number: '02', title: 'Presenta tu información', description: 'Completa el formulario con tus datos personales y profesionales.' },
-      { step_number: '03', title: 'Completa tu perfil', description: 'Agrega tu experiencia, educación y cualquier información relevante.' },
-      { step_number: '04', title: 'Revisa y envía', description: 'Verifica toda la información antes de enviar tu postulación.' },
-      { step_number: '05', title: 'Recibe tu código', description: 'Obtén un código de seguimiento para monitorear el estado de tu postulación.' },
+      { step_number: '02', title: 'Presenta tu informaciÃ³n', description: 'Completa el formulario con tus datos personales y profesionales.' },
+      { step_number: '03', title: 'Completa tu perfil', description: 'Agrega tu experiencia, educaciÃ³n y cualquier informaciÃ³n relevante.' },
+      { step_number: '04', title: 'Revisa y envÃ­a', description: 'Verifica toda la informaciÃ³n antes de enviar tu postulaciÃ³n.' },
+      { step_number: '05', title: 'Recibe tu cÃ³digo', description: 'ObtÃ©n un cÃ³digo de seguimiento para monitorear el estado de tu postulaciÃ³n.' },
     ],
   });
 
   const [footerCms, setFooterCms] = useState({
-    description: 'Security Force P&V S.A.C. — Empresa líder en servicios de seguridad y vigilancia privada armada y desarmada a nivel nacional.',
-    copyright: `© ${new Date().getFullYear()} Security Force P&V S.A.C. Todos los derechos reservados.`,
+    description: 'Security Force P&V S.A.C. â€” Empresa lÃ­der en servicios de seguridad y vigilancia privada armada y desarmada a nivel nacional.',
+    copyright: `Â© ${new Date().getFullYear()} Security Force P&V S.A.C. Todos los derechos reservados.`,
   });
 
   const [contactInfo, setContactInfo] = useState<{
@@ -172,7 +172,7 @@ export const PublicJobsPage: React.FC = () => {
       <section
         className="public-hero-section"
         style={{
-          background: '#080808',
+          background: '#f5f5f7',
           minHeight: '75vh',
           position: 'relative',
           overflow: 'hidden',
@@ -273,7 +273,7 @@ export const PublicJobsPage: React.FC = () => {
               />
               <input
                 type="text"
-                placeholder="Buscar por puesto, ubicación o palabra clave..."
+                placeholder="Buscar por puesto, ubicaciÃ³n o palabra clave..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
@@ -281,7 +281,7 @@ export const PublicJobsPage: React.FC = () => {
                   padding: '1.1rem 1.2rem 1.1rem 3.2rem',
                   fontSize: '0.95rem',
                   borderRadius: '6px',
-                  background: '#1A1A1A',
+                  background: '#e8e8f0',
                   border: '1px solid rgba(220, 38, 38, 0.4)',
                   color: '#FFFFFF',
                   transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
@@ -355,14 +355,14 @@ export const PublicJobsPage: React.FC = () => {
             </div>
 
             {/* Attribute Icons */}
-            <div style={{ display: 'flex', gap: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <div style={{ display: 'flex', gap: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #d8d8e0' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <ShieldCheck size={20} color="#DC2626" />
                 <div>
                   <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     SEGURIDAD
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: '#888' }}>Protección profesional</div>
+                  <div style={{ fontSize: '0.75rem', color: '#888' }}>ProtecciÃ³n profesional</div>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -524,7 +524,7 @@ export const PublicJobsPage: React.FC = () => {
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontSize: '2.5rem',
                 fontWeight: 900,
-                color: '#080808',
+                color: '#f5f5f7',
                 textTransform: 'uppercase',
                 letterSpacing: '0.02em',
                 marginBottom: '0.5rem',
@@ -549,9 +549,9 @@ export const PublicJobsPage: React.FC = () => {
                   padding: '0.5rem 1.25rem',
                   fontSize: '0.85rem',
                   borderRadius: '4px',
-                  background: positionFilter === '' ? '#080808' : '#FFFFFF',
-                  border: positionFilter === '' ? '1px solid #080808' : '1px solid #E5E5E5',
-                  color: positionFilter === '' ? '#FFFFFF' : '#080808',
+                  background: positionFilter === '' ? '#f5f5f7' : '#FFFFFF',
+                  border: positionFilter === '' ? '1px solid #f5f5f7' : '1px solid #E5E5E5',
+                  color: positionFilter === '' ? '#FFFFFF' : '#f5f5f7',
                   cursor: 'pointer',
                   fontWeight: 600,
                   transition: 'all 0.2s ease',
@@ -577,9 +577,9 @@ export const PublicJobsPage: React.FC = () => {
                     padding: '0.5rem 1.25rem',
                     fontSize: '0.85rem',
                     borderRadius: '4px',
-                    background: positionFilter === type ? '#080808' : '#FFFFFF',
-                    border: positionFilter === type ? '1px solid #080808' : '1px solid #E5E5E5',
-                    color: positionFilter === type ? '#FFFFFF' : '#080808',
+                    background: positionFilter === type ? '#f5f5f7' : '#FFFFFF',
+                    border: positionFilter === type ? '1px solid #f5f5f7' : '1px solid #E5E5E5',
+                    color: positionFilter === type ? '#FFFFFF' : '#f5f5f7',
                     cursor: 'pointer',
                     fontWeight: 600,
                     transition: 'all 0.2s ease',
@@ -628,9 +628,9 @@ export const PublicJobsPage: React.FC = () => {
               }}
             >
               <Briefcase size={40} color="#999" style={{ margin: '0 auto 1rem' }} />
-              <h3 style={{ fontSize: '1.25rem', color: '#080808' }}>No se encontraron convocatorias</h3>
+              <h3 style={{ fontSize: '1.25rem', color: '#f5f5f7' }}>No se encontraron convocatorias</h3>
               <p style={{ fontSize: '0.85rem', color: '#666', marginTop: '0.25rem' }}>
-                Intenta con otro término de búsqueda o limpia los filtros.
+                Intenta con otro tÃ©rmino de bÃºsqueda o limpia los filtros.
               </p>
             </div>
           ) : (
@@ -649,15 +649,15 @@ export const PublicJobsPage: React.FC = () => {
                       padding: '2rem',
                       display: 'flex',
                       flexDirection: 'column',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                      boxShadow: '0 2px 8px #f5f5f7',
                       transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+                      e.currentTarget.style.boxShadow = '0 4px 16px #e8e8f0';
                       e.currentTarget.style.borderColor = '#DC2626';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px #f5f5f7';
                       e.currentTarget.style.borderColor = '#E5E5E5';
                     }}
                   >
@@ -678,7 +678,7 @@ export const PublicJobsPage: React.FC = () => {
                         </span>
                         <span
                           style={{
-                            background: '#080808',
+                            background: '#f5f5f7',
                             color: '#FFFFFF',
                             fontSize: '0.7rem',
                             fontWeight: 700,
@@ -695,7 +695,7 @@ export const PublicJobsPage: React.FC = () => {
                           fontFamily: "'Barlow Condensed', sans-serif",
                           fontSize: '1.5rem',
                           fontWeight: 900,
-                          color: '#080808',
+                          color: '#f5f5f7',
                           lineHeight: 1.2,
                           textTransform: 'uppercase',
                           marginBottom: '1rem',
@@ -715,7 +715,7 @@ export const PublicJobsPage: React.FC = () => {
                           <span>{op.shift_type || '12x12'}</span>
                         </div>
                         {op.salary_offered && (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#080808', fontWeight: 700 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f5f5f7', fontWeight: 700 }}>
                             <DollarSign size={16} />
                             <span>S/. {op.salary_offered.toLocaleString()}</span>
                           </div>
@@ -741,7 +741,7 @@ export const PublicJobsPage: React.FC = () => {
                         {reqs.min_height && (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                             <CheckCircle2 size={14} color="#DC2626" />
-                            <span>Estatura mínima: <strong>{reqs.min_height} cm</strong></span>
+                            <span>Estatura mÃ­nima: <strong>{reqs.min_height} cm</strong></span>
                           </div>
                         )}
                       </div>
@@ -759,7 +759,7 @@ export const PublicJobsPage: React.FC = () => {
                           borderRadius: '4px',
                           background: '#FFFFFF',
                           border: '1px solid #E5E5E5',
-                          color: '#080808',
+                          color: '#f5f5f7',
                           cursor: 'pointer',
                           transition: 'all 0.2s ease',
                         }}
@@ -769,7 +769,7 @@ export const PublicJobsPage: React.FC = () => {
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.borderColor = '#E5E5E5';
-                          e.currentTarget.style.color = '#080808';
+                          e.currentTarget.style.color = '#f5f5f7';
                         }}
                       >
                         Ver Detalle
@@ -811,8 +811,8 @@ export const PublicJobsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* QUIÉNES SOMOS SECTION (BLACK) */}
-      <section id="quienes-somos" style={{ background: '#080808', padding: '5rem 2rem' }}>
+      {/* QUIÃ‰NES SOMOS SECTION (BLACK) */}
+      <section id="quienes-somos" style={{ background: '#f5f5f7', padding: '5rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ marginBottom: '3rem' }}>
             <div style={{ width: '60px', height: '3px', background: '#DC2626', marginBottom: '1rem' }} />
@@ -827,10 +827,10 @@ export const PublicJobsPage: React.FC = () => {
                 marginBottom: '1rem',
               }}
             >
-              ¿QUIÉNES SOMOS?
+              Â¿QUIÃ‰NES SOMOS?
             </h2>
             <p style={{ fontSize: '1.1rem', color: '#E5E5E5', lineHeight: 1.6, maxWidth: '700px' }}>
-              Security Force P&V es una empresa líder en seguridad privada, especializada en resguardo corporativo, vigilancia y protección integral. Contamos con más de una década de experiencia brindando servicios de excelencia a empresas e instituciones en todo el país.
+              Security Force P&V es una empresa lÃ­der en seguridad privada, especializada en resguardo corporativo, vigilancia y protecciÃ³n integral. Contamos con mÃ¡s de una dÃ©cada de experiencia brindando servicios de excelencia a empresas e instituciones en todo el paÃ­s.
             </p>
           </div>
 
@@ -841,7 +841,7 @@ export const PublicJobsPage: React.FC = () => {
                 +10
               </div>
               <div style={{ fontSize: '0.85rem', color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '0.5rem' }}>
-                Años de experiencia
+                AÃ±os de experiencia
               </div>
             </div>
             <div style={{ textAlign: 'center' }}>
@@ -872,7 +872,7 @@ export const PublicJobsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CÓMO POSTULAR SECTION (WHITE) */}
+      {/* CÃ“MO POSTULAR SECTION (WHITE) */}
       <section id="como-postular" style={{ background: '#FFFFFF', padding: '5rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ marginBottom: '3rem' }}>
@@ -882,7 +882,7 @@ export const PublicJobsPage: React.FC = () => {
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontSize: '2.5rem',
                 fontWeight: 900,
-                color: '#080808',
+                color: '#f5f5f7',
                 textTransform: 'uppercase',
                 letterSpacing: '0.02em',
                 marginBottom: '1rem',
@@ -916,7 +916,7 @@ export const PublicJobsPage: React.FC = () => {
                 >
                   {item.step_number || item.step || `0${index + 1}`}
                 </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem' }}>
                   {item.title}
                 </h3>
                 <p style={{ fontSize: '0.9rem', color: '#666', lineHeight: 1.5 }}>
@@ -936,32 +936,32 @@ export const PublicJobsPage: React.FC = () => {
               textAlign: 'center',
             }}
           >
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem' }}>
-              ¿NO TIENES UN CV?
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem' }}>
+              Â¿NO TIENES UN CV?
             </h3>
             <p style={{ fontSize: '1rem', color: '#666', marginBottom: '2rem' }}>
-              NO TE PREOCUPES. Puedes presentar tu información de diferentes maneras:
+              NO TE PREOCUPES. Puedes presentar tu informaciÃ³n de diferentes maneras:
             </p>
             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#080808' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#f5f5f7' }}>
                 <FileText size={20} color="#DC2626" />
                 <span>Tengo mi CV</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#080808' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#f5f5f7' }}>
                 <FileText size={20} color="#DC2626" />
                 <span>Crear mi CV</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#080808' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#f5f5f7' }}>
                 <Camera size={20} color="#DC2626" />
                 <span>Tengo fotos de mis documentos</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#080808' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', color: '#f5f5f7' }}>
                 <User size={20} color="#DC2626" />
                 <span>Ya tengo un perfil</span>
               </div>
             </div>
             <p style={{ fontSize: '0.9rem', color: '#666', fontStyle: 'italic', marginBottom: '1.5rem' }}>
-              "Te ayudamos a organizar tu información para que puedas completar tu postulación."
+              "Te ayudamos a organizar tu informaciÃ³n para que puedas completar tu postulaciÃ³n."
             </p>
             <button
               onClick={() => {
@@ -1000,7 +1000,7 @@ export const PublicJobsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CONSULTAR POSTULACIÓN SECTION (RED) */}
+      {/* CONSULTAR POSTULACIÃ“N SECTION (RED) */}
       <section style={{ background: '#DC2626', padding: '4rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
           <h2
@@ -1014,10 +1014,10 @@ export const PublicJobsPage: React.FC = () => {
               marginBottom: '1rem',
             }}
           >
-            ¿YA POSTULASTE?
+            Â¿YA POSTULASTE?
           </h2>
           <p style={{ fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
-            Consulta el estado de tu postulación con tu código de seguimiento.
+            Consulta el estado de tu postulaciÃ³n con tu cÃ³digo de seguimiento.
           </p>
           <button
             onClick={() => navigate('/postular/consultar')}
@@ -1051,7 +1051,7 @@ export const PublicJobsPage: React.FC = () => {
       </section>
 
       {/* FOOTER (BLACK) */}
-      <footer id="contacto" style={{ background: '#080808', padding: '4rem 2rem 2rem' }}>
+      <footer id="contacto" style={{ background: '#f5f5f7', padding: '4rem 2rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
             {/* Brand */}
@@ -1119,7 +1119,7 @@ export const PublicJobsPage: React.FC = () => {
                 </div>
               </div>
               <p style={{ fontSize: '0.9rem', color: '#888', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Protegemos lo que más importa. Empresa especializada en resguardo, vigilancia privada y seguridad integral.
+                Protegemos lo que mÃ¡s importa. Empresa especializada en resguardo, vigilancia privada y seguridad integral.
               </p>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <a
@@ -1152,7 +1152,7 @@ export const PublicJobsPage: React.FC = () => {
             {/* Quick Links */}
             <div>
               <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-                Enlaces Rápidos
+                Enlaces RÃ¡pidos
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ marginBottom: '0.75rem' }}>
@@ -1176,7 +1176,7 @@ export const PublicJobsPage: React.FC = () => {
                     }}
                     style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s ease', cursor: 'pointer' }}
                   >
-                    Quiénes Somos
+                    QuiÃ©nes Somos
                   </a>
                 </li>
                 <li style={{ marginBottom: '0.75rem' }}>
@@ -1212,7 +1212,7 @@ export const PublicJobsPage: React.FC = () => {
                     }}
                     style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s ease', cursor: 'pointer' }}
                   >
-                    Cómo Postular
+                    CÃ³mo Postular
                   </a>
                 </li>
               </ul>
@@ -1221,7 +1221,7 @@ export const PublicJobsPage: React.FC = () => {
             {/* Information */}
             <div>
               <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-                Información
+                InformaciÃ³n
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ marginBottom: '0.75rem' }}>
@@ -1257,7 +1257,7 @@ export const PublicJobsPage: React.FC = () => {
                     }}
                     style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s ease', cursor: 'pointer' }}
                   >
-                    Consultar Postulación
+                    Consultar PostulaciÃ³n
                   </a>
                 </li>
               </ul>
@@ -1288,11 +1288,11 @@ export const PublicJobsPage: React.FC = () => {
                   onClick={() => navigate('/postular/contacto')}
                 >
                   <MapPinIcon size={16} color="#DC2626" />
-                  <span>Ver información de contacto</span>
+                  <span>Ver informaciÃ³n de contacto</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#888', fontSize: '0.9rem' }}>
                   <MapPinIcon size={16} color="#DC2626" />
-                  <span>Lima, Perú</span>
+                  <span>Lima, PerÃº</span>
                   <span>{contactInfo.address}</span>
                 </div>
               </div>
@@ -1300,7 +1300,7 @@ export const PublicJobsPage: React.FC = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '2rem', textAlign: 'center' }}>
+          <div style={{ borderTop: '1px solid #d8d8e0', paddingTop: '2rem', textAlign: 'center' }}>
             <p style={{ fontSize: '0.85rem', color: '#666' }}>
               {footerCms.copyright}
             </p>
@@ -1310,3 +1310,4 @@ export const PublicJobsPage: React.FC = () => {
     </div>
   );
 };
+

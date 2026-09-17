@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
@@ -12,27 +12,27 @@ export const BenefitsPage: React.FC = () => {
     subtitle: 'CONDICIONES LABORALES DE EXCELENCIA',
     description: 'En Security Force P&V valoramos a nuestro equipo y ofrecemos un paquete de beneficios competitivos para garantizar tu bienestar y desarrollo profesional.',
     items: [
-      { id: '1', title: 'Seguridad Social', description: 'Afiliación completa al sistema de seguridad social y beneficios de ley desde el primer día.', icon: 'ShieldCheck', order: 1, is_active: true },
-      { id: '2', title: 'Vacaciones Pagadas', description: '30 días de vacaciones anuales remuneradas conforme a ley.', icon: 'Calendar', order: 2, is_active: true },
+      { id: '1', title: 'Seguridad Social', description: 'AfiliaciÃ³n completa al sistema de seguridad social y beneficios de ley desde el primer dÃ­a.', icon: 'ShieldCheck', order: 1, is_active: true },
+      { id: '2', title: 'Vacaciones Pagadas', description: '30 dÃ­as de vacaciones anuales remuneradas conforme a ley.', icon: 'Calendar', order: 2, is_active: true },
       { id: '3', title: 'Seguro de Salud', description: 'Plan de salud integral para ti y tus derechohabientes.', icon: 'Heart', order: 3, is_active: true },
-      { id: '4', title: 'Capacitación Continua', description: 'Programas de formación, reentrenamiento y desarrollo profesional constante.', icon: 'Award', order: 4, is_active: true },
-      { id: '5', title: 'Uniforme y Equipo', description: 'Dotación completa de uniforme reglamentario y equipo de protección provisto por la empresa.', icon: 'Briefcase', order: 5, is_active: true },
+      { id: '4', title: 'CapacitaciÃ³n Continua', description: 'Programas de formaciÃ³n, reentrenamiento y desarrollo profesional constante.', icon: 'Award', order: 4, is_active: true },
+      { id: '5', title: 'Uniforme y Equipo', description: 'DotaciÃ³n completa de uniforme reglamentario y equipo de protecciÃ³n provisto por la empresa.', icon: 'Briefcase', order: 5, is_active: true },
       { id: '6', title: 'Ambiente de Trabajo', description: 'Cultura organizacional basada en el respeto, reconocimiento y trabajo en equipo.', icon: 'Users', order: 6, is_active: true },
-      { id: '7', title: 'Bonos por Desempeño', description: 'Reconocimiento y bonificaciones por puntualidad y excelencia operativa.', icon: 'Sparkles', order: 7, is_active: true },
+      { id: '7', title: 'Bonos por DesempeÃ±o', description: 'Reconocimiento y bonificaciones por puntualidad y excelencia operativa.', icon: 'Sparkles', order: 7, is_active: true },
     ],
     professional_development: [
-      'Capacitación técnica continua y cursos SUCAMEC',
-      'Programas de liderazgo y formación de supervisores',
+      'CapacitaciÃ³n tÃ©cnica continua y cursos SUCAMEC',
+      'Programas de liderazgo y formaciÃ³n de supervisores',
       'Certificaciones y acreditaciones oficiales',
-      'Oportunidades de línea de carrera y crecimiento interno',
-      'Mentoría operativa personalizada',
+      'Oportunidades de lÃ­nea de carrera y crecimiento interno',
+      'MentorÃ­a operativa personalizada',
     ],
     wellness: [
       'Plan de salud y cobertura familiar',
-      'Seguro de vida ley desde el primer día',
+      'Seguro de vida ley desde el primer dÃ­a',
       'Programa de bienestar y salud ocupacional',
-      'Actividades de integración y reconocimientos',
-      'Apoyo y asesoría social',
+      'Actividades de integraciÃ³n y reconocimientos',
+      'Apoyo y asesorÃ­a social',
     ],
   });
 
@@ -52,7 +52,7 @@ export const BenefitsPage: React.FC = () => {
           }));
         }
       } catch (err) {
-        console.warn('Usando fallback para sección Benefits:', err);
+        console.warn('Usando fallback para secciÃ³n Benefits:', err);
       }
     }
     loadCmsContent();
@@ -63,7 +63,7 @@ export const BenefitsPage: React.FC = () => {
       <PublicHeader />
 
       {/* HERO SECTION */}
-      <section style={{ background: '#080808', padding: '4rem 2rem' }}>
+      <section style={{ background: '#f5f5f7', padding: '4rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ width: '60px', height: '3px', background: '#DC2626', marginBottom: '1rem', margin: '0 auto' }} />
           <h1
@@ -110,7 +110,7 @@ export const BenefitsPage: React.FC = () => {
       <section style={{ background: '#FFFFFF', padding: '5rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#080808', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#f5f5f7', textTransform: 'uppercase', marginBottom: '1rem' }}>
               {cmsData.title}
             </h2>
             <div style={{ width: '60px', height: '3px', background: '#DC2626' }} />
@@ -131,7 +131,7 @@ export const BenefitsPage: React.FC = () => {
                 <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#DC2626', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                   <ShieldCheck size={24} color="#FFFFFF" />
                 </div>
-                <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.3rem', fontWeight: 900, color: '#080808', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.3rem', fontWeight: 900, color: '#f5f5f7', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                   {benefit.title}
                 </h3>
                 <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: 1.6 }}>
@@ -149,7 +149,7 @@ export const BenefitsPage: React.FC = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem' }}>
             {/* Professional Development */}
             <div>
-              <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.8rem', fontWeight: 900, color: '#080808', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+              <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.8rem', fontWeight: 900, color: '#f5f5f7', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
                 DESARROLLO PROFESIONAL
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -166,7 +166,7 @@ export const BenefitsPage: React.FC = () => {
 
             {/* Wellness */}
             <div>
-              <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.8rem', fontWeight: 900, color: '#080808', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+              <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.8rem', fontWeight: 900, color: '#f5f5f7', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
                 BIENESTAR Y SALUD
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -185,7 +185,7 @@ export const BenefitsPage: React.FC = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section style={{ background: '#080808', padding: '5rem 2rem' }}>
+      <section style={{ background: '#f5f5f7', padding: '5rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ width: '60px', height: '3px', background: '#DC2626', margin: '0 auto 1rem' }} />
           <h2
@@ -199,7 +199,7 @@ export const BenefitsPage: React.FC = () => {
               marginBottom: '1.5rem',
             }}
           >
-            ¿LISTO PARA FORMAR PARTE DE NUESTRO EQUIPO?
+            Â¿LISTO PARA FORMAR PARTE DE NUESTRO EQUIPO?
           </h2>
           <p style={{ fontSize: '1.15rem', color: '#E5E5E5', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto 3rem' }}>
             Explora nuestras convocatorias abiertas y postula hoy mismo para iniciar tu camino con nosotros.
@@ -230,3 +230,4 @@ export const BenefitsPage: React.FC = () => {
     </div>
   );
 };
+

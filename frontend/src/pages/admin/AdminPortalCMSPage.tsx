@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { api } from '../../api/client';
 import {
   Layout,
@@ -53,44 +53,44 @@ export const AdminPortalCMSPage: React.FC = () => {
   const [historyList, setHistoryList] = useState<any[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
 
-  // ─── HERO STATE ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€ HERO STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [heroData, setHeroData] = useState({
-    eyebrow: 'ÚNETE A NUESTRO EQUIPO',
+    eyebrow: 'ÃšNETE A NUESTRO EQUIPO',
     title: 'PROTEGEMOS',
-    subtitle: 'LO QUE MÁS IMPORTA',
-    description: 'Buscamos personas comprometidas, responsables y con vocación de servicio para formar parte de nuestro equipo.',
+    subtitle: 'LO QUE MÃS IMPORTA',
+    description: 'Buscamos personas comprometidas, responsables y con vocaciÃ³n de servicio para formar parte de nuestro equipo.',
     primary_cta_text: 'VER CONVOCATORIAS',
     primary_cta_url: '#convocatorias',
-    secondary_cta_text: 'CONOCE MÁS DE NOSOTROS',
+    secondary_cta_text: 'CONOCE MÃS DE NOSOTROS',
     secondary_cta_url: '/postular/nosotros',
     desktop_image: '',
     mobile_image: '',
     video_url: '',
   });
 
-  // ─── ABOUT STATE ────────────────────────────────────────────────────────────
+  // â”€â”€â”€ ABOUT STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [aboutData, setAboutData] = useState({
-    title: 'QUIÉNES SOMOS',
+    title: 'QUIÃ‰NES SOMOS',
     subtitle: 'LIDERAZGO EN SEGURIDAD INTEGRAL',
-    description: 'Security Force P&V es una empresa líder en seguridad privada, especializada en resguardo corporativo, vigilancia y protección integral.',
+    description: 'Security Force P&V es una empresa lÃ­der en seguridad privada, especializada en resguardo corporativo, vigilancia y protecciÃ³n integral.',
     mission: '',
     vision: '',
     commitment: '',
     stats: [
-      { value: '+10', label: 'Años de experiencia', icon: 'Award', order: 1, is_active: true },
+      { value: '+10', label: 'AÃ±os de experiencia', icon: 'Award', order: 1, is_active: true },
       { value: '+5000', label: 'Colaboradores', icon: 'Users', order: 2, is_active: true },
       { value: '+300', label: 'Clientes satisfechos', icon: 'Building', order: 3, is_active: true },
       { value: '24/7', label: 'Servicio operativo', icon: 'Clock', order: 4, is_active: true },
     ],
     values: [
-      { title: 'SEGURIDAD', desc: 'Compromiso inquebrantable con la protección de nuestros clientes.', icon: 'Shield', order: 1 },
+      { title: 'SEGURIDAD', desc: 'Compromiso inquebrantable con la protecciÃ³n de nuestros clientes.', icon: 'Shield', order: 1 },
       { title: 'PROFESIONALISMO', desc: 'Personal capacitado y certificado para brindar servicios de alta calidad.', icon: 'UserCheck', order: 2 },
-      { title: 'INTEGRIDAD', desc: 'Actuamos con honestidad, ética y transparencia en todas nuestras operaciones.', icon: 'Heart', order: 3 },
+      { title: 'INTEGRIDAD', desc: 'Actuamos con honestidad, Ã©tica y transparencia en todas nuestras operaciones.', icon: 'Heart', order: 3 },
       { title: 'EXCELENCIA', desc: 'Buscamos continuamente la mejora en nuestros procesos y servicios.', icon: 'Award', order: 4 },
     ],
   });
 
-  // ─── BENEFITS STATE ─────────────────────────────────────────────────────────
+  // â”€â”€â”€ BENEFITS STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [benefitsData, setBenefitsData] = useState({
     title: 'BENEFICIOS PARA NUESTROS COLABORADORES',
     subtitle: 'CONDICIONES LABORALES DE EXCELENCIA',
@@ -100,25 +100,25 @@ export const AdminPortalCMSPage: React.FC = () => {
     wellness: [] as string[],
   });
 
-  // ─── HOW TO APPLY STATE ─────────────────────────────────────────────────────
+  // â”€â”€â”€ HOW TO APPLY STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [howToApplyData, setHowToApplyData] = useState({
-    title: '¿CÓMO POSTULAR?',
-    subtitle: 'PROCESO 100% DIGITAL Y ÁGIL',
-    description: 'Sigue estos sencillos pasos para presentar tu postulación.',
+    title: 'Â¿CÃ“MO POSTULAR?',
+    subtitle: 'PROCESO 100% DIGITAL Y ÃGIL',
+    description: 'Sigue estos sencillos pasos para presentar tu postulaciÃ³n.',
     steps: [] as any[],
   });
 
-  // ─── FOOTER STATE ───────────────────────────────────────────────────────────
+  // â”€â”€â”€ FOOTER STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [footerData, setFooterData] = useState({
     title: 'Security Force P&V S.A.C.',
-    subtitle: 'Atracción & Selección',
-    description: 'Empresa líder en servicios de seguridad privada a nivel nacional.',
+    subtitle: 'AtracciÃ³n & SelecciÃ³n',
+    description: 'Empresa lÃ­der en servicios de seguridad privada a nivel nacional.',
     copyright: '',
     terms_and_conditions: '',
     privacy_policy: '',
   });
 
-  // ─── CARGAR DATOS DE SECCIÓN ────────────────────────────────────────────────
+  // â”€â”€â”€ CARGAR DATOS DE SECCIÃ“N â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const loadSection = useCallback(async (tab: SectionTab) => {
     if (tab === 'history') {
       loadHistory('hero');
@@ -142,13 +142,13 @@ export const AdminPortalCMSPage: React.FC = () => {
 
       if (tab === 'hero') {
         setHeroData({
-          eyebrow: d.eyebrow || d.title || 'ÚNETE A NUESTRO EQUIPO',
+          eyebrow: d.eyebrow || d.title || 'ÃšNETE A NUESTRO EQUIPO',
           title: d.title || 'PROTEGEMOS',
-          subtitle: d.subtitle || 'LO QUE MÁS IMPORTA',
+          subtitle: d.subtitle || 'LO QUE MÃS IMPORTA',
           description: d.description || '',
           primary_cta_text: c.primary_cta_text || 'VER CONVOCATORIAS',
           primary_cta_url: c.primary_cta_url || '#convocatorias',
-          secondary_cta_text: c.secondary_cta_text || 'CONOCE MÁS DE NOSOTROS',
+          secondary_cta_text: c.secondary_cta_text || 'CONOCE MÃS DE NOSOTROS',
           secondary_cta_url: c.secondary_cta_url || '/postular/nosotros',
           desktop_image: m.desktop_image || '',
           mobile_image: m.mobile_image || '',
@@ -156,14 +156,14 @@ export const AdminPortalCMSPage: React.FC = () => {
         });
       } else if (tab === 'about') {
         setAboutData({
-          title: d.title || 'QUIÉNES SOMOS',
+          title: d.title || 'QUIÃ‰NES SOMOS',
           subtitle: d.subtitle || 'LIDERAZGO EN SEGURIDAD INTEGRAL',
           description: d.description || '',
           mission: c.mission || '',
           vision: c.vision || '',
           commitment: c.commitment || '',
           stats: c.stats || [
-            { value: '+10', label: 'Años de experiencia', icon: 'Award', order: 1, is_active: true },
+            { value: '+10', label: 'AÃ±os de experiencia', icon: 'Award', order: 1, is_active: true },
             { value: '+5000', label: 'Colaboradores', icon: 'Users', order: 2, is_active: true },
             { value: '+300', label: 'Clientes satisfechos', icon: 'Building', order: 3, is_active: true },
             { value: '24/7', label: 'Servicio operativo', icon: 'Clock', order: 4, is_active: true },
@@ -181,7 +181,7 @@ export const AdminPortalCMSPage: React.FC = () => {
         });
       } else if (tab === 'how_to_apply') {
         setHowToApplyData({
-          title: d.title || '¿CÓMO POSTULAR?',
+          title: d.title || 'Â¿CÃ“MO POSTULAR?',
           subtitle: d.subtitle || '',
           description: d.description || '',
           steps: c.steps || [],
@@ -197,7 +197,7 @@ export const AdminPortalCMSPage: React.FC = () => {
         });
       }
     } catch (err: any) {
-      console.error('Error al cargar sección CMS:', err);
+      console.error('Error al cargar secciÃ³n CMS:', err);
       setErrorMsg(err.message || 'Error al cargar datos del CMS');
     } finally {
       setLoading(false);
@@ -220,7 +220,7 @@ export const AdminPortalCMSPage: React.FC = () => {
     loadSection(activeTab);
   }, [activeTab, loadSection]);
 
-  // ─── GUARDAR BORRADOR ───────────────────────────────────────────────────────
+  // â”€â”€â”€ GUARDAR BORRADOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const handleSaveDraft = async () => {
     try {
       setSaving(true);
@@ -294,7 +294,7 @@ export const AdminPortalCMSPage: React.FC = () => {
       }
 
       await api.put(`/admin/portal/sections/${activeTab}`, payload);
-      setSuccessMsg('Borrador guardado exitosamente. No afectará el portal hasta que lo publiques.');
+      setSuccessMsg('Borrador guardado exitosamente. No afectarÃ¡ el portal hasta que lo publiques.');
       setHasDraft(true);
       setSectionStatus('draft');
       setTimeout(() => setSuccessMsg(null), 4000);
@@ -306,9 +306,9 @@ export const AdminPortalCMSPage: React.FC = () => {
     }
   };
 
-  // ─── PUBLICAR EN VIVO ───────────────────────────────────────────────────────
+  // â”€â”€â”€ PUBLICAR EN VIVO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const handlePublish = async () => {
-    if (!confirm('¿Deseas publicar estos cambios en el portal público inmediatamente?')) {
+    if (!confirm('Â¿Deseas publicar estos cambios en el portal pÃºblico inmediatamente?')) {
       return;
     }
 
@@ -317,11 +317,11 @@ export const AdminPortalCMSPage: React.FC = () => {
       setErrorMsg(null);
       setSuccessMsg(null);
 
-      // Guardar borrador primero para asegurar que los últimos cambios se publiquen
+      // Guardar borrador primero para asegurar que los Ãºltimos cambios se publiquen
       await handleSaveDraft();
 
       const res = await api.post<any>(`/admin/portal/sections/${activeTab}/publish`);
-      setSuccessMsg(`¡Publicado con éxito! Nueva versión activa: v${res.published?.version || currentVersion + 1}`);
+      setSuccessMsg(`Â¡Publicado con Ã©xito! Nueva versiÃ³n activa: v${res.published?.version || currentVersion + 1}`);
       setHasDraft(false);
       setSectionStatus('published');
       setCurrentVersion(res.published?.version || currentVersion + 1);
@@ -334,21 +334,21 @@ export const AdminPortalCMSPage: React.FC = () => {
     }
   };
 
-  // ─── RESTAURAR VERSIÓN ANTERIOR ─────────────────────────────────────────────
+  // â”€â”€â”€ RESTAURAR VERSIÃ“N ANTERIOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const handleRestore = async (sectionKey: string, version: number) => {
-    if (!confirm(`¿Restaurar la versión ${version} como nuevo borrador activo?`)) {
+    if (!confirm(`Â¿Restaurar la versiÃ³n ${version} como nuevo borrador activo?`)) {
       return;
     }
 
     try {
       setLoading(true);
       await api.post(`/admin/portal/sections/${sectionKey}/restore/${version}`);
-      setSuccessMsg(`Versión ${version} cargada en borrador. Revisa y haz clic en Publicar para activarla.`);
+      setSuccessMsg(`VersiÃ³n ${version} cargada en borrador. Revisa y haz clic en Publicar para activarla.`);
       setActiveTab(sectionKey as SectionTab);
       loadSection(sectionKey as SectionTab);
     } catch (err: any) {
-      console.error('Error al restaurar versión:', err);
-      setErrorMsg(err.message || 'Error al restaurar versión');
+      console.error('Error al restaurar versiÃ³n:', err);
+      setErrorMsg(err.message || 'Error al restaurar versiÃ³n');
     } finally {
       setLoading(false);
     }
@@ -361,23 +361,23 @@ export const AdminPortalCMSPage: React.FC = () => {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
             <Globe size={24} style={{ color: '#dc2626' }} />
-            <h1 style={{ fontSize: '1.85rem', fontWeight: 900, color: '#ffffff', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em', textTransform: 'uppercase', margin: 0 }}>
-              CMS del Portal Público
+            <h1 style={{ fontSize: '1.85rem', fontWeight: 900, color: '#1a1a1a', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em', textTransform: 'uppercase', margin: 0 }}>
+              CMS del Portal PÃºblico
             </h1>
           </div>
-          <p style={{ fontSize: '0.875rem', color: '#94a3b8', margin: 0 }}>
-            Administra los textos institucionales, secciones, misión, valores, beneficios y footer sin modificar código.
+          <p style={{ fontSize: '0.875rem', color: '#1a1a1a', margin: 0 }}>
+            Administra los textos institucionales, secciones, misiÃ³n, valores, beneficios y footer sin modificar cÃ³digo.
           </p>
         </div>
 
         {activeTab !== 'history' && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.4rem 0.85rem', background: 'rgba(255, 255, 255, 0.04)', borderRadius: '6px', border: '1px solid #374151', fontSize: '0.8rem' }}>
-              <span style={{ color: '#888' }}>Versión Actual:</span>
+              <span style={{ color: '#888' }}>VersiÃ³n Actual:</span>
               <strong style={{ color: '#fff' }}>v{currentVersion}</strong>
               <span style={{ margin: '0 0.3rem', color: '#444' }}>|</span>
               <span style={{ color: sectionStatus === 'published' ? '#34d399' : '#fbbf24', fontWeight: 700, textTransform: 'uppercase', fontSize: '0.72rem' }}>
-                {hasDraft ? '🟡 Borrador Pendiente' : '🟢 Publicado'}
+                {hasDraft ? 'ðŸŸ¡ Borrador Pendiente' : 'ðŸŸ¢ Publicado'}
               </span>
             </div>
 
@@ -429,13 +429,13 @@ export const AdminPortalCMSPage: React.FC = () => {
       )}
 
       {/* Navigation Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #1f2937', gap: '0.5rem', marginBottom: '2rem', overflowX: 'auto', paddingBottom: '0.2rem' }}>
+      <div style={{ display: 'flex', borderBottom: '1px solid #d8d8e0', gap: '0.5rem', marginBottom: '2rem', overflowX: 'auto', paddingBottom: '0.2rem' }}>
         {[
           { key: 'hero', label: 'Inicio / Hero', icon: Layout },
-          { key: 'about', label: 'Quiénes Somos & Misión', icon: Users },
+          { key: 'about', label: 'QuiÃ©nes Somos & MisiÃ³n', icon: Users },
           { key: 'benefits', label: 'Beneficios', icon: Award },
-          { key: 'how_to_apply', label: 'Cómo Postular', icon: CheckCircle2 },
-          { key: 'footer', label: 'Footer & Términos', icon: FileText },
+          { key: 'how_to_apply', label: 'CÃ³mo Postular', icon: CheckCircle2 },
+          { key: 'footer', label: 'Footer & TÃ©rminos', icon: FileText },
           { key: 'history', label: 'Historial & Restaurar', icon: Clock },
         ].map((tab) => {
           const Icon = tab.icon;
@@ -452,7 +452,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                 background: isActive ? 'rgba(220, 38, 38, 0.12)' : 'transparent',
                 border: 'none',
                 borderBottom: isActive ? '3px solid #dc2626' : '3px solid transparent',
-                color: isActive ? '#ffffff' : '#94a3b8',
+                color: isActive ? '#e8e8f0' : '#666666',
                 fontWeight: isActive ? 700 : 500,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
@@ -468,17 +468,17 @@ export const AdminPortalCMSPage: React.FC = () => {
       </div>
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
-          Cargando configuración CMS...
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
+          Cargando configuraciÃ³n CMS...
         </div>
       ) : (
         <div>
           {/* TAB 1: HERO */}
           {activeTab === 'hero' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Sección Hero Principal</h3>
-                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Controla el encabezado de bienvenida y llamado a la acción del portal.</p>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>SecciÃ³n Hero Principal</h3>
+                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Controla el encabezado de bienvenida y llamado a la acciÃ³n del portal.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
@@ -490,13 +490,13 @@ export const AdminPortalCMSPage: React.FC = () => {
                     type="text"
                     value={heroData.eyebrow}
                     onChange={(e) => setHeroData({ ...heroData, eyebrow: e.target.value })}
-                    placeholder="Ej: ÚNETE A NUESTRO EQUIPO"
+                    placeholder="Ej: ÃšNETE A NUESTRO EQUIPO"
                   />
                 </div>
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Título Principal (Blanco)
+                    TÃ­tulo Principal (Blanco)
                   </label>
                   <input
                     type="text"
@@ -508,20 +508,20 @@ export const AdminPortalCMSPage: React.FC = () => {
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Título Destacado (Rojo #DC2626)
+                    TÃ­tulo Destacado (Rojo #DC2626)
                   </label>
                   <input
                     type="text"
                     value={heroData.subtitle}
                     onChange={(e) => setHeroData({ ...heroData, subtitle: e.target.value })}
-                    placeholder="Ej: LO QUE MÁS IMPORTA"
+                    placeholder="Ej: LO QUE MÃS IMPORTA"
                   />
                 </div>
               </div>
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  Descripción del Hero
+                  DescripciÃ³n del Hero
                 </label>
                 <textarea
                   rows={3}
@@ -534,7 +534,7 @@ export const AdminPortalCMSPage: React.FC = () => {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Texto Botón Principal
+                    Texto BotÃ³n Principal
                   </label>
                   <input
                     type="text"
@@ -545,7 +545,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Enlace Botón Principal
+                    Enlace BotÃ³n Principal
                   </label>
                   <input
                     type="text"
@@ -556,18 +556,18 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Texto Botón Secundario
+                    Texto BotÃ³n Secundario
                   </label>
                   <input
                     type="text"
                     value={heroData.secondary_cta_text}
                     onChange={(e) => setHeroData({ ...heroData, secondary_cta_text: e.target.value })}
-                    placeholder="CONOCE MÁS DE NOSOTROS"
+                    placeholder="CONOCE MÃS DE NOSOTROS"
                   />
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Enlace Botón Secundario
+                    Enlace BotÃ³n Secundario
                   </label>
                   <input
                     type="text"
@@ -582,16 +582,16 @@ export const AdminPortalCMSPage: React.FC = () => {
 
           {/* TAB 2: ABOUT */}
           {activeTab === 'about' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-              <div style={{ borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Sección Quiénes Somos & Misión</h3>
-                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra la identidad corporativa y las 4 estadísticas institucionales.</p>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+              <div style={{ borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>SecciÃ³n QuiÃ©nes Somos & MisiÃ³n</h3>
+                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra la identidad corporativa y las 4 estadÃ­sticas institucionales.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Título de Sección
+                    TÃ­tulo de SecciÃ³n
                   </label>
                   <input
                     type="text"
@@ -601,7 +601,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Subtítulo / Lema
+                    SubtÃ­tulo / Lema
                   </label>
                   <input
                     type="text"
@@ -613,7 +613,7 @@ export const AdminPortalCMSPage: React.FC = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  Descripción Principal
+                  DescripciÃ³n Principal
                 </label>
                 <textarea
                   rows={3}
@@ -622,14 +622,14 @@ export const AdminPortalCMSPage: React.FC = () => {
                 />
               </div>
 
-              {/* Estadísticas */}
+              {/* EstadÃ­sticas */}
               <div>
                 <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#dc2626', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                  Estadísticas Destacadas (+10 Años, +5000 Colaboradores...)
+                  EstadÃ­sticas Destacadas (+10 AÃ±os, +5000 Colaboradores...)
                 </h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
                   {aboutData.stats.map((st, idx) => (
-                    <div key={idx} style={{ background: '#1a1a1a', border: '1px solid #333', padding: '1rem', borderRadius: '8px' }}>
+                    <div key={idx} style={{ background: '#e8e8f0', border: '1px solid #333', padding: '1rem', borderRadius: '8px' }}>
                       <div style={{ marginBottom: '0.5rem' }}>
                         <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>Cifra / Valor</label>
                         <input
@@ -654,7 +654,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                             newStats[idx].label = e.target.value;
                             setAboutData({ ...aboutData, stats: newStats });
                           }}
-                          placeholder="Años de experiencia"
+                          placeholder="AÃ±os de experiencia"
                         />
                       </div>
                     </div>
@@ -662,28 +662,28 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Misión y Visión */}
+              {/* MisiÃ³n y VisiÃ³n */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Misión
+                    MisiÃ³n
                   </label>
                   <textarea
                     rows={4}
                     value={aboutData.mission}
                     onChange={(e) => setAboutData({ ...aboutData, mission: e.target.value })}
-                    placeholder="Declaración de misión..."
+                    placeholder="DeclaraciÃ³n de misiÃ³n..."
                   />
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    Visión
+                    VisiÃ³n
                   </label>
                   <textarea
                     rows={4}
                     value={aboutData.vision}
                     onChange={(e) => setAboutData({ ...aboutData, vision: e.target.value })}
-                    placeholder="Declaración de visión..."
+                    placeholder="DeclaraciÃ³n de visiÃ³n..."
                   />
                 </div>
               </div>
@@ -704,8 +704,8 @@ export const AdminPortalCMSPage: React.FC = () => {
 
           {/* TAB 3: BENEFITS */}
           {activeTab === 'benefits' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Beneficios de Ley y Corporativos</h3>
                   <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra las tarjetas de beneficios que ven los candidatos.</p>
@@ -718,7 +718,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                       {
                         id: String(Date.now()),
                         title: 'Nuevo Beneficio',
-                        description: 'Descripción del beneficio...',
+                        description: 'DescripciÃ³n del beneficio...',
                         icon: 'ShieldCheck',
                         order: benefitsData.items.length + 1,
                         is_active: true,
@@ -736,7 +736,7 @@ export const AdminPortalCMSPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
                 {benefitsData.items.map((item, idx) => (
-                  <div key={item.id || idx} style={{ background: '#181818', border: '1px solid #2a2a2a', borderRadius: '8px', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div key={item.id || idx} style={{ background: '#181818', border: '1px solid #c8c8d0', borderRadius: '8px', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#dc2626' }}>BENEFICIO #{idx + 1}</span>
                       <button
@@ -752,7 +752,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>Título</label>
+                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>TÃ­tulo</label>
                       <input
                         type="text"
                         value={item.title}
@@ -765,7 +765,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>Descripción</label>
+                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>DescripciÃ³n</label>
                       <textarea
                         rows={2}
                         value={item.description}
@@ -784,15 +784,15 @@ export const AdminPortalCMSPage: React.FC = () => {
 
           {/* TAB 4: HOW TO APPLY */}
           {activeTab === 'how_to_apply' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-              <div style={{ borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Pasos de Postulación (Cómo Postular)</h3>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+              <div style={{ borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Pasos de PostulaciÃ³n (CÃ³mo Postular)</h3>
                 <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra las explicaciones de los 5 pasos para el postulante.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
                 {howToApplyData.steps.map((st, idx) => (
-                  <div key={idx} style={{ background: '#181818', border: '1px solid #2a2a2a', borderRadius: '8px', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div key={idx} style={{ background: '#181818', border: '1px solid #c8c8d0', borderRadius: '8px', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#dc2626', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.8rem' }}>
                         {st.step_number || `0${idx + 1}`}
@@ -801,7 +801,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>Título del Paso</label>
+                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>TÃ­tulo del Paso</label>
                       <input
                         type="text"
                         value={st.title}
@@ -814,7 +814,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>Instrucción / Detalle</label>
+                      <label style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>InstrucciÃ³n / Detalle</label>
                       <textarea
                         rows={2}
                         value={st.description}
@@ -833,15 +833,15 @@ export const AdminPortalCMSPage: React.FC = () => {
 
           {/* TAB 5: FOOTER */}
           {activeTab === 'footer' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-              <div style={{ borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Pie de Página y Textos Legales</h3>
-                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra la política de privacidad, términos de consentimiento y copyright.</p>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+              <div style={{ borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Pie de PÃ¡gina y Textos Legales</h3>
+                <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Administra la polÃ­tica de privacidad, tÃ©rminos de consentimiento y copyright.</p>
               </div>
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  Descripción Institucional de Pie de Página
+                  DescripciÃ³n Institucional de Pie de PÃ¡gina
                 </label>
                 <textarea
                   rows={2}
@@ -863,7 +863,7 @@ export const AdminPortalCMSPage: React.FC = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  Términos y Condiciones (Declaración Jurada del Postulante)
+                  TÃ©rminos y Condiciones (DeclaraciÃ³n Jurada del Postulante)
                 </label>
                 <textarea
                   rows={4}
@@ -874,7 +874,7 @@ export const AdminPortalCMSPage: React.FC = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  Política de Privacidad y Tratamiento de Datos (Ley N° 29733)
+                  PolÃ­tica de Privacidad y Tratamiento de Datos (Ley NÂ° 29733)
                 </label>
                 <textarea
                   rows={4}
@@ -887,8 +887,8 @@ export const AdminPortalCMSPage: React.FC = () => {
 
           {/* TAB 6: HISTORY */}
           {activeTab === 'history' && (
-            <div style={{ background: '#121212', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem' }}>
-              <div style={{ borderBottom: '1px solid #1f2937', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
+            <div style={{ background: '#121212', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '2rem' }}>
+              <div style={{ borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>Historial de Versiones Publicadas</h3>
                 <p style={{ fontSize: '0.825rem', color: '#888', margin: '0.25rem 0 0' }}>Permite auditar y restaurar versiones anteriores en cualquier momento.</p>
               </div>
@@ -897,12 +897,12 @@ export const AdminPortalCMSPage: React.FC = () => {
                 <div style={{ padding: '2rem', textAlign: 'center', color: '#888' }}>Cargando historial de versiones...</div>
               ) : historyList.length === 0 ? (
                 <div style={{ padding: '3rem', textAlign: 'center', color: '#666' }}>
-                  No hay versiones archivadas aún. Al realizar publicaciones se generarán puntos de restauración automáticos.
+                  No hay versiones archivadas aÃºn. Al realizar publicaciones se generarÃ¡n puntos de restauraciÃ³n automÃ¡ticos.
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {historyList.map((hist) => (
-                    <div key={hist.id} style={{ background: '#181818', border: '1px solid #2a2a2a', borderRadius: '8px', padding: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div key={hist.id} style={{ background: '#181818', border: '1px solid #c8c8d0', borderRadius: '8px', padding: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.3rem' }}>
                           <span style={{ background: '#dc2626', color: '#fff', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 800 }}>
@@ -921,7 +921,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                         style={{ padding: '0.5rem 0.9rem', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', borderColor: '#38bdf8', color: '#38bdf8' }}
                       >
                         <RotateCcw size={14} />
-                        <span>Restaurar esta Versión</span>
+                        <span>Restaurar esta VersiÃ³n</span>
                       </button>
                     </div>
                   ))}
@@ -932,10 +932,10 @@ export const AdminPortalCMSPage: React.FC = () => {
         </div>
       )}
 
-      {/* MODAL DE PREVISUALIZACIÓN */}
+      {/* MODAL DE PREVISUALIZACIÃ“N */}
       {previewOpen && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <div style={{ background: '#080808', border: '1px solid #dc2626', borderRadius: '16px', width: '100%', maxWidth: '1000px', maxHeight: '90vh', overflowY: 'auto', padding: '2.5rem', position: 'relative', color: '#fff' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(100,100,100,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+          <div style={{ background: '#f5f5f7', border: '1px solid #dc2626', borderRadius: '16px', width: '100%', maxWidth: '1000px', maxHeight: '90vh', overflowY: 'auto', padding: '2.5rem', position: 'relative', color: '#fff' }}>
             <button
               onClick={() => setPreviewOpen(false)}
               style={{ position: 'absolute', right: '1.5rem', top: '1.5rem', background: 'transparent', border: 'none', color: '#aaa', cursor: 'pointer' }}
@@ -943,18 +943,18 @@ export const AdminPortalCMSPage: React.FC = () => {
               <X size={24} />
             </button>
 
-            <div style={{ marginBottom: '2rem', borderBottom: '1px solid #222', paddingBottom: '1rem' }}>
+            <div style={{ marginBottom: '2rem', borderBottom: '1px solid #c8c8d0', paddingBottom: '1rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                👁️ VISTA PREVIA DEL BORRADOR ACTIVO
+                ðŸ‘ï¸ VISTA PREVIA DEL BORRADOR ACTIVO
               </span>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#fff', margin: '0.3rem 0 0' }}>
-                Previsualización en Vivo de la Sección
+                PrevisualizaciÃ³n en Vivo de la SecciÃ³n
               </h2>
             </div>
 
             {/* Render Preview according to activeTab */}
             {activeTab === 'hero' && (
-              <div style={{ background: '#080808', padding: '3rem 2rem', borderRadius: '12px', border: '1px solid #333' }}>
+              <div style={{ background: '#f5f5f7', padding: '3rem 2rem', borderRadius: '12px', border: '1px solid #333' }}>
                 <div style={{ width: '60px', height: '3px', background: '#DC2626', marginBottom: '1rem' }} />
                 <div style={{ color: '#DC2626', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem' }}>
                   {heroData.eyebrow}
@@ -980,7 +980,7 @@ export const AdminPortalCMSPage: React.FC = () => {
             )}
 
             {activeTab === 'about' && (
-              <div style={{ background: '#080808', padding: '3rem 2rem', borderRadius: '12px', border: '1px solid #333' }}>
+              <div style={{ background: '#f5f5f7', padding: '3rem 2rem', borderRadius: '12px', border: '1px solid #333' }}>
                 <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, color: '#fff', textTransform: 'uppercase', margin: '0 0 1rem' }}>
                   {aboutData.title}
                 </h1>
@@ -989,7 +989,7 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
                   {aboutData.stats.map((st, i) => (
-                    <div key={i} style={{ textAlign: 'center', background: '#121212', padding: '1.5rem', borderRadius: '8px', border: '1px solid #222' }}>
+                    <div key={i} style={{ textAlign: 'center', background: '#121212', padding: '1.5rem', borderRadius: '8px', border: '1px solid #c8c8d0' }}>
                       <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#dc2626', fontFamily: "'Barlow Condensed', sans-serif" }}>
                         {st.value}
                       </div>
@@ -1001,11 +1001,11 @@ export const AdminPortalCMSPage: React.FC = () => {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                   <div style={{ background: '#121212', padding: '1.5rem', borderRadius: '8px' }}>
-                    <h3 style={{ color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.5rem' }}>MISIÓN</h3>
+                    <h3 style={{ color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.5rem' }}>MISIÃ“N</h3>
                     <p style={{ color: '#ccc', fontSize: '0.95rem', lineHeight: 1.5 }}>{aboutData.mission}</p>
                   </div>
                   <div style={{ background: '#121212', padding: '1.5rem', borderRadius: '8px' }}>
-                    <h3 style={{ color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.5rem' }}>VISIÓN</h3>
+                    <h3 style={{ color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.5rem' }}>VISIÃ“N</h3>
                     <p style={{ color: '#ccc', fontSize: '0.95rem', lineHeight: 1.5 }}>{aboutData.vision}</p>
                   </div>
                 </div>
@@ -1013,13 +1013,13 @@ export const AdminPortalCMSPage: React.FC = () => {
             )}
 
             {activeTab === 'benefits' && (
-              <div style={{ background: '#080808', padding: '2rem', borderRadius: '12px' }}>
+              <div style={{ background: '#f5f5f7', padding: '2rem', borderRadius: '12px' }}>
                 <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#fff', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
                   {benefitsData.title}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                   {benefitsData.items.map((item, i) => (
-                    <div key={i} style={{ background: '#121212', border: '1px solid #222', padding: '1.5rem', borderRadius: '8px' }}>
+                    <div key={i} style={{ background: '#121212', border: '1px solid #c8c8d0', padding: '1.5rem', borderRadius: '8px' }}>
                       <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.5rem' }}>{item.title}</h4>
                       <p style={{ color: '#aaa', fontSize: '0.9rem', lineHeight: 1.5, margin: 0 }}>{item.description}</p>
                     </div>
@@ -1029,13 +1029,13 @@ export const AdminPortalCMSPage: React.FC = () => {
             )}
 
             {activeTab === 'how_to_apply' && (
-              <div style={{ background: '#080808', padding: '2rem', borderRadius: '12px' }}>
+              <div style={{ background: '#f5f5f7', padding: '2rem', borderRadius: '12px' }}>
                 <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#fff', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
                   {howToApplyData.title}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
                   {howToApplyData.steps.map((st, i) => (
-                    <div key={i} style={{ background: '#121212', border: '1px solid #222', padding: '1.25rem', borderRadius: '8px' }}>
+                    <div key={i} style={{ background: '#121212', border: '1px solid #c8c8d0', padding: '1.25rem', borderRadius: '8px' }}>
                       <span style={{ fontSize: '1.5rem', fontWeight: 900, color: '#dc2626', display: 'block', marginBottom: '0.4rem' }}>
                         {st.step_number || `0${i + 1}`}
                       </span>
@@ -1048,14 +1048,14 @@ export const AdminPortalCMSPage: React.FC = () => {
             )}
 
             {activeTab === 'footer' && (
-              <div style={{ background: '#080808', padding: '2rem', borderRadius: '12px', border: '1px solid #222' }}>
+              <div style={{ background: '#f5f5f7', padding: '2rem', borderRadius: '12px', border: '1px solid #c8c8d0' }}>
                 <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '1.5rem' }}>{footerData.description}</p>
                 <div style={{ background: '#121212', padding: '1rem', borderRadius: '6px', marginBottom: '1rem' }}>
-                  <strong style={{ color: '#fff', fontSize: '0.85rem', display: 'block', marginBottom: '0.3rem' }}>Términos y Declaración Jurada:</strong>
+                  <strong style={{ color: '#fff', fontSize: '0.85rem', display: 'block', marginBottom: '0.3rem' }}>TÃ©rminos y DeclaraciÃ³n Jurada:</strong>
                   <p style={{ color: '#888', fontSize: '0.8rem', lineHeight: 1.4, margin: 0 }}>{footerData.terms_and_conditions}</p>
                 </div>
                 <div style={{ background: '#121212', padding: '1rem', borderRadius: '6px', marginBottom: '1rem' }}>
-                  <strong style={{ color: '#fff', fontSize: '0.85rem', display: 'block', marginBottom: '0.3rem' }}>Política de Privacidad (Ley N° 29733):</strong>
+                  <strong style={{ color: '#fff', fontSize: '0.85rem', display: 'block', marginBottom: '0.3rem' }}>PolÃ­tica de Privacidad (Ley NÂ° 29733):</strong>
                   <p style={{ color: '#888', fontSize: '0.8rem', lineHeight: 1.4, margin: 0 }}>{footerData.privacy_policy}</p>
                 </div>
                 <div style={{ color: '#666', fontSize: '0.8rem', textAlign: 'center', marginTop: '1.5rem' }}>
@@ -1066,7 +1066,7 @@ export const AdminPortalCMSPage: React.FC = () => {
 
             <div style={{ marginTop: '2rem', textAlign: 'right' }}>
               <button onClick={() => setPreviewOpen(false)} className="btn-secondary" style={{ padding: '0.6rem 1.5rem' }}>
-                Cerrar Previsualización
+                Cerrar PrevisualizaciÃ³n
               </button>
             </div>
           </div>
@@ -1075,3 +1075,9 @@ export const AdminPortalCMSPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Share2,
@@ -38,10 +38,10 @@ const CHANNEL_TYPES = [
   { value: 'facebook', label: 'Facebook / Meta Ads' },
   { value: 'instagram', label: 'Instagram' },
   { value: 'whatsapp', label: 'WhatsApp / Grupos' },
-  { value: 'qr', label: 'Código QR / Afiches Físicos' },
-  { value: 'web', label: 'Web Orgánica / Bolsa Laboral' },
+  { value: 'qr', label: 'CÃ³digo QR / Afiches FÃ­sicos' },
+  { value: 'web', label: 'Web OrgÃ¡nica / Bolsa Laboral' },
   { value: 'referral', label: 'Programa de Referidos' },
-  { value: 'campaign', label: 'Campaña Especial' },
+  { value: 'campaign', label: 'CampaÃ±a Especial' },
   { value: 'other', label: 'Otro Canal' },
 ];
 
@@ -157,7 +157,7 @@ export const ChannelsPage: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#f8fafc' }}>
+    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#1a1a1a' }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
@@ -165,12 +165,12 @@ export const ChannelsPage: React.FC = () => {
             <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.4)', color: '#34d399' }}>
               <Share2 size={22} />
             </div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-              Canales de Atracción y Trazabilidad UTM
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+              Canales de AtracciÃ³n y Trazabilidad UTM
             </h1>
           </div>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-            Medición del origen de cada candidato y comparativa de calidad por fuente de difusión.
+          <p style={{ color: '#1a1a1a', fontSize: '0.875rem', margin: 0 }}>
+            MediciÃ³n del origen de cada candidato y comparativa de calidad por fuente de difusiÃ³n.
           </p>
         </div>
 
@@ -197,11 +197,11 @@ export const ChannelsPage: React.FC = () => {
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#94a3b8' }}>Cargando canales...</div>
+        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#1a1a1a' }}>Cargando canales...</div>
       ) : channels.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#111827', borderRadius: '12px', border: '1px solid #1f2937' }}>
+        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#e8e8f0827', borderRadius: '12px', border: '1px solid #d8d8e0' }}>
           <Share2 size={36} color="#64748b" style={{ margin: '0 auto 0.75rem', display: 'block' }} />
-          <p style={{ color: '#94a3b8', fontWeight: 600 }}>No hay canales registrados aún.</p>
+          <p style={{ color: '#1a1a1a', fontWeight: 600 }}>No hay canales registrados aÃºn.</p>
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1.25rem' }}>
@@ -209,8 +209,8 @@ export const ChannelsPage: React.FC = () => {
             <div
               key={chan.id || `channel-${idx}-${chan.utm_source || 'default'}`}
               style={{
-                background: '#111827',
-                border: '1px solid #1f2937',
+                background: '#e8e8f0827',
+                border: '1px solid #d8d8e0',
                 borderRadius: '12px',
                 padding: '1.25rem',
                 display: 'flex',
@@ -221,10 +221,10 @@ export const ChannelsPage: React.FC = () => {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                   <div>
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>{chan.name}</h3>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>{chan.name}</h3>
                     {chan.campaign_name && (
                       <span style={{ fontSize: '0.75rem', color: '#eab308', fontWeight: 600 }}>
-                        Campaña: {chan.campaign_name}
+                        CampaÃ±a: {chan.campaign_name}
                       </span>
                     )}
                   </div>
@@ -234,8 +234,8 @@ export const ChannelsPage: React.FC = () => {
                       fontWeight: 700,
                       padding: '0.2rem 0.5rem',
                       borderRadius: '999px',
-                      background: '#1f2937',
-                      color: '#94a3b8',
+                      background: '#d8d8e0',
+                      color: '#1a1a1a',
                       textTransform: 'uppercase',
                     }}
                   >
@@ -243,15 +243,15 @@ export const ChannelsPage: React.FC = () => {
                   </span>
                 </div>
 
-                <p style={{ fontSize: '0.82rem', color: '#94a3b8', margin: '0 0 0.75rem 0', lineHeight: 1.4 }}>
-                  {chan.description || 'Sin descripción adicional.'}
+                <p style={{ fontSize: '0.82rem', color: '#1a1a1a', margin: '0 0 0.75rem 0', lineHeight: 1.4 }}>
+                  {chan.description || 'Sin descripciÃ³n adicional.'}
                 </p>
 
-                {/* Parámetros UTM */}
+                {/* ParÃ¡metros UTM */}
                 <div
                   style={{
                     background: '#0f172a',
-                    border: '1px solid #1f2937',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '6px',
                     padding: '0.5rem 0.75rem',
                     marginBottom: '1rem',
@@ -265,18 +265,18 @@ export const ChannelsPage: React.FC = () => {
                   </span>
                   <button
                     onClick={() => handleCopyUtmParams(chan)}
-                    title="Copiar parámetros UTM"
-                    style={{ background: 'none', border: 'none', color: copiedId === chan.id ? '#4ade80' : '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                    title="Copiar parÃ¡metros UTM"
+                    style={{ background: 'none', border: 'none', color: copiedId === chan.id ? '#4ade80' : '#666666', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                   >
                     {copiedId === chan.id ? <Check size={14} /> : <Copy size={14} />}
                   </button>
                 </div>
 
-                {/* Métricas de Calidad */}
+                {/* MÃ©tricas de Calidad */}
                 <div
                   style={{
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid #1f2937',
+                    background: 'rgba(100,100,100,0.02)',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '8px',
                     padding: '0.75rem',
                     display: 'grid',
@@ -287,12 +287,12 @@ export const ChannelsPage: React.FC = () => {
                   }}
                 >
                   <div>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Vistas Únicas</span>
-                    <strong style={{ fontSize: '1rem', color: '#f8fafc' }}>{chan.unique_views || 0}</strong>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Vistas Ãšnicas</span>
+                    <strong style={{ fontSize: '1rem', color: '#1a1a1a' }}>{chan.unique_views || 0}</strong>
                   </div>
                   <div>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
-                    <strong style={{ fontSize: '1rem', color: '#f8fafc' }}>{chan.applications_count || 0}</strong>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
+                    <strong style={{ fontSize: '1rem', color: '#1a1a1a' }}>{chan.applications_count || 0}</strong>
                   </div>
                   <div>
                     <span style={{ fontSize: '0.68rem', color: '#f87171', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Aptos</span>
@@ -302,8 +302,8 @@ export const ChannelsPage: React.FC = () => {
               </div>
 
               {/* Card Footer */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #1f2937' }}>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #d8d8e0' }}>
+                <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>
                   Calidad: <strong style={{ color: '#4ade80' }}>{chan.quality_rate_pct || 0}%</strong>
                 </span>
 
@@ -315,9 +315,9 @@ export const ChannelsPage: React.FC = () => {
                     gap: '0.35rem',
                     padding: '0.35rem 0.75rem',
                     borderRadius: '6px',
-                    background: 'rgba(255,255,255,0.05)',
+                    background: 'rgba(100,100,100,0.05)',
                     border: '1px solid #374151',
-                    color: '#cbd5e1',
+                    color: '#1a1a1a',
                     fontSize: '0.8rem',
                     cursor: 'pointer',
                     fontWeight: 600,
@@ -338,7 +338,7 @@ export const ChannelsPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.75)',
+            background: 'rgba(100,100,100,0.75)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -349,23 +349,23 @@ export const ChannelsPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '14px',
               maxWidth: '560px',
               width: '100%',
               padding: '1.5rem',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              boxShadow: '0 20px 40px rgba(100,100,100,0.5)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Share2 size={20} color="#10b981" />
-                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                  {editingChannel ? 'Editar Canal de Atracción' : 'Crear Nuevo Canal'}
+                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+                  {editingChannel ? 'Editar Canal de AtracciÃ³n' : 'Crear Nuevo Canal'}
                 </h2>
               </div>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}>
                 <X size={20} />
               </button>
             </div>
@@ -378,7 +378,7 @@ export const ChannelsPage: React.FC = () => {
 
             <form onSubmit={handleSubmitForm} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                   Nombre del Canal *
                 </label>
                 <input
@@ -386,20 +386,20 @@ export const ChannelsPage: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="ej: Facebook Ads - Trujillanos, QR Volantes Base Central..."
-                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
+                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
                   required
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Tipo de Canal
                   </label>
                   <select
                     value={type}
                     onChange={(e) => setType(e.target.value)}
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                   >
                     {CHANNEL_TYPES.map((t) => (
                       <option key={t.value} value={t.value}>
@@ -410,15 +410,15 @@ export const ChannelsPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                    Campaña Asociada (Opcional)
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                    CampaÃ±a Asociada (Opcional)
                   </label>
                   <select
                     value={campaignId}
                     onChange={(e) => setCampaignId(e.target.value)}
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                   >
-                    <option value="">-- Sin Campaña Específica --</option>
+                    <option value="">-- Sin CampaÃ±a EspecÃ­fica --</option>
                     {campaigns.map((c, idx) => (
                       <option key={c.id || `campaign-${idx}-${c.name}`} value={c.id}>
                         {c.name}
@@ -430,7 +430,7 @@ export const ChannelsPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     utm_source
                   </label>
                   <input
@@ -438,12 +438,12 @@ export const ChannelsPage: React.FC = () => {
                     value={utmSource}
                     onChange={(e) => setUtmSource(e.target.value)}
                     placeholder="ej: facebook, qr_afiche, whatsapp"
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     utm_medium
                   </label>
                   <input
@@ -451,21 +451,21 @@ export const ChannelsPage: React.FC = () => {
                     value={utmMedium}
                     onChange={(e) => setUtmMedium(e.target.value)}
                     placeholder="ej: paid_social, offline_print"
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
                   />
                 </div>
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Descripción Operativa
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  DescripciÃ³n Operativa
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
-                  placeholder="Ubicación de afiches, perfil de segmentación o notas del canal..."
-                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                  placeholder="UbicaciÃ³n de afiches, perfil de segmentaciÃ³n o notas del canal..."
+                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                 />
               </div>
 
@@ -473,7 +473,7 @@ export const ChannelsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#94a3b8', cursor: 'pointer', fontWeight: 600 }}
+                  style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#1a1a1a', cursor: 'pointer', fontWeight: 600 }}
                 >
                   Cancelar
                 </button>
@@ -492,3 +492,9 @@ export const ChannelsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+

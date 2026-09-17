@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Target,
@@ -61,7 +61,7 @@ export const CampaignsPage: React.FC = () => {
       const data = await api.get<CampaignItem[]>('/recruitment/captacion/campaigns');
       setCampaigns(data || []);
     } catch (err) {
-      console.error('Error al cargar campañas:', err);
+      console.error('Error al cargar campaÃ±as:', err);
     } finally {
       setLoading(false);
     }
@@ -102,14 +102,14 @@ export const CampaignsPage: React.FC = () => {
       await api.patch(`/recruitment/captacion/campaigns/${id}/status`, { status: newStatus });
       loadCampaigns();
     } catch (err) {
-      console.error('Error al cambiar estado de campaña:', err);
+      console.error('Error al cambiar estado de campaÃ±a:', err);
     }
   }
 
   async function handleSubmitForm(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) {
-      setErrorMsg('El nombre de la campaña es obligatorio.');
+      setErrorMsg('El nombre de la campaÃ±a es obligatorio.');
       return;
     }
 
@@ -136,14 +136,14 @@ export const CampaignsPage: React.FC = () => {
       setModalOpen(false);
       loadCampaigns();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al guardar la campaña.');
+      setErrorMsg(err.message || 'Error al guardar la campaÃ±a.');
     } finally {
       setFormLoading(false);
     }
   }
 
   return (
-    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#f8fafc' }}>
+    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#1a1a1a' }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
@@ -151,12 +151,12 @@ export const CampaignsPage: React.FC = () => {
             <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(234,179,8,0.15)', border: '1px solid rgba(234,179,8,0.4)', color: '#facc15' }}>
               <Target size={22} />
             </div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-              Campañas de Captación y Reclutamiento
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+              CampaÃ±as de CaptaciÃ³n y Reclutamiento
             </h1>
           </div>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-            Agrupación estratégica de publicaciones y canales para medir retorno y calidad de atracción.
+          <p style={{ color: '#1a1a1a', fontSize: '0.875rem', margin: 0 }}>
+            AgrupaciÃ³n estratÃ©gica de publicaciones y canales para medir retorno y calidad de atracciÃ³n.
           </p>
         </div>
 
@@ -178,16 +178,16 @@ export const CampaignsPage: React.FC = () => {
           }}
         >
           <Plus size={16} />
-          <span>Nueva Campaña</span>
+          <span>Nueva CampaÃ±a</span>
         </button>
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#94a3b8' }}>Cargando campañas...</div>
+        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#1a1a1a' }}>Cargando campaÃ±as...</div>
       ) : campaigns.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#111827', borderRadius: '12px', border: '1px solid #1f2937' }}>
+        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#e8e8f0827', borderRadius: '12px', border: '1px solid #d8d8e0' }}>
           <Target size={36} color="#64748b" style={{ margin: '0 auto 0.75rem', display: 'block' }} />
-          <p style={{ color: '#94a3b8', fontWeight: 600 }}>No hay campañas creadas aún.</p>
+          <p style={{ color: '#1a1a1a', fontWeight: 600 }}>No hay campaÃ±as creadas aÃºn.</p>
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '1.25rem' }}>
@@ -195,8 +195,8 @@ export const CampaignsPage: React.FC = () => {
             <div
               key={camp.id || `campaign-${idx}-${camp.utm_campaign || 'camp'}`}
               style={{
-                background: '#111827',
-                border: '1px solid #1f2937',
+                background: '#e8e8f0827',
+                border: '1px solid #d8d8e0',
                 borderRadius: '12px',
                 padding: '1.25rem',
                 display: 'flex',
@@ -206,7 +206,7 @@ export const CampaignsPage: React.FC = () => {
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.6rem' }}>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>{camp.name}</h3>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>{camp.name}</h3>
                   <span
                     style={{
                       fontSize: '0.7rem',
@@ -224,7 +224,7 @@ export const CampaignsPage: React.FC = () => {
                           ? '#4ade80'
                           : camp.status === 'paused'
                           ? '#facc15'
-                          : '#94a3b8',
+                          : '#666666',
                       border: `1px solid ${
                         camp.status === 'active' ? 'rgba(34,197,94,0.3)' : 'rgba(100,116,139,0.3)'
                       }`,
@@ -234,15 +234,15 @@ export const CampaignsPage: React.FC = () => {
                   </span>
                 </div>
 
-                <p style={{ fontSize: '0.83rem', color: '#94a3b8', margin: '0 0 0.75rem 0', lineHeight: 1.4 }}>
-                  {camp.description || 'Sin descripción.'}
+                <p style={{ fontSize: '0.83rem', color: '#1a1a1a', margin: '0 0 0.75rem 0', lineHeight: 1.4 }}>
+                  {camp.description || 'Sin descripciÃ³n.'}
                 </p>
 
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem', fontSize: '0.75rem', color: '#cbd5e1' }}>
-                  <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#1f2937', fontFamily: 'monospace' }}>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem', fontSize: '0.75rem', color: '#1a1a1a' }}>
+                  <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#d8d8e0', fontFamily: 'monospace' }}>
                     utm: {camp.utm_campaign}
                   </span>
-                  <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#1f2937' }}>
+                  <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: '#d8d8e0' }}>
                     {camp.channels_count} canales | {camp.publications_count} publicaciones
                   </span>
                 </div>
@@ -250,8 +250,8 @@ export const CampaignsPage: React.FC = () => {
                 {/* Metrics Box */}
                 <div
                   style={{
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid #1f2937',
+                    background: 'rgba(100,100,100,0.02)',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '8px',
                     padding: '0.75rem',
                     display: 'grid',
@@ -262,12 +262,12 @@ export const CampaignsPage: React.FC = () => {
                   }}
                 >
                   <div>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Vistas Únicas</span>
-                    <strong style={{ fontSize: '1rem', color: '#f8fafc' }}>{camp.calculated_unique_views}</strong>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Vistas Ãšnicas</span>
+                    <strong style={{ fontSize: '1rem', color: '#1a1a1a' }}>{camp.calculated_unique_views}</strong>
                   </div>
                   <div>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
-                    <strong style={{ fontSize: '1rem', color: '#f8fafc' }}>{camp.calculated_completed}</strong>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
+                    <strong style={{ fontSize: '1rem', color: '#1a1a1a' }}>{camp.calculated_completed}</strong>
                   </div>
                   <div>
                     <span style={{ fontSize: '0.68rem', color: '#f87171', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Aptos ({camp.quality_rate_pct}%)</span>
@@ -277,7 +277,7 @@ export const CampaignsPage: React.FC = () => {
               </div>
 
               {/* Card Footer Actions */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #1f2937' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #d8d8e0' }}>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   {camp.status === 'active' && (
                     <button
@@ -300,7 +300,7 @@ export const CampaignsPage: React.FC = () => {
                   {camp.status !== 'ended' && (
                     <button
                       onClick={() => handleStatusChange(camp.id, 'ended')}
-                      style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '0.78rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                      style={{ background: 'none', border: 'none', color: '#1a1a1a', fontSize: '0.78rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                     >
                       <StopCircle size={13} />
                       <span>Finalizar</span>
@@ -316,9 +316,9 @@ export const CampaignsPage: React.FC = () => {
                     gap: '0.35rem',
                     padding: '0.35rem 0.75rem',
                     borderRadius: '6px',
-                    background: 'rgba(255,255,255,0.05)',
+                    background: 'rgba(100,100,100,0.05)',
                     border: '1px solid #374151',
-                    color: '#cbd5e1',
+                    color: '#1a1a1a',
                     fontSize: '0.8rem',
                     cursor: 'pointer',
                     fontWeight: 600,
@@ -333,13 +333,13 @@ export const CampaignsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Modal Crear/Editar Campaña */}
+      {/* Modal Crear/Editar CampaÃ±a */}
       {modalOpen && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.75)',
+            background: 'rgba(100,100,100,0.75)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -350,23 +350,23 @@ export const CampaignsPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '14px',
               maxWidth: '560px',
               width: '100%',
               padding: '1.5rem',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              boxShadow: '0 20px 40px rgba(100,100,100,0.5)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Target size={20} color="#eab308" />
-                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                  {editingCampaign ? 'Editar Campaña' : 'Crear Nueva Campaña'}
+                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+                  {editingCampaign ? 'Editar CampaÃ±a' : 'Crear Nueva CampaÃ±a'}
                 </h2>
               </div>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}>
                 <X size={20} />
               </button>
             </div>
@@ -379,41 +379,41 @@ export const CampaignsPage: React.FC = () => {
 
             <form onSubmit={handleSubmitForm} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Nombre de la Campaña *
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  Nombre de la CampaÃ±a *
                 </label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="ej: Convocatoria Masiva Trujillo Agosto 2026"
-                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
+                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
                   required
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                    Parámetro UTM Campaign
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                    ParÃ¡metro UTM Campaign
                   </label>
                   <input
                     type="text"
                     value={utmCampaign}
                     onChange={(e) => setUtmCampaign(e.target.value)}
                     placeholder="ej: trujillo_ago_2026"
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem', fontFamily: 'monospace' }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Estado
                   </label>
                   <select
                     value={status}
                     onChange={(e: any) => setStatus(e.target.value)}
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                   >
                     <option value="active">Activa</option>
                     <option value="paused">Pausada</option>
@@ -423,40 +423,40 @@ export const CampaignsPage: React.FC = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Descripción u Objetivo
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  DescripciÃ³n u Objetivo
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
                   placeholder="Meta de candidatos, cobertura de sedes, canales autorizados..."
-                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                  style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Fecha de Inicio
                   </label>
                   <input
                     type="date"
                     value={startsAt}
                     onChange={(e) => setStartsAt(e.target.value)}
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Fecha de Cierre
                   </label>
                   <input
                     type="date"
                     value={endsAt}
                     onChange={(e) => setEndsAt(e.target.value)}
-                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                   />
                 </div>
               </div>
@@ -465,7 +465,7 @@ export const CampaignsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#94a3b8', cursor: 'pointer', fontWeight: 600 }}
+                  style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#1a1a1a', cursor: 'pointer', fontWeight: 600 }}
                 >
                   Cancelar
                 </button>
@@ -474,7 +474,7 @@ export const CampaignsPage: React.FC = () => {
                   disabled={formLoading}
                   style={{ padding: '0.65rem 1.25rem', borderRadius: '8px', background: '#eab308', border: 'none', color: '#000', cursor: formLoading ? 'not-allowed' : 'pointer', fontWeight: 800 }}
                 >
-                  {formLoading ? 'Guardando...' : editingCampaign ? 'Guardar Cambios' : 'Crear Campaña'}
+                  {formLoading ? 'Guardando...' : editingCampaign ? 'Guardar Cambios' : 'Crear CampaÃ±a'}
                 </button>
               </div>
             </form>
@@ -484,3 +484,9 @@ export const CampaignsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+

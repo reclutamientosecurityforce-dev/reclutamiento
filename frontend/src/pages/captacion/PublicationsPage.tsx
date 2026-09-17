@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Megaphone,
@@ -99,7 +99,7 @@ export const PublicationsPage: React.FC = () => {
   const [qrModalPub, setQrModalPub] = useState<PublicationItem | null>(null);
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
-  // Modal Métricas
+  // Modal MÃ©tricas
   const [metricsModalPubId, setMetricsModalPubId] = useState<string | null>(null);
   const [metricsData, setMetricsData] = useState<any>(null);
   const [metricsLoading, setMetricsLoading] = useState(false);
@@ -172,14 +172,14 @@ export const PublicationsPage: React.FC = () => {
   }
 
   async function handleDuplicate(pub: PublicationItem) {
-    if (!window.confirm(`¿Desea duplicar la publicación "${pub.title}"? Se creará una copia en borrador con nueva URL.`)) {
+    if (!window.confirm(`Â¿Desea duplicar la publicaciÃ³n "${pub.title}"? Se crearÃ¡ una copia en borrador con nueva URL.`)) {
       return;
     }
     try {
       await api.post(`/recruitment/captacion/publications/${pub.id}/duplicate`, {});
       loadData();
     } catch (err: any) {
-      alert(err.message || 'Error al duplicar publicación.');
+      alert(err.message || 'Error al duplicar publicaciÃ³n.');
     }
   }
 
@@ -199,7 +199,7 @@ export const PublicationsPage: React.FC = () => {
       const res = await api.get(`/recruitment/captacion/publications/${pub.id}/metrics`);
       setMetricsData(res);
     } catch (err) {
-      console.error('Error al cargar métricas:', err);
+      console.error('Error al cargar mÃ©tricas:', err);
     } finally {
       setMetricsLoading(false);
     }
@@ -226,7 +226,7 @@ export const PublicationsPage: React.FC = () => {
   async function handleSubmitForm(e: React.FormEvent) {
     e.preventDefault();
     if (!title.trim()) {
-      setErrorMsg('El título de la publicación es obligatorio.');
+      setErrorMsg('El tÃ­tulo de la publicaciÃ³n es obligatorio.');
       return;
     }
     if (!jobOpeningId) {
@@ -258,7 +258,7 @@ export const PublicationsPage: React.FC = () => {
       } else {
         const created = await api.post<PublicationItem>('/recruitment/captacion/publications', payload);
         // Preguntar si desea publicar inmediatamente
-        if (window.confirm('Publicación creada en borrador. ¿Desea activarla públicamente ahora?')) {
+        if (window.confirm('PublicaciÃ³n creada en borrador. Â¿Desea activarla pÃºblicamente ahora?')) {
           await api.post(`/recruitment/captacion/publications/${created.id}/status`, { status: 'published' });
         }
       }
@@ -266,7 +266,7 @@ export const PublicationsPage: React.FC = () => {
       setModalOpen(false);
       loadData();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al guardar la publicación.');
+      setErrorMsg(err.message || 'Error al guardar la publicaciÃ³n.');
     } finally {
       setFormLoading(false);
     }
@@ -278,7 +278,7 @@ export const PublicationsPage: React.FC = () => {
       : publications.filter((p) => p.status === statusFilter);
 
   return (
-    <div style={{ padding: '1.5rem', maxWidth: '1400px', margin: '0 auto', color: '#f8fafc' }}>
+    <div style={{ padding: '1.5rem', maxWidth: '1400px', margin: '0 auto', color: '#e8e8f0' }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
@@ -286,12 +286,12 @@ export const PublicationsPage: React.FC = () => {
             <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.4)', color: '#f87171' }}>
               <Megaphone size={22} />
             </div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-              Publicaciones y Canales de Captación
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#e8e8f0' }}>
+              Publicaciones y Canales de CaptaciÃ³n
             </h1>
           </div>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-            Difusión multicanal: una misma convocatoria con múltiples mensajes, enlaces públicos (/postular/p/...) y códigos QR.
+          <p style={{ color: '#1a1a1a', fontSize: '0.875rem', margin: 0 }}>
+            DifusiÃ³n multicanal: una misma convocatoria con mÃºltiples mensajes, enlaces pÃºblicos (/postular/p/...) y cÃ³digos QR.
           </p>
         </div>
 
@@ -313,7 +313,7 @@ export const PublicationsPage: React.FC = () => {
           }}
         >
           <Plus size={16} />
-          <span>+ Crear Publicación</span>
+          <span>+ Crear PublicaciÃ³n</span>
         </button>
       </div>
 
@@ -327,8 +327,8 @@ export const PublicationsPage: React.FC = () => {
               padding: '0.45rem 0.9rem',
               borderRadius: '6px',
               border: statusFilter === st ? '1px solid #dc2626' : '1px solid #374151',
-              background: statusFilter === st ? 'rgba(220,38,38,0.2)' : 'rgba(255,255,255,0.02)',
-              color: statusFilter === st ? '#ffffff' : '#94a3b8',
+              background: statusFilter === st ? 'rgba(220,38,38,0.2)' : 'rgba(100,100,100,0.02)',
+              color: statusFilter === st ? '#e8e8f0' : '#666666',
               fontSize: '0.8rem',
               fontWeight: 700,
               cursor: 'pointer',
@@ -342,11 +342,11 @@ export const PublicationsPage: React.FC = () => {
 
       {/* Publications Grid */}
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#94a3b8' }}>Cargando publicaciones...</div>
+        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#1a1a1a' }}>Cargando publicaciones...</div>
       ) : filteredPubs.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#111827', borderRadius: '12px', border: '1px solid #1f2937' }}>
+        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#e8e8f0827', borderRadius: '12px', border: '1px solid #d8d8e0' }}>
           <Megaphone size={36} color="#64748b" style={{ margin: '0 auto 0.75rem', display: 'block' }} />
-          <p style={{ color: '#94a3b8', fontWeight: 600 }}>No hay publicaciones para el filtro seleccionado.</p>
+          <p style={{ color: '#1a1a1a', fontWeight: 600 }}>No hay publicaciones para el filtro seleccionado.</p>
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '1.25rem' }}>
@@ -356,8 +356,8 @@ export const PublicationsPage: React.FC = () => {
               <div
                 key={pub.id || `pub-${idx}-${pub.slug}`}
                 style={{
-                  background: '#111827',
-                  border: '1px solid #1f2937',
+                  background: '#e8e8f0827',
+                  border: '1px solid #d8d8e0',
                   borderRadius: '12px',
                   padding: '1.25rem',
                   display: 'flex',
@@ -391,7 +391,7 @@ export const PublicationsPage: React.FC = () => {
                               ? '#facc15'
                               : pub.status === 'draft'
                               ? '#818cf8'
-                              : '#94a3b8',
+                              : '#666666',
                           border: `1px solid ${
                             pub.status === 'published' ? 'rgba(34,197,94,0.3)' : 'rgba(100,116,139,0.3)'
                           }`,
@@ -402,27 +402,27 @@ export const PublicationsPage: React.FC = () => {
                       </span>
                       {pub.category_name && (
                         <span style={{ fontSize: '0.72rem', color: '#60a5fa', fontWeight: 600 }}>
-                          • {pub.category_name}
+                          â€¢ {pub.category_name}
                         </span>
                       )}
                     </div>
 
-                    <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', color: '#cbd5e1', fontWeight: 700, background: '#0f172a', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                    <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', color: '#1a1a1a', fontWeight: 700, background: '#0f172a', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
                       /p/{pub.slug}
                     </span>
                   </div>
 
                   {/* Title & Opening info */}
-                  <h3 style={{ fontSize: '1.08rem', fontWeight: 800, color: '#ffffff', margin: '0 0 0.35rem 0', lineHeight: 1.3 }}>
+                  <h3 style={{ fontSize: '1.08rem', fontWeight: 800, color: '#e8e8f0', margin: '0 0 0.35rem 0', lineHeight: 1.3 }}>
                     {pub.title}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', marginBottom: '0.75rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#1a1a1a', marginBottom: '0.75rem' }}>
                     <Briefcase size={13} />
                     <span>Convocatoria: <strong>{pub.job_title}</strong> ({pub.job_location})</span>
                   </div>
 
-                  {/* Canal & Campaña */}
+                  {/* Canal & CampaÃ±a */}
                   <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1rem', fontSize: '0.72rem' }}>
                     {pub.channel_name && (
                       <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: 'rgba(16,185,129,0.1)', color: '#34d399', border: '1px solid rgba(16,185,129,0.2)' }}>
@@ -431,7 +431,7 @@ export const PublicationsPage: React.FC = () => {
                     )}
                     {pub.campaign_name && (
                       <span style={{ padding: '0.2rem 0.5rem', borderRadius: '4px', background: 'rgba(234,179,8,0.1)', color: '#facc15', border: '1px solid rgba(234,179,8,0.2)' }}>
-                        Campaña: {pub.campaign_name}
+                        CampaÃ±a: {pub.campaign_name}
                       </span>
                     )}
                   </div>
@@ -439,8 +439,8 @@ export const PublicationsPage: React.FC = () => {
                   {/* Metrics Mini-Bar */}
                   <div
                     style={{
-                      background: 'rgba(255,255,255,0.02)',
-                      border: '1px solid #1f2937',
+                      background: 'rgba(100,100,100,0.02)',
+                      border: '1px solid #d8d8e0',
                       borderRadius: '8px',
                       padding: '0.65rem 0.75rem',
                       display: 'grid',
@@ -451,16 +451,16 @@ export const PublicationsPage: React.FC = () => {
                     }}
                   >
                     <div>
-                      <span style={{ fontSize: '0.65rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Vistas</span>
-                      <strong style={{ fontSize: '0.95rem', color: '#f8fafc' }}>{pub.calculated_unique_views || 0}</strong>
+                      <span style={{ fontSize: '0.65rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Vistas</span>
+                      <strong style={{ fontSize: '0.95rem', color: '#e8e8f0' }}>{pub.calculated_unique_views || 0}</strong>
                     </div>
                     <div>
-                      <span style={{ fontSize: '0.65rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Iniciadas</span>
-                      <strong style={{ fontSize: '0.95rem', color: '#f8fafc' }}>{pub.calculated_started || 0}</strong>
+                      <span style={{ fontSize: '0.65rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Iniciadas</span>
+                      <strong style={{ fontSize: '0.95rem', color: '#e8e8f0' }}>{pub.calculated_started || 0}</strong>
                     </div>
                     <div>
-                      <span style={{ fontSize: '0.65rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Completas</span>
-                      <strong style={{ fontSize: '0.95rem', color: '#f8fafc' }}>{pub.calculated_completed || 0}</strong>
+                      <span style={{ fontSize: '0.65rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Completas</span>
+                      <strong style={{ fontSize: '0.95rem', color: '#e8e8f0' }}>{pub.calculated_completed || 0}</strong>
                     </div>
                     <div>
                       <span style={{ fontSize: '0.65rem', color: '#f87171', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Aptos</span>
@@ -470,7 +470,7 @@ export const PublicationsPage: React.FC = () => {
                 </div>
 
                 {/* Card Actions */}
-                <div style={{ paddingTop: '0.75rem', borderTop: '1px solid #1f2937', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                <div style={{ paddingTop: '0.75rem', borderTop: '1px solid #d8d8e0', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                   {/* Share & Copy Link */}
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <button
@@ -478,10 +478,10 @@ export const PublicationsPage: React.FC = () => {
                       style={{
                         flex: 1,
                         padding: '0.45rem',
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'rgba(100,100,100,0.05)',
                         border: '1px solid #374151',
                         borderRadius: '6px',
-                        color: copiedSlug === pub.slug ? '#4ade80' : '#cbd5e1',
+                        color: copiedSlug === pub.slug ? '#4ade80' : '#555555',
                         fontSize: '0.78rem',
                         fontWeight: 600,
                         cursor: 'pointer',
@@ -492,7 +492,7 @@ export const PublicationsPage: React.FC = () => {
                       }}
                     >
                       {copiedSlug === pub.slug ? <Check size={13} /> : <Copy size={13} />}
-                      <span>{copiedSlug === pub.slug ? '¡Enlace Copiado!' : 'Copiar URL'}</span>
+                      <span>{copiedSlug === pub.slug ? 'Â¡Enlace Copiado!' : 'Copiar URL'}</span>
                     </button>
 
                     <a
@@ -501,7 +501,7 @@ export const PublicationsPage: React.FC = () => {
                       rel="noopener noreferrer"
                       style={{
                         padding: '0.45rem 0.65rem',
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'rgba(100,100,100,0.05)',
                         border: '1px solid #374151',
                         borderRadius: '6px',
                         color: '#60a5fa',
@@ -511,7 +511,7 @@ export const PublicationsPage: React.FC = () => {
                         justifyContent: 'center',
                         textDecoration: 'none',
                       }}
-                      title="Ver página pública"
+                      title="Ver pÃ¡gina pÃºblica"
                     >
                       <ExternalLink size={14} />
                     </a>
@@ -520,14 +520,14 @@ export const PublicationsPage: React.FC = () => {
                       onClick={() => setQrModalPub(pub)}
                       style={{
                         padding: '0.45rem 0.65rem',
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'rgba(100,100,100,0.05)',
                         border: '1px solid #374151',
                         borderRadius: '6px',
                         color: '#c084fc',
                         fontSize: '0.78rem',
                         cursor: 'pointer',
                       }}
-                      title="Ver código QR"
+                      title="Ver cÃ³digo QR"
                     >
                       <QrCode size={14} />
                     </button>
@@ -575,7 +575,7 @@ export const PublicationsPage: React.FC = () => {
                         onClick={() => handleOpenMetrics(pub)}
                         style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                       >
-                        <BarChart2 size={13} /> Métricas
+                        <BarChart2 size={13} /> MÃ©tricas
                       </button>
                       <button
                         onClick={() => handleDuplicate(pub)}
@@ -585,7 +585,7 @@ export const PublicationsPage: React.FC = () => {
                       </button>
                       <button
                         onClick={() => handleOpenEdit(pub)}
-                        style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                        style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                       >
                         <Edit2 size={13} /> Editar
                       </button>
@@ -598,13 +598,13 @@ export const PublicationsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Modal Wizard Crear / Editar Publicación */}
+      {/* Modal Wizard Crear / Editar PublicaciÃ³n */}
       {modalOpen && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.8)',
+            background: 'rgba(100,100,100,0.8)',
             backdropFilter: 'blur(5px)',
             display: 'flex',
             alignItems: 'center',
@@ -615,7 +615,7 @@ export const PublicationsPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '16px',
               maxWidth: '680px',
@@ -623,17 +623,17 @@ export const PublicationsPage: React.FC = () => {
               maxHeight: '92vh',
               overflowY: 'auto',
               padding: '1.75rem',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.6)',
+              boxShadow: '0 25px 50px rgba(100,100,100,0.6)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <Megaphone size={22} color="#dc2626" />
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                  {editingPub ? 'Editar Publicación' : 'Crear Nueva Publicación de Captación'}
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#e8e8f0' }}>
+                  {editingPub ? 'Editar PublicaciÃ³n' : 'Crear Nueva PublicaciÃ³n de CaptaciÃ³n'}
                 </h2>
               </div>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}>
                 <X size={20} />
               </button>
             </div>
@@ -654,9 +654,9 @@ export const PublicationsPage: React.FC = () => {
                       flex: 1,
                       padding: '0.5rem',
                       borderRadius: '6px',
-                      background: step === s.n ? 'rgba(220,38,38,0.2)' : '#1f2937',
+                      background: step === s.n ? 'rgba(220,38,38,0.2)' : '#d8d8e0',
                       border: step === s.n ? '1px solid #dc2626' : '1px solid transparent',
-                      color: step === s.n ? '#ffffff' : '#94a3b8',
+                      color: step === s.n ? '#e8e8f0' : '#666666',
                       fontSize: '0.78rem',
                       fontWeight: 700,
                       cursor: 'pointer',
@@ -679,7 +679,7 @@ export const PublicationsPage: React.FC = () => {
               {(step === 1 || editingPub) && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                       Convocatoria Oficial Asociada *
                     </label>
                     <select
@@ -687,32 +687,32 @@ export const PublicationsPage: React.FC = () => {
                       onChange={(e) => {
                         setJobOpeningId(e.target.value);
                         const sel = openings.find((o) => o.id === e.target.value);
-                        if (sel && !title) setTitle(`¡Convocatoria: ${sel.title}!`);
+                        if (sel && !title) setTitle(`Â¡Convocatoria: ${sel.title}!`);
                       }}
-                      style={{ width: '100%', padding: '0.7rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
+                      style={{ width: '100%', padding: '0.7rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem' }}
                       required
                     >
                       <option value="">-- Seleccione Convocatoria --</option>
                       {openings.map((o, idx) => (
                         <option key={o.id || `op-pub-${idx}`} value={o.id}>
-                          {o.title} — {o.location} ({o.vacancies_count} vacantes)
+                          {o.title} â€” {o.location} ({o.vacancies_count} vacantes)
                         </option>
                       ))}
                     </select>
-                    <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.25rem', display: 'block' }}>
-                      La publicación heredará los requisitos eliminatorios y de evaluación vigentes de esta convocatoria.
+                    <span style={{ fontSize: '0.72rem', color: '#1a1a1a', marginTop: '0.25rem', display: 'block' }}>
+                      La publicaciÃ³n heredarÃ¡ los requisitos eliminatorios y de evaluaciÃ³n vigentes de esta convocatoria.
                     </span>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                        Canal de Difusión (Opcional)
+                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                        Canal de DifusiÃ³n (Opcional)
                       </label>
                       <select
                         value={channelId}
                         onChange={(e) => setChannelId(e.target.value)}
-                        style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                        style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                       >
                         <option value="">-- Sin Canal Fijo / Multicanal --</option>
                         {channels.map((ch, idx) => (
@@ -724,15 +724,15 @@ export const PublicationsPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                        Campaña (Opcional)
+                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                        CampaÃ±a (Opcional)
                       </label>
                       <select
                         value={campaignId}
                         onChange={(e) => setCampaignId(e.target.value)}
-                        style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                        style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                       >
-                        <option value="">-- Sin Campaña --</option>
+                        <option value="">-- Sin CampaÃ±a --</option>
                         {campaigns.map((ca, idx) => (
                           <option key={ca.id || `camp-pub-${idx}`} value={ca.id}>
                             {ca.name}
@@ -743,11 +743,11 @@ export const PublicationsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                      Código / Slug de la URL Pública (Opcional)
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                      CÃ³digo / Slug de la URL PÃºblica (Opcional)
                     </label>
                     <div style={{ display: 'flex', alignItems: 'center', background: '#0f172a', border: '1px solid #374151', borderRadius: '8px', padding: '0 0.75rem' }}>
-                      <span style={{ color: '#64748b', fontSize: '0.85rem', fontFamily: 'monospace' }}>/postular/p/</span>
+                      <span style={{ color: '#0f1419', fontSize: '0.85rem', fontFamily: 'monospace' }}>/postular/p/</span>
                       <input
                         type="text"
                         value={customSlug}
@@ -764,34 +764,34 @@ export const PublicationsPage: React.FC = () => {
               {(step === 2 || editingPub) && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                      Título Atractivo para Postulantes *
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                      TÃ­tulo Atractivo para Postulantes *
                     </label>
                     <input
                       type="text"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      placeholder="ej: ¡Únete como Agente de Seguridad para Sede Financiera en San Isidro!"
-                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem', fontWeight: 600 }}
+                      placeholder="ej: Â¡Ãšnete como Agente de Seguridad para Sede Financiera en San Isidro!"
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.9rem', fontWeight: 600 }}
                       required
                     />
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                      Descripción / Mensaje de Atracción
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                      DescripciÃ³n / Mensaje de AtracciÃ³n
                     </label>
                     <textarea
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       rows={3}
-                      placeholder="Redacción motivadora para candidatos sobre el puesto y las condiciones..."
-                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                      placeholder="RedacciÃ³n motivadora para candidatos sobre el puesto y las condiciones..."
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                     />
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                       URL de Imagen / Banner de Portada (Opcional)
                     </label>
                     <input
@@ -799,7 +799,7 @@ export const PublicationsPage: React.FC = () => {
                       value={bannerUrl}
                       onChange={(e) => setBannerUrl(e.target.value)}
                       placeholder="https://... /banner.jpg"
-                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                     />
                   </div>
                 </div>
@@ -809,7 +809,7 @@ export const PublicationsPage: React.FC = () => {
               {(step === 3 || editingPub) && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                       Beneficios Destacados
                     </label>
                     <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -824,7 +824,7 @@ export const PublicationsPage: React.FC = () => {
                             handleAddBenefit();
                           }
                         }}
-                        style={{ flex: 1, padding: '0.55rem 0.75rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '6px', color: '#fff', fontSize: '0.85rem' }}
+                        style={{ flex: 1, padding: '0.55rem 0.75rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '6px', color: '#fff', fontSize: '0.85rem' }}
                       />
                       <button
                         type="button"
@@ -837,8 +837,8 @@ export const PublicationsPage: React.FC = () => {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                       {benefitsList.map((b, idx) => (
-                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.4rem 0.75rem', background: '#0f172a', borderRadius: '6px', fontSize: '0.8rem', color: '#cbd5e1' }}>
-                          <span>✓ {b}</span>
+                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.4rem 0.75rem', background: '#0f172a', borderRadius: '6px', fontSize: '0.8rem', color: '#1a1a1a' }}>
+                          <span>âœ“ {b}</span>
                           <button
                             type="button"
                             onClick={() => handleRemoveBenefit(idx)}
@@ -852,26 +852,26 @@ export const PublicationsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                      Fecha Límite de Cierre de Publicación (Opcional)
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                      Fecha LÃ­mite de Cierre de PublicaciÃ³n (Opcional)
                     </label>
                     <input
                       type="date"
                       value={closesAt}
                       onChange={(e) => setClosesAt(e.target.value)}
-                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#1f2937', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', background: '#d8d8e0', border: '1px solid #374151', borderRadius: '8px', color: '#fff', fontSize: '0.85rem' }}
                     />
                   </div>
 
                   {/* Open Graph Preview Mini */}
                   <div style={{ background: '#0f172a', border: '1px solid #374151', borderRadius: '8px', padding: '0.85rem' }}>
-                    <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>
+                    <span style={{ fontSize: '0.72rem', color: '#0f1419', textTransform: 'uppercase', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>
                       Vista Previa Open Graph (Facebook / WhatsApp)
                     </span>
                     <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#38bdf8' }}>
-                      {ogTitle || title || 'Agentes de Seguridad — Security Force P&V'}
+                      {ogTitle || title || 'Agentes de Seguridad â€” Security Force P&V'}
                     </div>
-                    <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                    <div style={{ fontSize: '0.75rem', color: '#1a1a1a', marginTop: '0.2rem' }}>
                       {ogDescription || description.slice(0, 120) || 'Postula online a las mejores vacantes de seguridad.'}
                     </div>
                   </div>
@@ -879,20 +879,20 @@ export const PublicationsPage: React.FC = () => {
               )}
 
               {/* Wizard Nav & Submit Buttons */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #1f2937' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #d8d8e0' }}>
                 {!editingPub && step > 1 ? (
                   <button
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#cbd5e1', cursor: 'pointer', fontWeight: 600 }}
+                    style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#1a1a1a', cursor: 'pointer', fontWeight: 600 }}
                   >
-                    ← Anterior
+                    â† Anterior
                   </button>
                 ) : (
                   <button
                     type="button"
                     onClick={() => setModalOpen(false)}
-                    style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#94a3b8', cursor: 'pointer', fontWeight: 600 }}
+                    style={{ padding: '0.65rem 1.1rem', borderRadius: '8px', background: 'transparent', border: '1px solid #374151', color: '#1a1a1a', cursor: 'pointer', fontWeight: 600 }}
                   >
                     Cancelar
                   </button>
@@ -905,7 +905,7 @@ export const PublicationsPage: React.FC = () => {
                       onClick={() => setStep(step + 1)}
                       style={{ padding: '0.65rem 1.25rem', borderRadius: '8px', background: '#3b82f6', border: 'none', color: '#fff', cursor: 'pointer', fontWeight: 700 }}
                     >
-                      Siguiente →
+                      Siguiente â†’
                     </button>
                   )}
 
@@ -931,7 +931,7 @@ export const PublicationsPage: React.FC = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.8)',
+            background: 'rgba(100,100,100,0.8)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -942,7 +942,7 @@ export const PublicationsPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '16px',
               maxWidth: '420px',
@@ -954,15 +954,15 @@ export const PublicationsPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <QrCode size={20} color="#c084fc" />
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>Código QR para Afiches</h3>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: '#e8e8f0' }}>CÃ³digo QR para Afiches</h3>
               </div>
-              <button onClick={() => setQrModalPub(null)} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+              <button onClick={() => setQrModalPub(null)} style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}>
                 <X size={20} />
               </button>
             </div>
 
-            <p style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: '1.25rem' }}>
-              Escanea directamente para abrir la postulación en celulares sin instalar aplicaciones:
+            <p style={{ fontSize: '0.82rem', color: '#1a1a1a', marginBottom: '1.25rem' }}>
+              Escanea directamente para abrir la postulaciÃ³n en celulares sin instalar aplicaciones:
             </p>
 
             {/* QR Visual */}
@@ -971,13 +971,13 @@ export const PublicationsPage: React.FC = () => {
                 width: '200px',
                 height: '200px',
                 margin: '0 auto 1.25rem',
-                background: '#ffffff',
+                background: '#e8e8f0',
                 padding: '12px',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                boxShadow: '0 8px 24px rgba(100,100,100,0.5)',
               }}
             >
               <img
@@ -989,7 +989,7 @@ export const PublicationsPage: React.FC = () => {
               />
             </div>
 
-            <div style={{ background: '#0f172a', border: '1px solid #1f2937', borderRadius: '8px', padding: '0.65rem', marginBottom: '1.25rem', fontFamily: 'monospace', fontSize: '0.78rem', color: '#38bdf8' }}>
+            <div style={{ background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '8px', padding: '0.65rem', marginBottom: '1.25rem', fontFamily: 'monospace', fontSize: '0.78rem', color: '#38bdf8' }}>
               {window.location.origin}/postular/p/{qrModalPub.slug}
             </div>
 
@@ -1007,19 +1007,19 @@ export const PublicationsPage: React.FC = () => {
                 cursor: 'pointer',
               }}
             >
-              Copiar Enlace de Postulación
+              Copiar Enlace de PostulaciÃ³n
             </button>
           </div>
         </div>
       )}
 
-      {/* Modal Métricas de Publicación */}
+      {/* Modal MÃ©tricas de PublicaciÃ³n */}
       {metricsModalPubId && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.8)',
+            background: 'rgba(100,100,100,0.8)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -1030,7 +1030,7 @@ export const PublicationsPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '16px',
               maxWidth: '720px',
@@ -1043,47 +1043,47 @@ export const PublicationsPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <BarChart2 size={22} color="#38bdf8" />
-                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                  Métricas de Rendimiento y Calidad
+                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#e8e8f0' }}>
+                  MÃ©tricas de Rendimiento y Calidad
                 </h2>
               </div>
-              <button onClick={() => setMetricsModalPubId(null)} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+              <button onClick={() => setMetricsModalPubId(null)} style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}>
                 <X size={20} />
               </button>
             </div>
 
             {metricsLoading ? (
-              <div style={{ textAlign: 'center', padding: '3rem 0', color: '#94a3b8' }}>Cargando analítica...</div>
+              <div style={{ textAlign: 'center', padding: '3rem 0', color: '#1a1a1a' }}>Cargando analÃ­tica...</div>
             ) : metricsData ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {/* Resumen KPIs */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.75rem' }}>
-                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1f2937' }}>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Vistas Únicas</span>
-                    <strong style={{ fontSize: '1.2rem', color: '#f8fafc' }}>{metricsData.summary?.unique_views || 0}</strong>
+                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #d8d8e0' }}>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Vistas Ãšnicas</span>
+                    <strong style={{ fontSize: '1.2rem', color: '#e8e8f0' }}>{metricsData.summary?.unique_views || 0}</strong>
                   </div>
-                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1f2937' }}>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
-                    <strong style={{ fontSize: '1.2rem', color: '#f8fafc' }}>{metricsData.summary?.completed_count || 0}</strong>
+                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #d8d8e0' }}>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Postulaciones</span>
+                    <strong style={{ fontSize: '1.2rem', color: '#e8e8f0' }}>{metricsData.summary?.completed_count || 0}</strong>
                   </div>
-                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1f2937' }}>
+                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #d8d8e0' }}>
                     <span style={{ fontSize: '0.68rem', color: '#f87171', textTransform: 'uppercase', display: 'block', fontWeight: 700 }}>Aptos Prefiltro</span>
                     <strong style={{ fontSize: '1.2rem', color: '#4ade80' }}>{metricsData.summary?.apt_count || 0}</strong>
                   </div>
-                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1f2937' }}>
-                    <span style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', display: 'block' }}>Contratados</span>
+                  <div style={{ background: '#0f172a', padding: '0.85rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #d8d8e0' }}>
+                    <span style={{ fontSize: '0.68rem', color: '#0f1419', textTransform: 'uppercase', display: 'block' }}>Contratados</span>
                     <strong style={{ fontSize: '1.2rem', color: '#60a5fa' }}>{metricsData.summary?.hired_count || 0}</strong>
                   </div>
                 </div>
 
                 {/* Desglose por Canal */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#cbd5e1', marginBottom: '0.6rem' }}>
-                    Desglose de Tráfico y Calidad por Canal
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '0.6rem' }}>
+                    Desglose de TrÃ¡fico y Calidad por Canal
                   </h4>
                   <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem', textAlign: 'left' }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid #1f2937', color: '#64748b', textTransform: 'uppercase', fontSize: '0.7rem' }}>
+                      <tr style={{ borderBottom: '1px solid #d8d8e0', color: '#0f1419', textTransform: 'uppercase', fontSize: '0.7rem' }}>
                         <th style={{ padding: '0.5rem' }}>Canal</th>
                         <th style={{ padding: '0.5rem', textAlign: 'center' }}>Vistas</th>
                         <th style={{ padding: '0.5rem', textAlign: 'center' }}>Postulaciones</th>
@@ -1093,8 +1093,8 @@ export const PublicationsPage: React.FC = () => {
                     </thead>
                     <tbody>
                       {metricsData.channelsBreakdown?.map((ch: any, idx: number) => (
-                        <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
-                          <td style={{ padding: '0.6rem 0.5rem', fontWeight: 700, color: '#f8fafc' }}>{ch.channel_name}</td>
+                        <tr key={idx} style={{ borderBottom: '1px solid rgba(100,100,100,0.03)' }}>
+                          <td style={{ padding: '0.6rem 0.5rem', fontWeight: 700, color: '#e8e8f0' }}>{ch.channel_name}</td>
                           <td style={{ padding: '0.6rem 0.5rem', textAlign: 'center' }}>{ch.unique_views}</td>
                           <td style={{ padding: '0.6rem 0.5rem', textAlign: 'center' }}>{ch.completed}</td>
                           <td style={{ padding: '0.6rem 0.5rem', textAlign: 'center', color: '#4ade80', fontWeight: 800 }}>{ch.apt}</td>
@@ -1105,12 +1105,12 @@ export const PublicationsPage: React.FC = () => {
                   </table>
                 </div>
 
-                {/* Serie de tiempo últimos 14 días */}
+                {/* Serie de tiempo Ãºltimos 14 dÃ­as */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#cbd5e1', marginBottom: '0.6rem' }}>
-                    Evolución Diaria (Últimos 14 días)
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1a1a1a', marginBottom: '0.6rem' }}>
+                    EvoluciÃ³n Diaria (Ãšltimos 14 dÃ­as)
                   </h4>
-                  <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'flex-end', height: '90px', background: '#0f172a', padding: '0.75rem', borderRadius: '8px', border: '1px solid #1f2937' }}>
+                  <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'flex-end', height: '90px', background: '#0f172a', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d8d8e0' }}>
                     {metricsData.timeline?.map((day: any, idx: number) => {
                       const maxV = Math.max(...metricsData.timeline.map((t: any) => t.views || 1), 10);
                       const heightPct = Math.round((day.views / maxV) * 100);
@@ -1121,9 +1121,9 @@ export const PublicationsPage: React.FC = () => {
                       );
                     })}
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: '#64748b', marginTop: '0.35rem' }}>
-                    <span>Hace 14 días</span>
-                    <span style={{ color: '#22c55e' }}>■ Con postulaciones</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: '#0f1419', marginTop: '0.35rem' }}>
+                    <span>Hace 14 dÃ­as</span>
+                    <span style={{ color: '#22c55e' }}>â–  Con postulaciones</span>
                     <span>Hoy</span>
                   </div>
                 </div>
@@ -1135,3 +1135,8 @@ export const PublicationsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+

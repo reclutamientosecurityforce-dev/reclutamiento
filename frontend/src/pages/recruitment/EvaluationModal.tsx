@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { api } from '../../api/client';
 import {
   X,
@@ -19,7 +19,7 @@ import {
   Info,
 } from 'lucide-react';
 
-// ─── TYPES ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ TYPES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface EvaluationItem {
   id: string;
@@ -101,24 +101,24 @@ interface EvaluationModalProps {
   onClose: () => void;
 }
 
-// ─── HELPERS ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const STATUS_META: Record<string, { icon: React.ReactNode; label: string; color: string; bg: string }> = {
   pass: { icon: <CheckCircle2 size={15} />, label: 'Cumple', color: '#16a34a', bg: 'rgba(22,163,74,0.12)' },
   review: { icon: <AlertTriangle size={15} />, label: 'Revisar', color: '#d97706', bg: 'rgba(217,119,6,0.12)' },
   fail: { icon: <XCircle size={15} />, label: 'No Cumple', color: '#dc2626', bg: 'rgba(220,38,38,0.12)' },
-  pending: { icon: <Clock size={15} />, label: 'Pendiente', color: '#64748b', bg: 'rgba(100,116,139,0.12)' },
+  pending: { icon: <Clock size={15} />, label: 'Pendiente', color: '#0f1419', bg: 'rgba(100,116,139,0.12)' },
 };
 
 const PREFILTER_META: Record<string, { label: string; color: string; dot: string }> = {
-  eligible: { label: '🟢 APTO', color: '#16a34a', dot: '#16a34a' },
-  review: { label: '🟡 REVISAR', color: '#d97706', dot: '#d97706' },
-  ineligible: { label: '🔴 NO APTO', color: '#dc2626', dot: '#dc2626' },
-  pending: { label: '⚪ PENDIENTE', color: '#64748b', dot: '#64748b' },
+  eligible: { label: 'ðŸŸ¢ APTO', color: '#16a34a', dot: '#16a34a' },
+  review: { label: 'ðŸŸ¡ REVISAR', color: '#d97706', dot: '#d97706' },
+  ineligible: { label: 'ðŸ”´ NO APTO', color: '#dc2626', dot: '#dc2626' },
+  pending: { label: 'âšª PENDIENTE', color: '#0f1419', dot: '#64748b' },
 };
 
 const SEV_COLOR: Record<string, string> = { low: '#16a34a', medium: '#d97706', high: '#dc2626' };
-const SOURCE_LABEL: Record<string, string> = { declared: 'Declarado', extracted: 'Extraído', accredited: 'Acreditado' };
+const SOURCE_LABEL: Record<string, string> = { declared: 'Declarado', extracted: 'ExtraÃ­do', accredited: 'Acreditado' };
 const TYPE_LABEL: Record<string, string> = {
   eliminatory: 'Eliminatorio',
   scoreable: 'Puntuable',
@@ -131,11 +131,11 @@ function expMonthsLabel(months: number): string {
   const years = Math.floor(months / 12);
   const rem = months % 12;
   if (years === 0) return `${rem} mes${rem !== 1 ? 'es' : ''}`;
-  if (rem === 0) return `${years} año${years !== 1 ? 's' : ''}`;
-  return `${years} año${years !== 1 ? 's' : ''} y ${rem} mes${rem !== 1 ? 'es' : ''}`;
+  if (rem === 0) return `${years} aÃ±o${years !== 1 ? 's' : ''}`;
+  return `${years} aÃ±o${years !== 1 ? 's' : ''} y ${rem} mes${rem !== 1 ? 'es' : ''}`;
 }
 
-// ─── COMPONENT ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ COMPONENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId, onClose }) => {
   const [application, setApplication] = useState<ApplicationDetail | null>(null);
@@ -206,20 +206,20 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999,
-      background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)',
+      background: 'rgba(100,100,100,0.75)', backdropFilter: 'blur(6px)',
       display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
       padding: '2rem 1rem', overflowY: 'auto',
     }}>
       <div style={{
-        background: '#111', border: '1px solid #222', borderRadius: '1rem',
-        width: '100%', maxWidth: '900px', color: '#e2e8f0',
-        boxShadow: '0 25px 80px rgba(0,0,0,0.8)',
+        background: '#e8e8f0', border: '1px solid #c8c8d0', borderRadius: '1rem',
+        width: '100%', maxWidth: '900px', color: '#333333',
+        boxShadow: '0 25px 80px rgba(100,100,100,0.8)',
       }}>
         {/* Header */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '1.5rem 2rem', borderBottom: '1px solid #1e1e1e',
-          background: 'linear-gradient(135deg, #0d0d0d, #1a0505)',
+          padding: '1.5rem 2rem', borderBottom: '1px solid #d8d8e0',
+          background: 'linear-gradient(135deg, #f5f5f7, #f0e8e8)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
@@ -230,67 +230,67 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
               <BarChart2 size={20} color="#dc2626" />
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '1rem', color: '#fff' }}>
-                Resultado de Prefiltro — Motor de Evaluación
+              <div style={{ fontWeight: 700, fontSize: '1rem', color: '#1a1a1a' }}>
+                Resultado de Prefiltro â€” Motor de EvaluaciÃ³n
               </div>
               {application && (
-                <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: 2 }}>
-                  {application.candidate_first_name} {application.candidate_last_name} · {application.job_title}
+                <div style={{ fontSize: '0.78rem', color: '#0f1419', marginTop: 2 }}>
+                  {application.candidate_first_name} {application.candidate_last_name} Â· {application.job_title}
                 </div>
               )}
             </div>
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b', padding: 4 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0f1419', padding: 4 }}
           >
             <X size={22} />
           </button>
         </div>
 
         {loading ? (
-          <div style={{ padding: '3rem', textAlign: 'center', color: '#64748b' }}>
+          <div style={{ padding: '3rem', textAlign: 'center', color: '#0f1419' }}>
             <div className="spinner" style={{ margin: '0 auto 1rem' }} />
-            Cargando evaluación...
+            Cargando evaluaciÃ³n...
           </div>
         ) : !application ? (
           <div style={{ padding: '3rem', textAlign: 'center', color: '#dc2626' }}>
             <AlertCircle size={40} style={{ margin: '0 auto 1rem' }} />
-            No se encontró la evaluación. Ejecuta primero el motor de prefiltro.
+            No se encontrÃ³ la evaluaciÃ³n. Ejecuta primero el motor de prefiltro.
           </div>
         ) : (
           <>
-            {/* ─── RESUMEN EJECUTIVO ─────────────────────────────────────────── */}
-            <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #1e1e1e' }}>
+            {/* â”€â”€â”€ RESUMEN EJECUTIVO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #d8d8e0' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
                 {/* Estado */}
-                <div style={{ background: '#0d0d0d', border: '1px solid #1e1e1e', borderRadius: '0.75rem', padding: '1rem' }}>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Estado</div>
+                <div style={{ background: '#f5f5f7', border: '1px solid #d8d8e0', borderRadius: '0.75rem', padding: '1rem' }}>
+                  <div style={{ fontSize: '0.7rem', color: '#0f1419', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Estado</div>
                   <div style={{ fontWeight: 800, fontSize: '1rem', color: status.color }}>{status.label}</div>
                 </div>
 
                 {/* Score */}
-                <div style={{ background: '#0d0d0d', border: '1px solid #1e1e1e', borderRadius: '0.75rem', padding: '1rem' }}>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Compatibilidad</div>
-                  <div style={{ fontWeight: 800, fontSize: '1.5rem', color: '#fff' }}>
-                    {Number(application.prefilter_score).toFixed(1)}<span style={{ fontSize: '0.9rem', color: '#64748b' }}>/100</span>
+                <div style={{ background: '#f5f5f7', border: '1px solid #d8d8e0', borderRadius: '0.75rem', padding: '1rem' }}>
+                  <div style={{ fontSize: '0.7rem', color: '#0f1419', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Compatibilidad</div>
+                  <div style={{ fontWeight: 800, fontSize: '1.5rem', color: '#1a1a1a' }}>
+                    {Number(application.prefilter_score).toFixed(1)}<span style={{ fontSize: '0.9rem', color: '#0f1419' }}>/100</span>
                   </div>
                 </div>
 
                 {/* Experiencia Acreditada */}
-                <div style={{ background: '#0d0d0d', border: '1px solid #1e1e1e', borderRadius: '0.75rem', padding: '1rem' }}>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Exp. Acreditada</div>
-                  <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#e2e8f0' }}>
+                <div style={{ background: '#f5f5f7', border: '1px solid #d8d8e0', borderRadius: '0.75rem', padding: '1rem' }}>
+                  <div style={{ fontSize: '0.7rem', color: '#0f1419', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Exp. Acreditada</div>
+                  <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#333333' }}>
                     {expMonthsLabel(application.total_accredited_exp_months)}
                   </div>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b', marginTop: 2 }}>
+                  <div style={{ fontSize: '0.7rem', color: '#0f1419', marginTop: 2 }}>
                     Declarada: {expMonthsLabel(application.total_declared_exp_months)}
                   </div>
                 </div>
 
                 {/* Discrepancias */}
-                <div style={{ background: '#0d0d0d', border: '1px solid #1e1e1e', borderRadius: '0.75rem', padding: '1rem' }}>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Discrepancias</div>
+                <div style={{ background: '#f5f5f7', border: '1px solid #d8d8e0', borderRadius: '0.75rem', padding: '1rem' }}>
+                  <div style={{ fontSize: '0.7rem', color: '#0f1419', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Discrepancias</div>
                   <div style={{ fontWeight: 700, fontSize: '1rem', color: application.discrepancies_count > 0 ? '#d97706' : '#16a34a' }}>
                     {application.discrepancies_count > 0 ? `${application.discrepancies_count} detectadas` : 'Sin discrepancias'}
                   </div>
@@ -300,11 +300,11 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
               {/* Barra de Progreso de Score */}
               {breakdown && (
                 <div style={{ marginTop: '1.25rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: '0.78rem', color: '#64748b' }}>
-                    <span>Puntaje obtenido: <b style={{ color: '#e2e8f0' }}>{breakdown.totalEarned}/{breakdown.maxPossible} pts</b></span>
-                    <span>Normalizado: <b style={{ color: '#e2e8f0' }}>{breakdown.normalizedPercentage.toFixed(1)}%</b></span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: '0.78rem', color: '#0f1419' }}>
+                    <span>Puntaje obtenido: <b style={{ color: '#333333' }}>{breakdown.totalEarned}/{breakdown.maxPossible} pts</b></span>
+                    <span>Normalizado: <b style={{ color: '#333333' }}>{breakdown.normalizedPercentage.toFixed(1)}%</b></span>
                   </div>
-                  <div style={{ height: 8, background: '#1e1e1e', borderRadius: 4, overflow: 'hidden' }}>
+                  <div style={{ height: 8, background: '#d8d8e0', borderRadius: 4, overflow: 'hidden' }}>
                     <div style={{
                       height: '100%', borderRadius: 4,
                       width: `${Math.min(100, breakdown.normalizedPercentage)}%`,
@@ -319,13 +319,13 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                 </div>
               )}
 
-              {/* Explicación del estado */}
+              {/* ExplicaciÃ³n del estado */}
               {breakdown?.reasons && breakdown.reasons.length > 0 && (
-                <div style={{ marginTop: '1rem', background: '#0a0a0a', borderRadius: '0.5rem', padding: '0.75rem 1rem', borderLeft: `3px solid ${status.color}` }}>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b', marginBottom: 4, fontWeight: 600, textTransform: 'uppercase' }}>¿Por qué este resultado?</div>
+                <div style={{ marginTop: '1rem', background: '#f5f5f7', borderRadius: '0.5rem', padding: '0.75rem 1rem', borderLeft: `3px solid ${status.color}` }}>
+                  <div style={{ fontSize: '0.72rem', color: '#0f1419', marginBottom: 4, fontWeight: 600, textTransform: 'uppercase' }}>Â¿Por quÃ© este resultado?</div>
                   {breakdown.reasons.map((r, i) => (
-                    <div key={`reason-${i}`} style={{ fontSize: '0.82rem', color: '#cbd5e1', display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: 3 }}>
-                      <span style={{ color: status.color, marginTop: 2 }}>›</span>
+                    <div key={`reason-${i}`} style={{ fontSize: '0.82rem', color: '#1a1a1a', display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: 3 }}>
+                      <span style={{ color: status.color, marginTop: 2 }}>â€º</span>
                       <span>{r}</span>
                     </div>
                   ))}
@@ -333,9 +333,9 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
               )}
             </div>
 
-            {/* ─── RÚBRICA DE PUNTAJE ─────────────────────────────────────────── */}
+            {/* â”€â”€â”€ RÃšBRICA DE PUNTAJE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
             {breakdown && breakdown.rubric.length > 0 && (
-              <div style={{ padding: '1.25rem 2rem', borderBottom: '1px solid #1e1e1e' }}>
+              <div style={{ padding: '1.25rem 2rem', borderBottom: '1px solid #d8d8e0' }}>
                 <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <Zap size={14} /> Desglose de Puntaje (Explicable)
                 </div>
@@ -344,12 +344,12 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                     const meta = STATUS_META[item.result] || STATUS_META.pending;
                     return (
                       <div key={item.title || `rubric-${i}`} style={{
-                        background: '#0d0d0d', border: `1px solid ${meta.color}33`,
+                        background: '#f5f5f7', border: `1px solid ${meta.color}33`,
                         borderRadius: '0.625rem', padding: '0.75rem',
                       }}>
-                        <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: 4 }}>{item.title}</div>
+                        <div style={{ fontSize: '0.7rem', color: '#0f1419', marginBottom: 4 }}>{item.title}</div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <span style={{ fontWeight: 700, fontSize: '1rem', color: '#fff' }}>
+                          <span style={{ fontWeight: 700, fontSize: '1rem', color: '#1a1a1a' }}>
                             {item.earned}<span style={{ color: '#475569', fontSize: '0.8rem' }}>/{item.max}</span>
                           </span>
                           <span style={{ color: meta.color, display: 'flex', alignItems: 'center', gap: 3, fontSize: '0.75rem' }}>
@@ -363,14 +363,14 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
               </div>
             )}
 
-            {/* ─── TABLA DE REQUISITOS ──────────────────────────────────────────── */}
-            <div style={{ padding: '1.25rem 2rem', borderBottom: '1px solid #1e1e1e' }}>
+            {/* â”€â”€â”€ TABLA DE REQUISITOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+            <div style={{ padding: '1.25rem 2rem', borderBottom: '1px solid #d8d8e0' }}>
               <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: 6 }}>
-                <FileText size={14} /> Evaluación por Requisito
+                <FileText size={14} /> EvaluaciÃ³n por Requisito
               </div>
 
               {evaluations.length === 0 ? (
-                <div style={{ color: '#475569', fontSize: '0.85rem', padding: '1rem', background: '#0d0d0d', borderRadius: '0.5rem', textAlign: 'center' }}>
+                <div style={{ color: '#475569', fontSize: '0.85rem', padding: '1rem', background: '#f5f5f7', borderRadius: '0.5rem', textAlign: 'center' }}>
                   <Info size={18} style={{ marginBottom: 6, opacity: 0.5 }} />
                   <div>No hay evaluaciones registradas.</div>
                   <div style={{ fontSize: '0.75rem', marginTop: 4, color: '#374151' }}>Ejecuta el motor de prefiltro desde el panel de la convocatoria.</div>
@@ -381,7 +381,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                     const meta = STATUS_META[ev.result] || STATUS_META.pending;
                     const isExpanded = expandedRows.has(ev.id);
                     return (
-                      <div key={ev.id || `eval-${idx}`} style={{ background: '#0d0d0d', border: `1px solid ${ev.discrepancy_detected ? '#d97706' : '#1e1e1e'}`, borderRadius: '0.625rem', overflow: 'hidden' }}>
+                      <div key={ev.id || `eval-${idx}`} style={{ background: '#f5f5f7', border: `1px solid ${ev.discrepancy_detected ? '#d97706' : '#d8d8e0'}`, borderRadius: '0.625rem', overflow: 'hidden' }}>
                         {/* Row Header */}
                         <div
                           onClick={() => toggleRow(ev.id)}
@@ -397,7 +397,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                             {meta.icon} {meta.label}
                           </div>
                           {/* Title */}
-                          <div style={{ flex: 1, fontSize: '0.85rem', color: '#e2e8f0', fontWeight: 500 }}>
+                          <div style={{ flex: 1, fontSize: '0.85rem', color: '#333333', fontWeight: 500 }}>
                             {ev.requirement_title}
                             {ev.is_overridden && (
                               <span style={{ marginLeft: 6, fontSize: '0.67rem', color: '#7c3aed', background: 'rgba(124,58,237,0.12)', padding: '1px 5px', borderRadius: 4 }}>
@@ -415,11 +415,11 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                             {TYPE_LABEL[ev.requirement_type] || ev.requirement_type}
                           </span>
                           {/* Score */}
-                          <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#fff', flexShrink: 0, minWidth: 55, textAlign: 'right' }}>
+                          <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#1a1a1a', flexShrink: 0, minWidth: 55, textAlign: 'right' }}>
                             {ev.score_earned}<span style={{ color: '#475569', fontWeight: 400 }}>/{ev.max_score}</span>
                           </div>
                           {/* Source */}
-                          <span style={{ fontSize: '0.67rem', color: '#374151', background: '#111', padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
+                          <span style={{ fontSize: '0.67rem', color: '#374151', background: '#e8e8f0', padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
                             {SOURCE_LABEL[ev.source_type]}
                           </span>
                           {isExpanded ? <ChevronUp size={14} color="#475569" /> : <ChevronDown size={14} color="#475569" />}
@@ -427,11 +427,11 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
 
                         {/* Expanded Detail */}
                         {isExpanded && (
-                          <div style={{ padding: '0.75rem 1rem', borderTop: '1px solid #1a1a1a', background: '#080808' }}>
+                          <div style={{ padding: '0.75rem 1rem', borderTop: '1px solid #e8e8f0', background: '#f5f5f7' }}>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginBottom: '0.75rem' }}>
                               {ev.declared_value && Object.keys(ev.declared_value).length > 0 && (
                                 <div>
-                                  <div style={{ fontSize: '0.67rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase' }}>Declarado</div>
+                                  <div style={{ fontSize: '0.67rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase' }}>Declarado</div>
                                   <pre style={{ fontSize: '0.72rem', color: '#93c5fd', whiteSpace: 'pre-wrap', margin: 0 }}>
                                     {JSON.stringify(ev.declared_value, null, 2)}
                                   </pre>
@@ -439,7 +439,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                               )}
                               {ev.accredited_value && Object.keys(ev.accredited_value).length > 0 && (
                                 <div>
-                                  <div style={{ fontSize: '0.67rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase' }}>Acreditado</div>
+                                  <div style={{ fontSize: '0.67rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase' }}>Acreditado</div>
                                   <pre style={{ fontSize: '0.72rem', color: '#86efac', whiteSpace: 'pre-wrap', margin: 0 }}>
                                     {JSON.stringify(ev.accredited_value, null, 2)}
                                   </pre>
@@ -447,7 +447,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                               )}
                               {ev.evidence_file_name && (
                                 <div>
-                                  <div style={{ fontSize: '0.67rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase' }}>Evidencia</div>
+                                  <div style={{ fontSize: '0.67rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase' }}>Evidencia</div>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.75rem', color: '#60a5fa' }}>
                                     <FileText size={12} />
                                     {ev.evidence_file_name}
@@ -457,7 +457,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                             </div>
 
                             {ev.evaluation_notes && (
-                              <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontStyle: 'italic', marginBottom: '0.75rem', padding: '0.5rem', background: '#0d0d0d', borderRadius: '0.375rem', borderLeft: `3px solid ${meta.color}` }}>
+                              <div style={{ fontSize: '0.8rem', color: '#1a1a1a', fontStyle: 'italic', marginBottom: '0.75rem', padding: '0.5rem', background: '#f5f5f7', borderRadius: '0.375rem', borderLeft: `3px solid ${meta.color}` }}>
                                 {ev.evaluation_notes}
                               </div>
                             )}
@@ -465,7 +465,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                             {ev.discrepancy_detected && ev.discrepancy_details && (
                               <div style={{ marginBottom: '0.75rem', padding: '0.625rem', background: 'rgba(217,119,6,0.08)', borderRadius: '0.375rem', border: '1px solid rgba(217,119,6,0.25)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.72rem', fontWeight: 700, color: '#d97706', marginBottom: 4 }}>
-                                  <AlertTriangle size={12} /> Discrepancia Detectada — Gravedad: <span style={{ color: SEV_COLOR[ev.discrepancy_details.severity] }}>{ev.discrepancy_details.severity.toUpperCase()}</span>
+                                  <AlertTriangle size={12} /> Discrepancia Detectada â€” Gravedad: <span style={{ color: SEV_COLOR[ev.discrepancy_details.severity] }}>{ev.discrepancy_details.severity.toUpperCase()}</span>
                                 </div>
                                 <div style={{ fontSize: '0.78rem', color: '#fbbf24' }}>
                                   {ev.discrepancy_details.differenceDescription}
@@ -475,7 +475,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
 
                             {ev.is_overridden && ev.override_reason && (
                               <div style={{ marginBottom: '0.75rem', padding: '0.625rem', background: 'rgba(124,58,237,0.08)', borderRadius: '0.375rem', border: '1px solid rgba(124,58,237,0.2)' }}>
-                                <div style={{ fontSize: '0.7rem', color: '#a78bfa', fontWeight: 700, marginBottom: 3, textTransform: 'uppercase' }}>Decisión Manual Registrada</div>
+                                <div style={{ fontSize: '0.7rem', color: '#a78bfa', fontWeight: 700, marginBottom: 3, textTransform: 'uppercase' }}>DecisiÃ³n Manual Registrada</div>
                                 <div style={{ fontSize: '0.78rem', color: '#c4b5fd' }}>{ev.override_reason}</div>
                               </div>
                             )}
@@ -501,11 +501,11 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
               )}
             </div>
 
-            {/* ─── OVERRIDE PANEL ───────────────────────────────────────────────── */}
+            {/* â”€â”€â”€ OVERRIDE PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
             {overrideTarget && (
               <div style={{ padding: '1.5rem 2rem', background: 'rgba(124,58,237,0.06)', borderBottom: '1px solid rgba(124,58,237,0.15)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: '0.75rem', color: '#a78bfa', fontWeight: 700, fontSize: '0.85rem' }}>
-                  <UserCheck size={16} /> Revisión y Decisión Manual — {overrideTarget.requirement_title}
+                  <UserCheck size={16} /> RevisiÃ³n y DecisiÃ³n Manual â€” {overrideTarget.requirement_title}
                 </div>
                 <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
                   {(['pass', 'review', 'fail'] as const).map(r => {
@@ -519,7 +519,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                           padding: '6px 14px', borderRadius: '20px', cursor: 'pointer',
                           fontWeight: 600, fontSize: '0.78rem',
                           background: overrideResult === r ? m.bg : 'transparent',
-                          border: `1.5px solid ${overrideResult === r ? m.color : '#1e1e1e'}`,
+                          border: `1.5px solid ${overrideResult === r ? m.color : '#d8d8e0'}`,
                           color: overrideResult === r ? m.color : '#475569',
                         }}
                       >
@@ -531,11 +531,11 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                 <textarea
                   value={overrideReason}
                   onChange={e => setOverrideReason(e.target.value)}
-                  placeholder="Motivo obligatorio de la decisión (ej: Candidato presentó documento original en entrevista)…"
+                  placeholder="Motivo obligatorio de la decisiÃ³n (ej: Candidato presentÃ³ documento original en entrevista)â€¦"
                   rows={3}
                   style={{
-                    width: '100%', background: '#0d0d0d', border: '1px solid #1e1e1e',
-                    borderRadius: '0.5rem', padding: '0.75rem', color: '#e2e8f0',
+                    width: '100%', background: '#f5f5f7', border: '1px solid #d8d8e0',
+                    borderRadius: '0.5rem', padding: '0.75rem', color: '#333333',
                     fontSize: '0.82rem', resize: 'vertical', fontFamily: 'inherit', boxSizing: 'border-box',
                   }}
                 />
@@ -548,16 +548,16 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
                     disabled={overrideSaving}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 6,
-                      background: '#7c3aed', border: 'none', color: '#fff',
+                      background: '#7c3aed', border: 'none', color: '#1a1a1a',
                       padding: '8px 18px', borderRadius: '0.5rem', cursor: 'pointer',
                       fontWeight: 700, fontSize: '0.82rem', opacity: overrideSaving ? 0.7 : 1,
                     }}
                   >
-                    <Save size={13} /> {overrideSaving ? 'Guardando…' : 'Confirmar Decisión'}
+                    <Save size={13} /> {overrideSaving ? 'Guardandoâ€¦' : 'Confirmar DecisiÃ³n'}
                   </button>
                   <button
                     onClick={() => setOverrideTarget(null)}
-                    style={{ background: 'none', border: '1px solid #1e1e1e', color: '#64748b', padding: '8px 14px', borderRadius: '0.5rem', cursor: 'pointer', fontSize: '0.82rem' }}
+                    style={{ background: 'none', border: '1px solid #d8d8e0', color: '#0f1419', padding: '8px 14px', borderRadius: '0.5rem', cursor: 'pointer', fontSize: '0.82rem' }}
                   >
                     Cancelar
                   </button>
@@ -568,7 +568,7 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
             {/* Footer */}
             <div style={{ padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ fontSize: '0.72rem', color: '#374151' }}>
-                {application.evaluated_at ? `Evaluado: ${new Date(application.evaluated_at).toLocaleString('es-PE')}` : 'Sin evaluación previa'}
+                {application.evaluated_at ? `Evaluado: ${new Date(application.evaluated_at).toLocaleString('es-PE')}` : 'Sin evaluaciÃ³n previa'}
               </div>
               <button
                 onClick={onClose}
@@ -589,3 +589,8 @@ export const EvaluationModal: React.FC<EvaluationModalProps> = ({ applicationId,
 };
 
 export default EvaluationModal;
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
@@ -65,7 +65,7 @@ export const JobDetailPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#080808', color: '#fff' }}>
+      <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#fff' }}>
         <PublicHeader showBackToJobs />
         <div style={{ padding: '5rem 0', textAlign: 'center', color: '#888' }}>
           Cargando detalles de la vacante...
@@ -76,7 +76,7 @@ export const JobDetailPage: React.FC = () => {
 
   if (!opening) {
     return (
-      <div style={{ minHeight: '100vh', background: '#080808', color: '#fff' }}>
+      <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#fff' }}>
         <PublicHeader showBackToJobs />
         <div style={{ padding: '4rem 1.5rem', textAlign: 'center' }}>
           <AlertTriangle size={40} color="#f87171" style={{ margin: '0 auto 1rem' }} />
@@ -94,7 +94,7 @@ export const JobDetailPage: React.FC = () => {
   const remaining = Math.max(0, opening.vacancies_count - opening.filled_count);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: '#ffffff' }}>
+    <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#ffffff' }}>
       <PublicHeader showBackToJobs />
 
       {/* Main Content */}
@@ -104,7 +104,7 @@ export const JobDetailPage: React.FC = () => {
           style={{
             background: `
               radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.15) 0%, transparent 60%),
-              #0d0d0d
+              #f5f5f7
             `,
             border: '1px solid rgba(220, 38, 38, 0.3)',
             borderRadius: '20px',
@@ -125,7 +125,7 @@ export const JobDetailPage: React.FC = () => {
                   letterSpacing: '0.08em',
                 }}
               >
-                {opening.position_type} • Security Force P&V
+                {opening.position_type} â€¢ Security Force P&V
               </span>
               <h1
                 style={{
@@ -153,7 +153,7 @@ export const JobDetailPage: React.FC = () => {
                 borderRadius: '9999px',
               }}
             >
-              🟢 {remaining} Vacante{remaining === 1 ? '' : 's'} Disponibles
+              ðŸŸ¢ {remaining} Vacante{remaining === 1 ? '' : 's'} Disponibles
             </span>
           </div>
 
@@ -193,12 +193,12 @@ export const JobDetailPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Descripción del Puesto */}
+        {/* DescripciÃ³n del Puesto */}
         {opening.description && (
           <div style={{ background: '#0e0e0e', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', padding: '1.75rem', marginBottom: '1.5rem' }}>
             <h3 style={{ fontSize: '1.2rem', color: '#ffffff', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Briefcase size={18} color="#dc2626" />
-              <span>Descripción y Funciones del Puesto</span>
+              <span>DescripciÃ³n y Funciones del Puesto</span>
             </h3>
             <p style={{ fontSize: '0.925rem', color: '#ccc', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
               {opening.description}
@@ -217,7 +217,7 @@ export const JobDetailPage: React.FC = () => {
             <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '0.85rem 1rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <CheckCircle2 size={16} color="#dc2626" />
               <span style={{ fontSize: '0.875rem' }}>
-                SUCAMEC: <strong>{reqs.sucamec_required ? 'Carné Vigente Obligatorio' : 'No indispensable'}</strong>
+                SUCAMEC: <strong>{reqs.sucamec_required ? 'CarnÃ© Vigente Obligatorio' : 'No indispensable'}</strong>
               </span>
             </div>
 
@@ -225,7 +225,7 @@ export const JobDetailPage: React.FC = () => {
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '0.85rem 1rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <CheckCircle2 size={16} color="#dc2626" />
                 <span style={{ fontSize: '0.875rem' }}>
-                  Estatura Mínima: <strong>{reqs.min_height} cm</strong>
+                  Estatura MÃ­nima: <strong>{reqs.min_height} cm</strong>
                 </span>
               </div>
             )}
@@ -233,7 +233,7 @@ export const JobDetailPage: React.FC = () => {
             <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '0.85rem 1rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <CheckCircle2 size={16} color="#dc2626" />
               <span style={{ fontSize: '0.875rem' }}>
-                Experiencia Mínima: <strong>{reqs.experience_years ? `${reqs.experience_years} año(s)` : 'Sin experiencia previa requerida'}</strong>
+                Experiencia MÃ­nima: <strong>{reqs.experience_years ? `${reqs.experience_years} aÃ±o(s)` : 'Sin experiencia previa requerida'}</strong>
               </span>
             </div>
 
@@ -257,20 +257,20 @@ export const JobDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Documentos Dinámicos Solicitados */}
+        {/* Documentos DinÃ¡micos Solicitados */}
         {reqs.required_documents && reqs.required_documents.length > 0 && (
           <div style={{ background: '#0e0e0e', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', padding: '1.75rem', marginBottom: '1.5rem' }}>
             <h3 style={{ fontSize: '1.2rem', color: '#ffffff', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <FileText size={18} color="#dc2626" />
-              <span>Documentos que Solicitará la Convocatoria</span>
+              <span>Documentos que SolicitarÃ¡ la Convocatoria</span>
             </h3>
             <p style={{ fontSize: '0.825rem', color: '#888', marginBottom: '1rem' }}>
-              Podrás subirlos en formato PDF, foto desde tu celular o crearlos directamente en la plataforma:
+              PodrÃ¡s subirlos en formato PDF, foto desde tu celular o crearlos directamente en la plataforma:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {reqs.required_documents.map((doc, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', color: '#ccc' }}>
-                  <span style={{ color: '#dc2626', fontWeight: 800 }}>•</span>
+                  <span style={{ color: '#dc2626', fontWeight: 800 }}>â€¢</span>
                   <span>{doc.label}</span>
                   {doc.required ? (
                     <span style={{ fontSize: '0.68rem', color: '#f87171', background: 'rgba(220, 38, 38, 0.1)', padding: '0.1rem 0.4rem', borderRadius: '4px' }}>Obligatorio</span>
@@ -321,3 +321,4 @@ export const JobDetailPage: React.FC = () => {
     </div>
   );
 };
+

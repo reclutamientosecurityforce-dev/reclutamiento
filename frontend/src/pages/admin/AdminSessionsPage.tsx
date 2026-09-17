@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import { UserCheck, Monitor, XCircle } from 'lucide-react';
 
@@ -38,23 +38,23 @@ export const AdminSessionsPage: React.FC = () => {
   }, []);
 
   const handleTerminateSession = async (sessionId: string, username: string) => {
-    if (!confirm(`¿Desea cerrar remotamente la sesión de ${username}?`)) return;
+    if (!confirm(`Â¿Desea cerrar remotamente la sesiÃ³n de ${username}?`)) return;
     try {
       await api.delete(`/admin/sessions/${sessionId}`);
       fetchSessions();
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : 'Error al terminar sesión');
+      alert(err instanceof Error ? err.message : 'Error al terminar sesiÃ³n');
     }
   };
 
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
           Sesiones Activas
         </h1>
-        <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-          Control y terminación remota de sesiones concurrentes en PostgreSQL
+        <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+          Control y terminaciÃ³n remota de sesiones concurrentes en PostgreSQL
         </p>
       </div>
 
@@ -65,24 +65,24 @@ export const AdminSessionsPage: React.FC = () => {
       )}
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando sesiones activas...
         </div>
       ) : sessions.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center', color: '#64748b' }}>
+        <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center', color: '#0f1419' }}>
           No hay sesiones activas en este momento.
         </div>
       ) : (
         <div className="glass-panel" style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '1rem 1.25rem' }}>Usuario</th>
                 <th style={{ padding: '1rem 1.25rem' }}>IP / Dispositivo</th>
-                <th style={{ padding: '1rem 1.25rem' }}>Inicio de Sesión</th>
-                <th style={{ padding: '1rem 1.25rem' }}>Última Actividad</th>
+                <th style={{ padding: '1rem 1.25rem' }}>Inicio de SesiÃ³n</th>
+                <th style={{ padding: '1rem 1.25rem' }}>Ãšltima Actividad</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Expira En</th>
-                <th style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>Acción</th>
+                <th style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>AcciÃ³n</th>
               </tr>
             </thead>
             <tbody>
@@ -105,27 +105,27 @@ export const AdminSessionsPage: React.FC = () => {
                         <UserCheck size={16} />
                       </div>
                       <div>
-                        <p style={{ fontWeight: 600, color: '#f8fafc' }}>{s.full_name || s.username}</p>
-                        <span style={{ fontSize: '0.75rem', color: '#64748b' }}>@{s.username}</span>
+                        <p style={{ fontWeight: 600, color: '#1a1a1a' }}>{s.full_name || s.username}</p>
+                        <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>@{s.username}</span>
                       </div>
                     </div>
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#cbd5e1', fontSize: '0.825rem' }}>
-                      <Monitor size={14} color="#94a3b8" />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a', fontSize: '0.825rem' }}>
+                      <Monitor size={14} color="#666666" />
                       <span>{s.ip_address || 'IP no registrada'}</span>
                     </div>
-                    <span style={{ fontSize: '0.72rem', color: '#64748b', display: 'block', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontSize: '0.72rem', color: '#0f1419', display: 'block', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {s.user_agent || 'Browser standard'}
                     </span>
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.8rem' }}>
                     {new Date(s.created_at).toLocaleString('es-PE')}
                   </td>
                   <td style={{ padding: '1rem 1.25rem', color: '#34d399', fontSize: '0.8rem', fontWeight: 600 }}>
                     {new Date(s.last_seen_at).toLocaleTimeString('es-PE')}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.8rem' }}>
                     {new Date(s.expires_at).toLocaleString('es-PE')}
                   </td>
                   <td style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>
@@ -135,7 +135,7 @@ export const AdminSessionsPage: React.FC = () => {
                       style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem' }}
                     >
                       <XCircle size={14} />
-                      <span>Cerrar Sesión</span>
+                      <span>Cerrar SesiÃ³n</span>
                     </button>
                   </td>
                 </tr>
@@ -147,3 +147,7 @@ export const AdminSessionsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

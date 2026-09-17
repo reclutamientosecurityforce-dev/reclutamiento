@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X } from 'lucide-react';
 
@@ -36,7 +36,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
 
   const navItems = [
     { label: 'INICIO', path: '/postular' },
-    { label: 'QUIÉNES SOMOS', path: '/postular/nosotros' },
+    { label: 'QUIÃ‰NES SOMOS', path: '/postular/nosotros' },
     { label: 'CONVOCATORIAS', path: '/postular#convocatorias' },
     { label: 'BENEFICIOS', path: '/postular/beneficios' },
     { label: 'CONTACTO', path: '/postular/contacto' },
@@ -130,7 +130,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontSize: '1.4rem',
                 fontWeight: 900,
-                color: '#080808',
+                color: '#f5f5f7',
                 letterSpacing: '0.02em',
                 lineHeight: 1,
                 textTransform: 'uppercase',
@@ -147,7 +147,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
                 fontWeight: 600,
               }}
             >
-              Protegemos lo que más importa
+              Protegemos lo que mÃ¡s importa
             </div>
           </div>
         </Link>
@@ -185,7 +185,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
                 style={{
                   fontSize: '0.8rem',
                   fontWeight: 600,
-                  color: isActive ? '#DC2626' : '#080808',
+                  color: isActive ? '#DC2626' : '#f5f5f7',
                   textDecoration: 'none',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
@@ -288,7 +288,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
               padding: '0.5rem',
             }}
           >
-            {mobileMenuOpen ? <X size={24} color="#080808" /> : <Menu size={24} color="#080808" />}
+            {mobileMenuOpen ? <X size={24} color="#f5f5f7" /> : <Menu size={24} color="#f5f5f7" />}
           </button>
         </div>
       </div>
@@ -335,7 +335,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
                 style={{
                   fontSize: '0.9rem',
                   fontWeight: 600,
-                  color: isActive ? '#DC2626' : '#080808',
+                  color: isActive ? '#DC2626' : '#f5f5f7',
                   textDecoration: 'none',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
@@ -354,3 +354,4 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ showBackToJobs = fal
     </header>
   );
 };
+

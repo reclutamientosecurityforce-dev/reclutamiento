@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import { UserPlus, Shield, User, X } from 'lucide-react';
 
@@ -68,7 +68,7 @@ export const AdminUsersPage: React.FC = () => {
   const handleToggleStatus = async (user: UserData) => {
     try {
       if (user.is_active) {
-        if (!confirm(`¿Desactivar al usuario ${user.username}?`)) return;
+        if (!confirm(`Â¿Desactivar al usuario ${user.username}?`)) return;
         await api.delete(`/admin/users/${user.id}`);
       } else {
         await api.put(`/admin/users/${user.id}`, { isActive: true });
@@ -83,11 +83,11 @@ export const AdminUsersPage: React.FC = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-            Gestión de Usuarios
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+            GestiÃ³n de Usuarios
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Administración de cuentas y roles con aislamiento multi-tenant
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            AdministraciÃ³n de cuentas y roles con aislamiento multi-tenant
           </p>
         </div>
         <button className="btn-primary" onClick={() => setModalOpen(true)}>
@@ -103,19 +103,19 @@ export const AdminUsersPage: React.FC = () => {
       )}
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando usuarios...
         </div>
       ) : (
         <div className="glass-panel" style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '1rem 1.25rem' }}>Usuario</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Email</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Rol</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Estado</th>
-                <th style={{ padding: '1rem 1.25rem' }}>Último Acceso</th>
+                <th style={{ padding: '1rem 1.25rem' }}>Ãšltimo Acceso</th>
                 <th style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>Acciones</th>
               </tr>
             </thead>
@@ -140,18 +140,18 @@ export const AdminUsersPage: React.FC = () => {
                         {u.role === 'admin' ? <Shield size={16} /> : <User size={16} />}
                       </div>
                       <div>
-                        <p style={{ fontWeight: 600, color: '#f8fafc' }}>{u.full_name || u.username}</p>
-                        <span style={{ fontSize: '0.75rem', color: '#64748b' }}>@{u.username}</span>
+                        <p style={{ fontWeight: 600, color: '#1a1a1a' }}>{u.full_name || u.username}</p>
+                        <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>@{u.username}</span>
                       </div>
                     </div>
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#cbd5e1' }}>{u.email}</td>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a' }}>{u.email}</td>
                   <td style={{ padding: '1rem 1.25rem' }}>
                     <span
                       className="badge"
                       style={{
                         background: u.role === 'admin' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(100, 116, 139, 0.15)',
-                        color: u.role === 'admin' ? '#818cf8' : '#cbd5e1',
+                        color: u.role === 'admin' ? '#818cf8' : '#555555',
                       }}
                     >
                       {u.role === 'admin' ? 'Administrador' : 'Operador'}
@@ -159,10 +159,10 @@ export const AdminUsersPage: React.FC = () => {
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>
                     <span className={`badge ${u.is_active ? 'badge-available' : 'badge-cancelled'}`}>
-                      {u.is_active ? '🟢 Activo' : '⚫ Inactivo'}
+                      {u.is_active ? 'ðŸŸ¢ Activo' : 'âš« Inactivo'}
                     </span>
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.8rem' }}>
                     {u.last_login_at ? new Date(u.last_login_at).toLocaleString('es-PE') : 'Nunca'}
                   </td>
                   <td style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>
@@ -186,8 +186,8 @@ export const AdminUsersPage: React.FC = () => {
         <div className="modal-overlay" onClick={() => setModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Registrar Nuevo Usuario</h3>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Registrar Nuevo Usuario</h3>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
@@ -200,21 +200,21 @@ export const AdminUsersPage: React.FC = () => {
 
             <form onSubmit={handleCreateUser}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
                   Nombre Completo
                 </label>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Ej: Carlos Alberto Pérez"
+                  placeholder="Ej: Carlos Alberto PÃ©rez"
                   style={{ width: '100%' }}
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
                     Usuario <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -227,7 +227,7 @@ export const AdminUsersPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
                     Email <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -243,21 +243,21 @@ export const AdminUsersPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
-                    Contraseña <span style={{ color: '#ef4444' }}>*</span>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
+                    ContraseÃ±a <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Mínimo 8 caracteres"
+                    placeholder="MÃ­nimo 8 caracteres"
                     required
                     minLength={8}
                     style={{ width: '100%' }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.4rem' }}>
                     Rol
                   </label>
                   <select
@@ -286,3 +286,7 @@ export const AdminUsersPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

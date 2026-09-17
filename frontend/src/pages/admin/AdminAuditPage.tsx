@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -45,7 +45,7 @@ export const AdminAuditPage: React.FC = () => {
   const getActionBadge = (action: string) => {
     const colors: Record<string, { bg: string; text: string }> = {
       login: { bg: 'rgba(16, 185, 129, 0.15)', text: '#34d399' },
-      logout: { bg: 'rgba(100, 116, 139, 0.15)', text: '#94a3b8' },
+      logout: { bg: 'rgba(100, 116, 139, 0.15)', text: '#1a1a1a' },
       card_used: { bg: 'rgba(239, 68, 68, 0.15)', text: '#f87171' },
       card_reserved: { bg: 'rgba(245, 158, 11, 0.15)', text: '#fbbf24' },
       card_corrected: { bg: 'rgba(99, 102, 241, 0.15)', text: '#818cf8' },
@@ -54,7 +54,7 @@ export const AdminAuditPage: React.FC = () => {
       session_terminated: { bg: 'rgba(239, 68, 68, 0.2)', text: '#ef4444' },
     };
 
-    const style = colors[action] || { bg: 'rgba(255, 255, 255, 0.1)', text: '#f8fafc' };
+    const style = colors[action] || { bg: '#d8d8e0', text: '#1a1a1a' };
 
     return (
       <span
@@ -76,11 +76,11 @@ export const AdminAuditPage: React.FC = () => {
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-          Registro de Auditoría
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+          Registro de AuditorÃ­a
         </h1>
-        <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-          Pista de auditoría inmutable de todas las operaciones del sistema
+        <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+          Pista de auditorÃ­a inmutable de todas las operaciones del sistema
         </p>
       </div>
 
@@ -97,27 +97,27 @@ export const AdminAuditPage: React.FC = () => {
           <option value="">Todas las acciones</option>
           <option value="card_used">Uso de Carta</option>
           <option value="card_reserved">Reserva de Carta</option>
-          <option value="card_corrected">Corrección de Carta</option>
+          <option value="card_corrected">CorrecciÃ³n de Carta</option>
           <option value="user_created">Usuario Creado</option>
           <option value="cards_generated">Cartas Generadas</option>
-          <option value="login">Inicio de Sesión</option>
-          <option value="logout">Cierre de Sesión</option>
-          <option value="session_terminated">Sesión Terminada</option>
+          <option value="login">Inicio de SesiÃ³n</option>
+          <option value="logout">Cierre de SesiÃ³n</option>
+          <option value="session_terminated">SesiÃ³n Terminada</option>
         </select>
       </div>
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
-          Cargando logs de auditoría...
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
+          Cargando logs de auditorÃ­a...
         </div>
       ) : (
         <div className="glass-panel" style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '1rem 1.25rem' }}>Fecha y Hora</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Usuario</th>
-                <th style={{ padding: '1rem 1.25rem' }}>Acción</th>
+                <th style={{ padding: '1rem 1.25rem' }}>AcciÃ³n</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Recurso</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Detalles</th>
                 <th style={{ padding: '1rem 1.25rem' }}>IP</th>
@@ -127,20 +127,20 @@ export const AdminAuditPage: React.FC = () => {
             <tbody>
               {logs.map((log) => (
                 <tr key={log.id} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.04)' }}>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.8rem' }}>
                     {new Date(log.created_at).toLocaleString('es-PE')}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', fontWeight: 600, color: '#f8fafc' }}>
+                  <td style={{ padding: '1rem 1.25rem', fontWeight: 600, color: '#1a1a1a' }}>
                     {log.user_full_name || log.username || 'Sistema'}
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>{getActionBadge(log.action)}</td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#cbd5e1' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a' }}>
                     {log.resource || '-'}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.78rem', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.78rem', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {log.details ? JSON.stringify(log.details) : '-'}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#64748b', fontSize: '0.78rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#0f1419', fontSize: '0.78rem' }}>
                     {log.ip_address || '-'}
                   </td>
                   <td style={{ padding: '1rem 1.25rem', textAlign: 'center' }}>
@@ -154,7 +154,7 @@ export const AdminAuditPage: React.FC = () => {
                         color: log.success ? '#34d399' : '#f87171',
                       }}
                     >
-                      {log.success ? 'Éxito' : 'Fallo'}
+                      {log.success ? 'Ã‰xito' : 'Fallo'}
                     </span>
                   </td>
                 </tr>
@@ -166,8 +166,8 @@ export const AdminAuditPage: React.FC = () => {
 
       {/* Pagination controls */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem' }}>
-        <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-          Página {page} de {totalPages}
+        <span style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+          PÃ¡gina {page} de {totalPages}
         </span>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button
@@ -193,3 +193,8 @@ export const AdminAuditPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+

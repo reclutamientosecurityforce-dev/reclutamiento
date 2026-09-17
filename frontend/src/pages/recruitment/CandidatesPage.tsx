@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { api } from '../../api/client';
 import {
   Search,
@@ -167,32 +167,32 @@ export const CandidatesPage: React.FC = () => {
   const getSucamecBadge = (status: CandidateItem['sucamec_status']) => {
     switch (status) {
       case 'valid':
-        return <span className="badge badge-available">🟢 SUCAMEC Vigente</span>;
+        return <span className="badge badge-available">ðŸŸ¢ SUCAMEC Vigente</span>;
       case 'in_process':
-        return <span className="badge badge-reserved">🟡 En Trámite</span>;
+        return <span className="badge badge-reserved">ðŸŸ¡ En TrÃ¡mite</span>;
       case 'expired':
-        return <span className="badge badge-used">🔴 Vencido</span>;
+        return <span className="badge badge-used">ðŸ”´ Vencido</span>;
       default:
-        return <span className="badge badge-cancelled">⚫ Sin Carné</span>;
+        return <span className="badge badge-cancelled">âš« Sin CarnÃ©</span>;
     }
   };
 
   const getStageBadge = (stage?: string) => {
-    if (!stage) return <span style={{ color: '#64748b' }}>Sin postulación</span>;
+    if (!stage) return <span style={{ color: '#0f1419' }}>Sin postulaciÃ³n</span>;
     const map: Record<string, { label: string; color: string }> = {
-      registered: { label: 'Registrado', color: '#94a3b8' },
+      registered: { label: 'Registrado', color: '#1a1a1a' },
       phone_screening: { label: 'Filtro Tel.', color: '#818cf8' },
-      psychological_eval: { label: 'Psicología', color: '#38bdf8' },
+      psychological_eval: { label: 'PsicologÃ­a', color: '#38bdf8' },
       background_check: { label: 'Antecedentes', color: '#fbbf24' },
       interview: { label: 'Entrevista', color: '#f59e0b' },
-      medical_exam: { label: 'Ex. Médico', color: '#f43f5e' },
+      medical_exam: { label: 'Ex. MÃ©dico', color: '#f43f5e' },
       approved: { label: 'Aprobado Apto', color: '#34d399' },
       hired: { label: 'Contratado', color: '#c084fc' },
       rejected: { label: 'Descartado', color: '#ef4444' },
     };
-    const s = map[stage] || { label: stage, color: '#94a3b8' };
+    const s = map[stage] || { label: stage, color: '#1a1a1a' };
     return (
-      <span style={{ color: s.color, fontWeight: 700, fontSize: '0.8rem', background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+      <span style={{ color: s.color, fontWeight: 700, fontSize: '0.8rem', background: 'rgba(100,100,100,0.05)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
         {s.label}
       </span>
     );
@@ -200,25 +200,25 @@ export const CandidatesPage: React.FC = () => {
 
   const getPrefilterBadge = (status?: string, score?: number) => {
     if (!status || status === 'pending') {
-      return <span style={{ color: '#94a3b8', fontSize: '0.75rem', background: 'rgba(148,163,184,0.1)', padding: '2px 8px', borderRadius: '12px' }}>⚪ Pendiente</span>;
+      return <span style={{ color: '#1a1a1a', fontSize: '0.75rem', background: 'rgba(148,163,184,0.1)', padding: '2px 8px', borderRadius: '12px' }}>âšª Pendiente</span>;
     }
     if (status === 'eligible') {
       return (
         <span style={{ color: '#22c55e', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(34,197,94,0.12)', padding: '2px 8px', borderRadius: '12px', width: 'fit-content' }}>
-          🟢 APTO ({score ? Math.round(score) : 0}%)
+          ðŸŸ¢ APTO ({score ? Math.round(score) : 0}%)
         </span>
       );
     }
     if (status === 'review') {
       return (
         <span style={{ color: '#f59e0b', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(245,158,11,0.12)', padding: '2px 8px', borderRadius: '12px', width: 'fit-content' }}>
-          🟡 REVISAR ({score ? Math.round(score) : 0}%)
+          ðŸŸ¡ REVISAR ({score ? Math.round(score) : 0}%)
         </span>
       );
     }
     return (
       <span style={{ color: '#ef4444', fontWeight: 700, fontSize: '0.75rem', background: 'rgba(239,68,68,0.12)', padding: '2px 8px', borderRadius: '12px', width: 'fit-content' }}>
-        🔴 NO APTO
+        ðŸ”´ NO APTO
       </span>
     );
   };
@@ -228,11 +228,11 @@ export const CandidatesPage: React.FC = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Directorio de Postulantes
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Base de datos y perfiles de seguridad para procesos de selección
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            Base de datos y perfiles de seguridad para procesos de selecciÃ³n
           </p>
         </div>
         <button className="btn-primary" onClick={() => setNewModalOpen(true)}>
@@ -248,11 +248,11 @@ export const CandidatesPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── FILTROS Y BÚSQUEDA ─────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ FILTROS Y BÃšSQUEDA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="glass-panel" style={{ padding: '1.25rem 1.5rem', marginBottom: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', justifyContent: 'space-between' }}>
         <form onSubmit={handleSearchSubmit} style={{ display: 'flex', gap: '0.5rem', flex: '1 1 320px' }}>
           <div style={{ position: 'relative', width: '100%' }}>
-            <Search size={18} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+            <Search size={18} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#0f1419' }} />
             <input
               type="text"
               placeholder="Buscar por DNI o Nombre de postulante..."
@@ -277,7 +277,7 @@ export const CandidatesPage: React.FC = () => {
         </form>
 
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-          <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>SUCAMEC:</span>
+          <span style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>SUCAMEC:</span>
           <select
             value={sucamecFilter}
             onChange={(e) => {
@@ -286,21 +286,21 @@ export const CandidatesPage: React.FC = () => {
             }}
           >
             <option value="">Todos</option>
-            <option value="valid">🟢 Vigente</option>
-            <option value="in_process">🟡 En trámite</option>
-            <option value="expired">🔴 Vencido</option>
-            <option value="none">⚫ Sin carné</option>
+            <option value="valid">ðŸŸ¢ Vigente</option>
+            <option value="in_process">ðŸŸ¡ En trÃ¡mite</option>
+            <option value="expired">ðŸ”´ Vencido</option>
+            <option value="none">âš« Sin carnÃ©</option>
           </select>
         </div>
       </div>
 
-      {/* ─── TABLA DE POSTULANTES ────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ TABLA DE POSTULANTES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando postulantes...
         </div>
       ) : candidates.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#64748b' }}>
+        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#0f1419' }}>
           <p style={{ fontSize: '1.1rem', fontWeight: 600 }}>No se encontraron postulantes</p>
           <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Registra un postulante para iniciar su proceso</p>
         </div>
@@ -308,7 +308,7 @@ export const CandidatesPage: React.FC = () => {
         <div className="glass-panel" style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '1rem 1.25rem' }}>DNI / Postulante</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Contacto</th>
                 <th style={{ padding: '1rem 1.25rem' }}>SUCAMEC / Armas</th>
@@ -323,7 +323,7 @@ export const CandidatesPage: React.FC = () => {
               {candidates.map((c, idx) => (
                 <tr key={c.id || c.application_id || `candidate-${idx}-${c.document_number}`} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.04)', transition: 'background 0.15s ease' }}>
                   <td style={{ padding: '1rem 1.25rem' }}>
-                    <div style={{ fontWeight: 800, color: '#f8fafc', fontSize: '0.95rem' }}>
+                    <div style={{ fontWeight: 800, color: '#1a1a1a', fontSize: '0.95rem' }}>
                       {c.first_name} {c.last_name}
                     </div>
                     <div style={{ fontSize: '0.78rem', color: '#818cf8', fontWeight: 600 }}>
@@ -331,12 +331,12 @@ export const CandidatesPage: React.FC = () => {
                     </div>
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#cbd5e1' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#1a1a1a' }}>
                       <Phone size={13} color="#34d399" />
                       <span>{c.phone}</span>
                     </div>
                     {c.district && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#94a3b8', fontSize: '0.75rem', marginTop: '2px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#1a1a1a', fontSize: '0.75rem', marginTop: '2px' }}>
                         <MapPin size={12} />
                         <span>{c.district}</span>
                       </div>
@@ -346,18 +346,18 @@ export const CandidatesPage: React.FC = () => {
                     <div style={{ marginBottom: '4px' }}>{getSucamecBadge(c.sucamec_status)}</div>
                     {c.gun_license && (
                       <span style={{ fontSize: '0.72rem', color: '#fbbf24', fontWeight: 700 }}>
-                        🔫 Arma ({c.gun_license_type || 'L1'})
+                        ðŸ”« Arma ({c.gun_license_type || 'L1'})
                       </span>
                     )}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#cbd5e1' }}>
-                    <strong>{c.security_experience_years || 0} años</strong>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a' }}>
+                    <strong>{c.security_experience_years || 0} aÃ±os</strong>
                     {c.military_service && (
-                      <div style={{ fontSize: '0.72rem', color: '#38bdf8' }}>🎖️ Servicio Militar</div>
+                      <div style={{ fontSize: '0.72rem', color: '#38bdf8' }}>ðŸŽ–ï¸ Servicio Militar</div>
                     )}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', maxWidth: '180px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {c.job_opening_title || <span style={{ color: '#64748b' }}>Sin asignar</span>}
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', maxWidth: '180px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {c.job_opening_title || <span style={{ color: '#0f1419' }}>Sin asignar</span>}
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>
                     {getPrefilterBadge(c.prefilter_status, c.prefilter_score)}
@@ -383,9 +383,9 @@ export const CandidatesPage: React.FC = () => {
                             alignItems: 'center',
                             gap: 4,
                           }}
-                          title="Ver Evaluación y Evidencias"
+                          title="Ver EvaluaciÃ³n y Evidencias"
                         >
-                          <span>🔍 Rúbrica</span>
+                          <span>ðŸ” RÃºbrica</span>
                         </button>
                       )}
                       <button
@@ -405,10 +405,10 @@ export const CandidatesPage: React.FC = () => {
         </div>
       )}
 
-      {/* Paginación */}
+      {/* PaginaciÃ³n */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem' }}>
-        <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-          Total {totalCount} postulantes (Página {page} de {totalPages})
+        <span style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+          Total {totalCount} postulantes (PÃ¡gina {page} de {totalPages})
         </span>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button className="btn-secondary" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>
@@ -422,7 +422,7 @@ export const CandidatesPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── MODAL REGISTRAR POSTULANTE ──────────────────────────────────────── */}
+      {/* â”€â”€â”€ MODAL REGISTRAR POSTULANTE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {newModalOpen && (
         <div className="modal-overlay" onClick={() => setNewModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ padding: '2rem', maxWidth: '680px' }}>
@@ -432,11 +432,11 @@ export const CandidatesPage: React.FC = () => {
                   <UserPlus size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Ficha de Registro de Postulante</h3>
-                  <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Security Force S.A.C.</p>
+                  <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Ficha de Registro de Postulante</h3>
+                  <p style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>Security Force S.A.C.</p>
                 </div>
               </div>
-              <button onClick={() => setNewModalOpen(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setNewModalOpen(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
@@ -455,21 +455,21 @@ export const CandidatesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.85rem', marginBottom: '0.85rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     DNI <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
                     type="text"
                     value={docNumber}
                     onChange={(e) => setDocNumber(e.target.value)}
-                    placeholder="8 dígitos"
+                    placeholder="8 dÃ­gitos"
                     required
                     maxLength={12}
                     style={{ width: '100%' }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Nombres <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -482,7 +482,7 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Apellidos <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -498,7 +498,7 @@ export const CandidatesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.85rem', marginBottom: '1.25rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Celular / WhatsApp <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -511,7 +511,7 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Distrito de Residencia
                   </label>
                   <input
@@ -523,8 +523,8 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
-                    Correo Electrónico
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
+                    Correo ElectrÃ³nico
                   </label>
                   <input
                     type="email"
@@ -543,19 +543,19 @@ export const CandidatesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.85rem', marginBottom: '0.85rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Estado SUCAMEC
                   </label>
                   <select value={sucamecStatus} onChange={(e) => setSucamecStatus(e.target.value as any)} style={{ width: '100%' }}>
-                    <option value="valid">🟢 Carné Vigente</option>
-                    <option value="in_process">🟡 En Trámite</option>
-                    <option value="none">⚫ Sin Carné</option>
-                    <option value="expired">🔴 Vencido</option>
+                    <option value="valid">ðŸŸ¢ CarnÃ© Vigente</option>
+                    <option value="in_process">ðŸŸ¡ En TrÃ¡mite</option>
+                    <option value="none">âš« Sin CarnÃ©</option>
+                    <option value="expired">ðŸ”´ Vencido</option>
                   </select>
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
-                    Código SUCAMEC
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
+                    CÃ³digo SUCAMEC
                   </label>
                   <input
                     type="text"
@@ -566,8 +566,8 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
-                    Años de Experiencia
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
+                    AÃ±os de Experiencia
                   </label>
                   <input
                     type="number"
@@ -581,7 +581,7 @@ export const CandidatesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0.85rem', marginBottom: '1.25rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Estatura (cm)
                   </label>
                   <input
@@ -593,7 +593,7 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                     Peso (kg)
                   </label>
                   <input
@@ -605,7 +605,7 @@ export const CandidatesPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: '#cbd5e1', cursor: 'pointer', marginBottom: '0.2rem' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: '#1a1a1a', cursor: 'pointer', marginBottom: '0.2rem' }}>
                     <input
                       type="checkbox"
                       checked={gunLicense}
@@ -624,7 +624,7 @@ export const CandidatesPage: React.FC = () => {
                   )}
                 </div>
                 <div>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: '#cbd5e1', cursor: 'pointer', marginBottom: '0.2rem' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: '#1a1a1a', cursor: 'pointer', marginBottom: '0.2rem' }}>
                     <input
                       type="checkbox"
                       checked={driverLicense}
@@ -646,7 +646,7 @@ export const CandidatesPage: React.FC = () => {
 
               {/* Convocatoria Inicial */}
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                   Postular a Convocatoria / Vacante Inicial
                 </label>
                 <select value={selectedOpeningId} onChange={(e) => setSelectedOpeningId(e.target.value)} style={{ width: '100%' }}>
@@ -660,7 +660,7 @@ export const CandidatesPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.3rem' }}>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.3rem' }}>
                   Observaciones Iniciales del Reclutador
                 </label>
                 <textarea
@@ -685,7 +685,7 @@ export const CandidatesPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── MODAL EXPEDIENTE DIGITAL DEL POSTULANTE (FASE 2.5) ───────────── */}
+      {/* â”€â”€â”€ MODAL EXPEDIENTE DIGITAL DEL POSTULANTE (FASE 2.5) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {viewModalCand && (
         <CandidateExpedienteModal
           candidateId={viewModalCand.id}
@@ -693,7 +693,7 @@ export const CandidatesPage: React.FC = () => {
         />
       )}
 
-      {/* ─── MODAL DE EVALUACIÓN Y RÚBRICA EXPLICABLE DEL MOTOR ─────────────── */}
+      {/* â”€â”€â”€ MODAL DE EVALUACIÃ“N Y RÃšBRICA EXPLICABLE DEL MOTOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {evalAppId && (
         <EvaluationModal
           applicationId={evalAppId}
@@ -706,3 +706,8 @@ export const CandidatesPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+

@@ -10,22 +10,22 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* ─── PALETA LOGO SECURITY FORCE P&V ─────────────────────────────────── */
-  /* Fondo principal: negro profundo del logo */
-  --bg-main: #080808;
-  --bg-surface: #0f0f0f;
-  --bg-surface-elevated: #181818;
-  --bg-surface-glass: rgba(10, 10, 10, 0.85);
+  /* Fondo principal: gris aluminio "pomo mac" */
+  --bg-main: #E8E8E8;
+  --bg-surface: #F0F0F0;
+  --bg-surface-elevated: #F8F8F8;
+  --bg-surface-glass: rgba(240, 240, 240, 0.85);
   --bg-hover: rgba(220, 38, 38, 0.06);
 
   /* Bordes */
-  --border-subtle: rgba(220, 38, 38, 0.15);
+  --border-subtle: rgba(100, 100, 100, 0.15);
   --border-accent: rgba(220, 38, 38, 0.4);
   --border-focus: #dc2626;
 
   /* Texto */
-  --text-primary: #ffffff;
-  --text-secondary: #a8a8a8;
-  --text-muted: #555555;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
+  --text-muted: #888888;
 
   /* ─── COLOR PRIMARIO: ROJO SECURITY FORCE ─────────────────────────────── */
   --primary: #dc2626;
@@ -92,10 +92,10 @@ body {
   font-size: 14px;
   min-height: 100vh;
   overflow-x: hidden;
-  /* Fondo táctico con patrón sutil */
+  /* Fondo aluminio con patrón sutil */
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(180, 0, 0, 0.03) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(180, 0, 0, 0.01) 0%, transparent 50%);
 }
 
 /* ─── TIPOGRAFÍA ─────────────────────────────────────────────────────────── */
@@ -216,6 +216,7 @@ button {
   gap: 0.5rem;
   white-space: nowrap;
   padding: 0.65rem 1.25rem;
+  color: var(--text-primary);
 }
 
 .btn-primary {
@@ -247,15 +248,15 @@ button {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.04);
-  color: #c8c8c8;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(100, 100, 100, 0.08);
+  color: #333333;
+  border: 1px solid rgba(100, 100, 100, 0.2);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: rgba(220, 38, 38, 0.1);
+  background: rgba(220, 38, 38, 0.08);
   border-color: rgba(220, 38, 38, 0.3);
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .btn-secondary:disabled {
@@ -269,8 +270,8 @@ select,
 textarea {
   width: 100%;
   padding: 0.65rem 0.9rem;
-  background: #121212;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid rgba(100, 100, 100, 0.2);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -288,11 +289,12 @@ textarea:focus {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-muted);
+  color: #0f1419;
+  opacity: 0.7;
 }
 
 select option {
-  background: #1a1a1a;
+  background: #FFFFFF;
   color: var(--text-primary);
 }
 
@@ -325,34 +327,34 @@ input[type='checkbox'] {
 }
 
 .badge-available {
-  background: var(--status-available-bg);
-  color: var(--status-available-text);
-  border: 1px solid var(--status-available-border);
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .badge-reserved {
-  background: var(--status-reserved-bg);
-  color: var(--status-reserved-text);
-  border: 1px solid var(--status-reserved-border);
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .badge-used {
-  background: var(--status-used-bg);
-  color: var(--status-used-text);
-  border: 1px solid var(--status-used-border);
+  background: rgba(220, 38, 38, 0.15);
+  color: #991b1b;
+  border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
 .badge-cancelled {
-  background: var(--status-cancelled-bg);
-  color: var(--status-cancelled-text);
-  border: 1px solid var(--status-cancelled-border);
+  background: rgba(100, 100, 100, 0.15);
+  color: #555555;
+  border: 1px solid rgba(100, 100, 100, 0.3);
 }
 
 /* ─── MODAL ──────────────────────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -368,14 +370,14 @@ input[type='checkbox'] {
 }
 
 .modal-content {
-  background: #0f0f0f;
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  background: #F0F0F0;
+  border: 1px solid rgba(100, 100, 100, 0.2);
   border-radius: var(--radius-xl);
   max-height: 90vh;
   overflow-y: auto;
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(220, 38, 38, 0.15);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15), 0 0 40px rgba(220, 38, 38, 0.08);
   animation: modalSlideIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -391,16 +393,16 @@ input[type='checkbox'] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #E8E8E8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(220, 38, 38, 0.4);
+  background: rgba(150, 150, 150, 0.4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(220, 38, 38, 0.7);
+  background: rgba(100, 100, 100, 0.7);
 }
 
 /* ─── SIDEBAR NAV LINKS ───────────────────────────────────────────────────── */
@@ -422,21 +424,21 @@ tr:hover td {
   background:
     radial-gradient(circle at 30% 40%, rgba(220, 38, 38, 0.08) 0%, transparent 55%),
     radial-gradient(circle at 70% 60%, rgba(150, 0, 0, 0.05) 0%, transparent 55%),
-    #080808;
+    #2a2a2a;
   padding: 2rem;
 }
 
 .login-card {
   width: 100%;
   max-width: 440px;
-  background: #0f0f0f;
-  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: #F0F0F0;
+  border: 1px solid rgba(100, 100, 100, 0.2);
   border-radius: var(--radius-xl);
   padding: 3rem 2.5rem;
   box-shadow:
-    0 0 0 1px rgba(220, 38, 38, 0.05),
-    0 30px 90px rgba(0, 0, 0, 0.9),
-    0 0 60px rgba(220, 38, 38, 0.08);
+    0 0 0 1px rgba(220, 38, 38, 0.03),
+    0 30px 90px rgba(0, 0, 0, 0.08),
+    0 0 60px rgba(220, 38, 38, 0.04);
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */

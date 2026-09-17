@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Layers,
@@ -67,7 +67,7 @@ export const CategoriesPage: React.FC = () => {
       const data = await api.get<CategoryItem[]>('/recruitment/captacion/categories?includeInactive=true');
       setCategories(data || []);
     } catch (err) {
-      console.error('Error al cargar categorías:', err);
+      console.error('Error al cargar categorÃ­as:', err);
     } finally {
       setLoading(false);
     }
@@ -90,7 +90,7 @@ export const CategoriesPage: React.FC = () => {
         [
           {
             code: 'REQ_AGE',
-            title: 'Rango de Edad (19-55 años)',
+            title: 'Rango de Edad (19-55 aÃ±os)',
             requirement_type: 'eliminatory',
             rule_type: 'range',
             rule_config: { min: 19, max: 55, field: 'birth_date' },
@@ -99,7 +99,7 @@ export const CategoriesPage: React.FC = () => {
           },
           {
             code: 'REQ_SUCAMEC',
-            title: 'Carné SUCAMEC Vigente',
+            title: 'CarnÃ© SUCAMEC Vigente',
             requirement_type: 'eliminatory',
             rule_type: 'validity',
             rule_config: { expectedStatus: 'valid', allowInProcess: true },
@@ -117,7 +117,7 @@ export const CategoriesPage: React.FC = () => {
           },
           {
             code: 'REQ_DOC_CUL',
-            title: 'Certificado Único Laboral (CUL)',
+            title: 'Certificado Ãšnico Laboral (CUL)',
             requirement_type: 'documental',
             rule_type: 'document_evidence',
             rule_config: { documentType: 'cul', maxAgeDays: 90 },
@@ -151,14 +151,14 @@ export const CategoriesPage: React.FC = () => {
       await api.patch(`/recruitment/captacion/categories/${id}/toggle`, {});
       loadCategories();
     } catch (err) {
-      console.error('Error al cambiar estado de categoría:', err);
+      console.error('Error al cambiar estado de categorÃ­a:', err);
     }
   }
 
   async function handleSubmitForm(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) {
-      setErrorMsg('El nombre de la categoría es obligatorio.');
+      setErrorMsg('El nombre de la categorÃ­a es obligatorio.');
       return;
     }
 
@@ -197,7 +197,7 @@ export const CategoriesPage: React.FC = () => {
       setModalOpen(false);
       loadCategories();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al guardar la categoría.');
+      setErrorMsg(err.message || 'Error al guardar la categorÃ­a.');
     } finally {
       setFormLoading(false);
     }
@@ -221,7 +221,7 @@ export const CategoriesPage: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#f8fafc' }}>
+    <div style={{ padding: '1.5rem', maxWidth: '1300px', margin: '0 auto', color: '#1a1a1a' }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
@@ -229,12 +229,12 @@ export const CategoriesPage: React.FC = () => {
             <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(37,99,235,0.15)', border: '1px solid rgba(37,99,235,0.4)', color: '#60a5fa' }}>
               <Layers size={22} />
             </div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-              Categorías de Puesto y Plantillas
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+              CategorÃ­as de Puesto y Plantillas
             </h1>
           </div>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-            Configuración multi-tenant de categorías de seguridad y plantillas de requisitos base sugeridos.
+          <p style={{ color: '#1a1a1a', fontSize: '0.875rem', margin: 0 }}>
+            ConfiguraciÃ³n multi-tenant de categorÃ­as de seguridad y plantillas de requisitos base sugeridos.
           </p>
         </div>
 
@@ -256,17 +256,17 @@ export const CategoriesPage: React.FC = () => {
           }}
         >
           <Plus size={16} />
-          <span>Nueva Categoría</span>
+          <span>Nueva CategorÃ­a</span>
         </button>
       </div>
 
       {/* Categories Grid */}
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#94a3b8' }}>Cargando categorías...</div>
+        <div style={{ textAlign: 'center', padding: '3rem 0', color: '#1a1a1a' }}>Cargando categorÃ­as...</div>
       ) : categories.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#111827', borderRadius: '12px', border: '1px solid #1f2937' }}>
+        <div style={{ textAlign: 'center', padding: '3rem 0', background: '#e8e8f0827', borderRadius: '12px', border: '1px solid #d8d8e0' }}>
           <Layers size={36} color="#64748b" style={{ margin: '0 auto 0.75rem', display: 'block' }} />
-          <p style={{ color: '#94a3b8', fontWeight: 600 }}>No hay categorías registradas en esta empresa.</p>
+          <p style={{ color: '#1a1a1a', fontWeight: 600 }}>No hay categorÃ­as registradas en esta empresa.</p>
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1.25rem' }}>
@@ -274,8 +274,8 @@ export const CategoriesPage: React.FC = () => {
             <div
               key={cat.id || `category-${idx}-${cat.slug || 'cat'}`}
               style={{
-                background: '#111827',
-                border: '1px solid #1f2937',
+                background: '#e8e8f0827',
+                border: '1px solid #d8d8e0',
                 borderRadius: '12px',
                 padding: '1.25rem',
                 position: 'relative',
@@ -304,8 +304,8 @@ export const CategoriesPage: React.FC = () => {
                       {renderIcon(cat.icon)}
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>{cat.name}</h3>
-                      <span style={{ fontSize: '0.75rem', color: '#64748b', fontFamily: 'monospace' }}>slug: {cat.slug}</span>
+                      <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>{cat.name}</h3>
+                      <span style={{ fontSize: '0.75rem', color: '#0f1419', fontFamily: 'monospace' }}>slug: {cat.slug}</span>
                     </div>
                   </div>
 
@@ -324,26 +324,26 @@ export const CategoriesPage: React.FC = () => {
                   </span>
                 </div>
 
-                <p style={{ fontSize: '0.83rem', color: '#94a3b8', lineHeight: 1.4, margin: '0 0 1rem 0' }}>
-                  {cat.description || 'Sin descripción detallada.'}
+                <p style={{ fontSize: '0.83rem', color: '#1a1a1a', lineHeight: 1.4, margin: '0 0 1rem 0' }}>
+                  {cat.description || 'Sin descripciÃ³n detallada.'}
                 </p>
 
                 {/* Plantilla info */}
                 <div
                   style={{
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid #1f2937',
+                    background: 'rgba(100,100,100,0.02)',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '8px',
                     padding: '0.65rem 0.85rem',
                     marginBottom: '1rem',
                     fontSize: '0.78rem',
                   }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#cbd5e1', marginBottom: '0.25rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#1a1a1a', marginBottom: '0.25rem' }}>
                     <span>Requisitos en Plantilla:</span>
                     <strong style={{ color: '#60a5fa' }}>{Array.isArray(cat.template_requirements) ? cat.template_requirements.length : 0} reglas</strong>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#0f1419' }}>
                     <span>Convocatorias Vinculadas:</span>
                     <span>{cat.openings_count || 0}</span>
                   </div>
@@ -351,13 +351,13 @@ export const CategoriesPage: React.FC = () => {
               </div>
 
               {/* Card Footer Actions */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #1f2937' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #d8d8e0' }}>
                 <button
                   onClick={() => handleToggleActive(cat.id)}
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: cat.is_active ? '#94a3b8' : '#4ade80',
+                    color: cat.is_active ? '#666666' : '#4ade80',
                     fontSize: '0.78rem',
                     cursor: 'pointer',
                     display: 'flex',
@@ -378,9 +378,9 @@ export const CategoriesPage: React.FC = () => {
                     gap: '0.4rem',
                     padding: '0.35rem 0.75rem',
                     borderRadius: '6px',
-                    background: 'rgba(255,255,255,0.05)',
+                    background: 'rgba(100,100,100,0.05)',
                     border: '1px solid #374151',
-                    color: '#cbd5e1',
+                    color: '#1a1a1a',
                     fontSize: '0.8rem',
                     cursor: 'pointer',
                     fontWeight: 600,
@@ -395,13 +395,13 @@ export const CategoriesPage: React.FC = () => {
         </div>
       )}
 
-      {/* Modal Crear/Editar Categoría */}
+      {/* Modal Crear/Editar CategorÃ­a */}
       {modalOpen && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.75)',
+            background: 'rgba(100,100,100,0.75)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -412,7 +412,7 @@ export const CategoriesPage: React.FC = () => {
         >
           <div
             style={{
-              background: '#111827',
+              background: '#e8e8f0827',
               border: '1px solid #374151',
               borderRadius: '14px',
               maxWidth: '620px',
@@ -420,19 +420,19 @@ export const CategoriesPage: React.FC = () => {
               maxHeight: '90vh',
               overflowY: 'auto',
               padding: '1.5rem',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              boxShadow: '0 20px 40px rgba(100,100,100,0.5)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Layers size={20} color="#3b82f6" />
-                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                  {editingCategory ? 'Editar Categoría de Puesto' : 'Crear Nueva Categoría'}
+                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#1a1a1a' }}>
+                  {editingCategory ? 'Editar CategorÃ­a de Puesto' : 'Crear Nueva CategorÃ­a'}
                 </h2>
               </div>
               <button
                 onClick={() => setModalOpen(false)}
-                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: '#1a1a1a', cursor: 'pointer' }}
               >
                 <X size={20} />
               </button>
@@ -460,8 +460,8 @@ export const CategoriesPage: React.FC = () => {
 
             <form onSubmit={handleSubmitForm} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Nombre de la Categoría *
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  Nombre de la CategorÃ­a *
                 </label>
                 <input
                   type="text"
@@ -471,7 +471,7 @@ export const CategoriesPage: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.65rem 0.85rem',
-                    background: '#1f2937',
+                    background: '#d8d8e0',
                     border: '1px solid #374151',
                     borderRadius: '8px',
                     color: '#fff',
@@ -483,7 +483,7 @@ export const CategoriesPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Icono
                   </label>
                   <select
@@ -492,7 +492,7 @@ export const CategoriesPage: React.FC = () => {
                     style={{
                       width: '100%',
                       padding: '0.65rem 0.85rem',
-                      background: '#1f2937',
+                      background: '#d8d8e0',
                       border: '1px solid #374151',
                       borderRadius: '8px',
                       color: '#fff',
@@ -508,7 +508,7 @@ export const CategoriesPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Color Distintivo
                   </label>
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.35rem' }}>
@@ -533,18 +533,18 @@ export const CategoriesPage: React.FC = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-                  Descripción Operativa
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+                  DescripciÃ³n Operativa
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
-                  placeholder="Funciones generales y perfil de esta categoría..."
+                  placeholder="Funciones generales y perfil de esta categorÃ­a..."
                   style={{
                     width: '100%',
                     padding: '0.65rem 0.85rem',
-                    background: '#1f2937',
+                    background: '#d8d8e0',
                     border: '1px solid #374151',
                     borderRadius: '8px',
                     color: '#fff',
@@ -557,10 +557,10 @@ export const CategoriesPage: React.FC = () => {
               {/* Requisitos Plantilla (JSON configurable) */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1' }}>
+                  <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1a1a1a' }}>
                     Plantilla de Requisitos Sugeridos (JSON)
                   </label>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Se sugerirá al crear convocatorias de esta categoría</span>
+                  <span style={{ fontSize: '0.72rem', color: '#1a1a1a' }}>Se sugerirÃ¡ al crear convocatorias de esta categorÃ­a</span>
                 </div>
                 <textarea
                   value={templateReqsJson}
@@ -589,7 +589,7 @@ export const CategoriesPage: React.FC = () => {
                     borderRadius: '8px',
                     background: 'transparent',
                     border: '1px solid #374151',
-                    color: '#94a3b8',
+                    color: '#1a1a1a',
                     cursor: 'pointer',
                     fontWeight: 600,
                   }}
@@ -609,7 +609,7 @@ export const CategoriesPage: React.FC = () => {
                     fontWeight: 700,
                   }}
                 >
-                  {formLoading ? 'Guardando...' : editingCategory ? 'Guardar Cambios' : 'Crear Categoría'}
+                  {formLoading ? 'Guardando...' : editingCategory ? 'Guardar Cambios' : 'Crear CategorÃ­a'}
                 </button>
               </div>
             </form>
@@ -619,3 +619,9 @@ export const CategoriesPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+

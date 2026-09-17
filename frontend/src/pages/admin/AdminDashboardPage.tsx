@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/client';
 import {
@@ -66,7 +66,7 @@ export const AdminDashboardPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ padding: '3rem', textAlign: 'center', color: '#94a3b8' }}>
+      <div style={{ padding: '3rem', textAlign: 'center', color: '#1a1a1a' }}>
         Cargando resumen ejecutivo...
       </div>
     );
@@ -85,11 +85,11 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Header */}
       <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Dashboard Administrativo
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Resumen ejecutivo del control de numeración y estado operacional
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            Resumen ejecutivo del control de numeraciÃ³n y estado operacional
           </p>
         </div>
         <button
@@ -103,7 +103,7 @@ export const AdminDashboardPage: React.FC = () => {
         </button>
       </div>
 
-      {/* ─── KPIs ───────────────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ KPIs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         style={{
           display: 'grid',
@@ -118,10 +118,10 @@ export const AdminDashboardPage: React.FC = () => {
             <span className="stat-label">Total Cartas</span>
             <CreditCard size={20} color="#818cf8" />
           </div>
-          <div className="stat-value" style={{ color: '#f8fafc' }}>
+          <div className="stat-value" style={{ color: '#1a1a1a' }}>
             {summary?.total?.toLocaleString() ?? 0}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Rango activo</span>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>Rango activo</span>
         </div>
 
         {/* Disponibles */}
@@ -170,10 +170,10 @@ export const AdminDashboardPage: React.FC = () => {
             <span className="stat-label">Anuladas</span>
             <Ban size={20} color="#64748b" />
           </div>
-          <div className="stat-value" style={{ color: '#94a3b8' }}>
+          <div className="stat-value" style={{ color: '#1a1a1a' }}>
             {summary?.cancelled?.toLocaleString() ?? 0}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Inutilizables</span>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>Inutilizables</span>
         </div>
 
         {/* Sesiones Activas */}
@@ -189,21 +189,21 @@ export const AdminDashboardPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── PROGRESO & ACCESOS RÁPIDOS ─────────────────────────────────────── */}
+      {/* â”€â”€â”€ PROGRESO & ACCESOS RÃPIDOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
         {/* Progreso del Rango */}
         <div className="glass-panel" style={{ padding: '1.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
             <TrendingUp size={20} color="#818cf8" />
-            <h3 style={{ fontSize: '1.1rem', color: '#f8fafc' }}>Progreso de Utilización del Rango</h3>
+            <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a' }}>Progreso de UtilizaciÃ³n del Rango</h3>
           </div>
 
           <div style={{ marginBottom: '1.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
-              <span style={{ color: '#94a3b8' }}>Cartas Utilizadas ({summary?.usedPercentage}%)</span>
+              <span style={{ color: '#1a1a1a' }}>Cartas Utilizadas ({summary?.usedPercentage}%)</span>
               <span style={{ color: '#f87171', fontWeight: 700 }}>{summary?.used} / {summary?.total}</span>
             </div>
-            <div style={{ height: '10px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '9999px', overflow: 'hidden' }}>
+            <div style={{ height: '10px', background: '#e8e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
               <div
                 style={{
                   height: '100%',
@@ -218,10 +218,10 @@ export const AdminDashboardPage: React.FC = () => {
 
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
-              <span style={{ color: '#94a3b8' }}>Cartas Disponibles ({summary?.availablePercentage}%)</span>
+              <span style={{ color: '#1a1a1a' }}>Cartas Disponibles ({summary?.availablePercentage}%)</span>
               <span style={{ color: '#34d399', fontWeight: 700 }}>{summary?.available} / {summary?.total}</span>
             </div>
-            <div style={{ height: '10px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '9999px', overflow: 'hidden' }}>
+            <div style={{ height: '10px', background: '#e8e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
               <div
                 style={{
                   height: '100%',
@@ -235,10 +235,10 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Accesos Rápidos */}
+        {/* Accesos RÃ¡pidos */}
         <div className="glass-panel" style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <h3 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '0.5rem' }}>
-            Accesos Rápidos
+          <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a', marginBottom: '0.5rem' }}>
+            Accesos RÃ¡pidos
           </h3>
           <button
             onClick={() => navigate('/admin/cartas')}
@@ -262,7 +262,7 @@ export const AdminDashboardPage: React.FC = () => {
             style={{ justifyContent: 'flex-start', padding: '0.65rem 1rem' }}
           >
             <History size={18} color="#fbbf24" />
-            <span>Ver Auditoría</span>
+            <span>Ver AuditorÃ­a</span>
           </button>
           <button
             onClick={() => navigate('/admin/sessions')}
@@ -283,23 +283,23 @@ export const AdminDashboardPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── ACTIVIDAD RECIENTE ──────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ ACTIVIDAD RECIENTE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="glass-panel" style={{ padding: '1.75rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Activity size={20} color="#818cf8" />
-            <h3 style={{ fontSize: '1.1rem', color: '#f8fafc' }}>Actividad Reciente del Sistema</h3>
+            <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a' }}>Actividad Reciente del Sistema</h3>
           </div>
           <button
             onClick={() => navigate('/admin/audit')}
             style={{ background: 'transparent', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600 }}
           >
-            Ver registro completo →
+            Ver registro completo â†’
           </button>
         </div>
 
         {recentActivity.length === 0 ? (
-          <p style={{ color: '#64748b', fontSize: '0.875rem' }}>No hay actividad registrada recientemente.</p>
+          <p style={{ color: '#0f1419', fontSize: '0.875rem' }}>No hay actividad registrada recientemente.</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {recentActivity.map((item, idx) => (
@@ -333,19 +333,19 @@ export const AdminDashboardPage: React.FC = () => {
                     {item.card_number}
                   </div>
                   <div>
-                    <p style={{ fontSize: '0.9rem', fontWeight: 600, color: '#f8fafc' }}>
+                    <p style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1a1a1a' }}>
                       {item.user_full_name || item.username || 'Usuario'}{' '}
-                      <span style={{ fontWeight: 400, color: '#94a3b8' }}>
+                      <span style={{ fontWeight: 400, color: '#1a1a1a' }}>
                         {item.action === 'card_used'
-                          ? `utilizó la carta N.º ${item.card_number}`
+                          ? `utilizÃ³ la carta N.Âº ${item.card_number}`
                           : item.action === 'card_reserved'
-                          ? `reservó la carta N.º ${item.card_number}`
+                          ? `reservÃ³ la carta N.Âº ${item.card_number}`
                           : item.action === 'card_corrected'
-                          ? `corrigió la carta N.º ${item.card_number}`
-                          : `operó carta N.º ${item.card_number}`}
+                          ? `corrigiÃ³ la carta N.Âº ${item.card_number}`
+                          : `operÃ³ carta N.Âº ${item.card_number}`}
                       </span>
                     </p>
-                    <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                    <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>
                       {new Date(item.created_at).toLocaleString('es-PE')}
                     </span>
                   </div>
@@ -358,3 +358,8 @@ export const AdminDashboardPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+

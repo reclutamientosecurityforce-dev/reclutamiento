@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../api/client';
 import {
   X,
@@ -73,7 +73,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
     >
       <div
         style={{
-          background: '#111827',
+          background: '#e8e8f0827',
           border: '1px solid #374151',
           borderRadius: '16px',
           maxWidth: '900px',
@@ -87,7 +87,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', borderBottom: '1px solid #1f2937', paddingBottom: '1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', borderBottom: '1px solid #d8d8e0', paddingBottom: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f87171' }}>
               <User size={26} />
@@ -102,7 +102,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                 </span>
               </div>
               <p style={{ margin: 0, fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.2rem' }}>
-                Expediente Digital Unificado • Security Force P&V
+                Expediente Digital Unificado â€¢ Security Force P&V
               </p>
             </div>
           </div>
@@ -111,14 +111,14 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
           </button>
         </div>
 
-        {/* Semáforo de Vigencias Documentales (Fase 2.5) */}
+        {/* SemÃ¡foro de Vigencias Documentales (Fase 2.5) */}
         <div style={{ marginBottom: '1.5rem' }}>
           <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
             Vigencia y Acreditaciones Regulatorias
           </span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.75rem' }}>
             {/* SUCAMEC */}
-            <div style={{ background: '#0f172a', border: '1px solid #1f2937', borderRadius: '10px', padding: '0.85rem' }}>
+            <div style={{ background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '10px', padding: '0.85rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f8fafc' }}>Carnet SUCAMEC</span>
                 <span
@@ -135,12 +135,12 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                 </span>
               </div>
               <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
-                Código: <strong style={{ color: '#cbd5e1' }}>{validities?.sucamec?.code || 'N/D'}</strong>
+                CÃ³digo: <strong style={{ color: '#cbd5e1' }}>{validities?.sucamec?.code || 'N/D'}</strong>
               </div>
             </div>
 
             {/* Licencia de Armas */}
-            <div style={{ background: '#0f172a', border: '1px solid #1f2937', borderRadius: '10px', padding: '0.85rem' }}>
+            <div style={{ background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '10px', padding: '0.85rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f8fafc' }}>Licencia de Armas</span>
                 <span
@@ -162,7 +162,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
             </div>
 
             {/* Licencia de Conducir */}
-            <div style={{ background: '#0f172a', border: '1px solid #1f2937', borderRadius: '10px', padding: '0.85rem' }}>
+            <div style={{ background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '10px', padding: '0.85rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f8fafc' }}>Brevete / Licencia</span>
                 <span
@@ -185,11 +185,11 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
           </div>
         </div>
 
-        {/* Datos Personales & Biométricos */}
-        <div style={{ background: '#0f172a', border: '1px solid #1f2937', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
+        {/* Datos Personales & BiomÃ©tricos */}
+        <div style={{ background: '#0f172a', border: '1px solid #d8d8e0', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem', fontSize: '0.82rem' }}>
             <div>
-              <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>TELÉFONO</span>
+              <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>TELÃ‰FONO</span>
               <strong style={{ color: '#f8fafc' }}>{candidate.phone || 'N/D'}</strong>
             </div>
             <div>
@@ -197,7 +197,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
               <strong style={{ color: '#f8fafc' }}>{candidate.email || 'N/D'}</strong>
             </div>
             <div>
-              <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>UBICACIÓN / DISTRITO</span>
+              <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>UBICACIÃ“N / DISTRITO</span>
               <strong style={{ color: '#f8fafc' }}>{candidate.district || candidate.city || 'Lima'}</strong>
             </div>
             <div>
@@ -206,7 +206,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
             </div>
             <div>
               <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>EXP. SEGURIDAD</span>
-              <strong style={{ color: '#34d399' }}>{candidate.security_experience_years || 0} años</strong>
+              <strong style={{ color: '#34d399' }}>{candidate.security_experience_years || 0} aÃ±os</strong>
             </div>
             <div>
               <span style={{ color: '#64748b', display: 'block', fontSize: '0.7rem' }}>SERV. MILITAR</span>
@@ -231,7 +231,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Briefcase size={17} color={data.experienceBreakdown.status === 'DISCREPANCIA' ? '#facc15' : '#34d399'} />
-                <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>Auditoría de Experiencia Laboral (Interval Merging)</strong>
+                <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>AuditorÃ­a de Experiencia Laboral (Interval Merging)</strong>
               </div>
               <span
                 style={{
@@ -251,7 +251,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
               <div>
                 <span style={{ color: '#94a3b8', fontSize: '0.7rem', display: 'block' }}>EXP. DECLARADA</span>
                 <strong style={{ color: '#f8fafc' }}>
-                  {data.experienceBreakdown.declaredMonths} meses ({data.experienceBreakdown.declaredYears} años)
+                  {data.experienceBreakdown.declaredMonths} meses ({data.experienceBreakdown.declaredYears} aÃ±os)
                 </strong>
               </div>
               <div>
@@ -279,7 +279,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
         {/* Historial de Postulaciones y Resultado de Prefiltro (Doble Score) */}
         <div style={{ marginBottom: '1.5rem' }}>
           <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-            Historial de Postulaciones y Evaluación Dual (Fit vs Expediente)
+            Historial de Postulaciones y EvaluaciÃ³n Dual (Fit vs Expediente)
           </span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {applications?.map((app: any) => (
@@ -287,7 +287,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                 key={app.id}
                 style={{
                   background: '#0f172a',
-                  border: '1px solid #1f2937',
+                  border: '1px solid #d8d8e0',
                   borderRadius: '10px',
                   padding: '0.85rem',
                   display: 'flex',
@@ -304,8 +304,8 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.2rem' }}>
                     Postulado: {app.created_at ? new Date(app.created_at).toLocaleDateString() : 'N/D'}
-                    {app.channel_name && ` • Canal: ${app.channel_name}`}
-                    {app.campaign_name && ` • Campaña: ${app.campaign_name}`}
+                    {app.channel_name && ` â€¢ Canal: ${app.channel_name}`}
+                    {app.campaign_name && ` â€¢ CampaÃ±a: ${app.campaign_name}`}
                   </div>
                 </div>
 
@@ -364,17 +364,17 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.6rem' }}>
               {documents?.map((doc: any) => {
                 const docStatusColors: Record<string, { bg: string; color: string; label: string }> = {
-                  legible:    { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: '✔ LEGIBLE' },
-                  vigente:    { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: '✔ VIGENTE' },
-                  verified:   { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: '✔ VERIFICADO' },
-                  uploaded:   { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: '· SUBIDO' },
-                  pendiente:  { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: '⏳ PENDIENTE' },
-                  incompleto: { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: '⚠ INCOMPLETO' },
-                  observado:  { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: '⚠ OBSERVADO' },
-                  observed:   { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: '⚠ OBSERVADO' },
-                  ilegible:   { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: '✗ ILEGIBLE' },
-                  vencido:    { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: '✗ VENCIDO' },
-                  rejected:   { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: '✗ RECHAZADO' },
+                  legible:    { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: 'âœ” LEGIBLE' },
+                  vigente:    { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: 'âœ” VIGENTE' },
+                  verified:   { bg: 'rgba(34,197,94,0.15)',   color: '#4ade80', label: 'âœ” VERIFICADO' },
+                  uploaded:   { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: 'Â· SUBIDO' },
+                  pendiente:  { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: 'â³ PENDIENTE' },
+                  incompleto: { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: 'âš  INCOMPLETO' },
+                  observado:  { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: 'âš  OBSERVADO' },
+                  observed:   { bg: 'rgba(234,179,8,0.15)',   color: '#facc15', label: 'âš  OBSERVADO' },
+                  ilegible:   { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: 'âœ— ILEGIBLE' },
+                  vencido:    { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: 'âœ— VENCIDO' },
+                  rejected:   { bg: 'rgba(239,68,68,0.15)',   color: '#f87171', label: 'âœ— RECHAZADO' },
                 };
                 const docStyle = docStatusColors[doc.status] || docStatusColors['uploaded'];
                 return (
@@ -382,7 +382,7 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                     key={doc.id}
                     style={{
                       background: '#0f172a',
-                      border: '1px solid #1f2937',
+                      border: '1px solid #d8d8e0',
                       borderRadius: '8px',
                       padding: '0.75rem',
                     }}
@@ -401,9 +401,9 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
                       {doc.file_size ? <span style={{ marginLeft: '0.5rem', color: '#475569' }}>({Math.round(doc.file_size / 1024)} KB)</span> : null}
                     </div>
                     {doc.file_hash && (
-                      <div style={{ fontSize: '0.65rem', color: '#38bdf8', fontFamily: 'monospace', marginTop: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.2rem' }} title={`SHA-256 — Garantiza integridad del archivo. No es verificación jurídica: ${doc.file_hash}`}>
+                      <div style={{ fontSize: '0.65rem', color: '#38bdf8', fontFamily: 'monospace', marginTop: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.2rem' }} title={`SHA-256 â€” Garantiza integridad del archivo. No es verificaciÃ³n jurÃ­dica: ${doc.file_hash}`}>
                         <Hash size={11} />
-                        <span>{doc.file_hash.slice(0, 18)}…</span>
+                        <span>{doc.file_hash.slice(0, 18)}â€¦</span>
                       </div>
                     )}
                   </div>
@@ -416,3 +416,4 @@ export const CandidateExpedienteModal: React.FC<Props> = ({ candidateId, onClose
     </div>
   );
 };
+

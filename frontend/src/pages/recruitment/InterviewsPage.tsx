@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { api } from '../../api/client';
 import {
   Calendar,
@@ -93,11 +93,11 @@ export const InterviewsPage: React.FC = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Agenda de Entrevistas y Citas
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Programación de entrevistas presenciales y virtuales de evaluación
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            ProgramaciÃ³n de entrevistas presenciales y virtuales de evaluaciÃ³n
           </p>
         </div>
         <button className="btn-primary" onClick={() => setModalOpen(true)}>
@@ -114,11 +114,11 @@ export const InterviewsPage: React.FC = () => {
       )}
 
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando agenda de entrevistas...
         </div>
       ) : interviews.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#64748b' }}>
+        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#0f1419' }}>
           No hay entrevistas programadas actualmente.
         </div>
       ) : (
@@ -127,7 +127,7 @@ export const InterviewsPage: React.FC = () => {
             <div key={item.id || `interview-${idx}`} className="glass-panel" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>{item.candidate_name}</h3>
+                  <h3 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>{item.candidate_name}</h3>
                   <span style={{ fontSize: '0.75rem', color: '#818cf8', fontWeight: 600 }}>
                     Puesto: {item.job_title}
                   </span>
@@ -136,18 +136,18 @@ export const InterviewsPage: React.FC = () => {
               </div>
 
               <div style={{ background: 'var(--bg-surface-elevated)', padding: '0.85rem', borderRadius: 'var(--radius-md)', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.825rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f8fafc', fontWeight: 700 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a', fontWeight: 700 }}>
                   <Clock size={15} color="#38bdf8" />
                   <span>
                     {new Date(item.interview_date).toLocaleDateString('es-PE')} a las{' '}
                     {new Date(item.interview_date).toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#cbd5e1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a' }}>
                   {item.location_type === 'virtual' ? <Video size={15} color="#c084fc" /> : <MapPin size={15} color="#fbbf24" />}
                   <span>{item.location_notes || 'Sede Central'}</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#94a3b8' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#1a1a1a' }}>
                   <Phone size={14} />
                   <span>Contacto: {item.candidate_phone}</span>
                 </div>
@@ -167,25 +167,25 @@ export const InterviewsPage: React.FC = () => {
                   <Calendar size={20} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', color: '#f8fafc' }}>Agendar Entrevista de Selección</h3>
-                  <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Security Force S.A.C.</p>
+                  <h3 style={{ fontSize: '1.25rem', color: '#1a1a1a' }}>Agendar Entrevista de SelecciÃ³n</h3>
+                  <p style={{ fontSize: '0.8rem', color: '#1a1a1a' }}>Security Force S.A.C.</p>
                 </div>
               </div>
-              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#94a3b8' }}>
+              <button onClick={() => setModalOpen(false)} style={{ background: 'transparent', color: '#1a1a1a' }}>
                 <X size={20} />
               </button>
             </div>
 
             <form onSubmit={handleScheduleInterview}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                   Seleccionar Postulante <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <select value={selectedAppId} onChange={(e) => setSelectedAppId(e.target.value)} required style={{ width: '100%' }}>
                   <option value="">-- Seleccione candidato en proceso --</option>
                   {pipelineApps.map((app, idx) => (
                     <option key={app.id || `pipeline-app-${idx}`} value={app.id}>
-                      {app.candidate_name} (DNI {app.candidate_dni}) — {app.job_title}
+                      {app.candidate_name} (DNI {app.candidate_dni}) â€” {app.job_title}
                     </option>
                   ))}
                 </select>
@@ -193,7 +193,7 @@ export const InterviewsPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Fecha <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -205,7 +205,7 @@ export const InterviewsPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                     Hora <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <input
@@ -219,17 +219,17 @@ export const InterviewsPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                   Modalidad de la Entrevista
                 </label>
                 <select value={locationType} onChange={(e) => setLocationType(e.target.value as any)} style={{ width: '100%' }}>
-                  <option value="presential">🏢 Presencial en Sede Central</option>
-                  <option value="virtual">💻 Virtual (Google Meet / Zoom / WhatsApp Video)</option>
+                  <option value="presential">ðŸ¢ Presencial en Sede Central</option>
+                  <option value="virtual">ðŸ’» Virtual (Google Meet / Zoom / WhatsApp Video)</option>
                 </select>
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
                   Lugar / Enlace / Instrucciones
                 </label>
                 <input
@@ -256,3 +256,7 @@ export const InterviewsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

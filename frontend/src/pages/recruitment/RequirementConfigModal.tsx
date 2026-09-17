@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { api } from '../../api/client';
 import {
   X,
@@ -35,31 +35,31 @@ interface RequirementConfigModalProps {
 }
 
 const REQUIREMENT_TYPES = [
-  { value: 'eliminatory', label: '🔴 Eliminatorio (Descalifica si no cumple)' },
-  { value: 'scoreable', label: '⭐ Puntuable (Aporta puntos al ranking)' },
-  { value: 'eliminatory_scoreable', label: '⚡ Eliminatorio + Puntuable (Exige mínimo y da puntos extras)' },
-  { value: 'documental', label: '📄 Documental (Requiere evidencia válida)' },
-  { value: 'informative', label: 'ℹ️ Informativo (Solo registro de datos)' },
+  { value: 'eliminatory', label: 'ðŸ”´ Eliminatorio (Descalifica si no cumple)' },
+  { value: 'scoreable', label: 'â­ Puntuable (Aporta puntos al ranking)' },
+  { value: 'eliminatory_scoreable', label: 'âš¡ Eliminatorio + Puntuable (Exige mÃ­nimo y da puntos extras)' },
+  { value: 'documental', label: 'ðŸ“„ Documental (Requiere evidencia vÃ¡lida)' },
+  { value: 'informative', label: 'â„¹ï¸ Informativo (Solo registro de datos)' },
 ];
 
 const RULE_TYPES = [
-  { value: 'range', label: 'Rango Numérico (ej: Edad 21 a 55)' },
-  { value: 'min', label: 'Mínimo Numérico (ej: Estatura >= 172 cm)' },
+  { value: 'range', label: 'Rango NumÃ©rico (ej: Edad 21 a 55)' },
+  { value: 'min', label: 'MÃ­nimo NumÃ©rico (ej: Estatura >= 172 cm)' },
   { value: 'validity', label: 'Vigencia de Estado (ej: SUCAMEC Vigente)' },
   { value: 'experience_total', label: 'Experiencia Total (Meses en seguridad)' },
-  { value: 'experience_specific', label: 'Experiencia Específica (Supervisor, Conductor, CCTV)' },
+  { value: 'experience_specific', label: 'Experiencia EspecÃ­fica (Supervisor, Conductor, CCTV)' },
   { value: 'document_evidence', label: 'Evidencia Documental (CUL, DNI, Certificados)' },
-  { value: 'boolean', label: 'Booleano Sí/No (Armas L1/L2, Brevete, FFAA)' },
+  { value: 'boolean', label: 'Booleano SÃ­/No (Armas L1/L2, Brevete, FFAA)' },
   { value: 'exists', label: 'Existencia de Registro' },
 ];
 
 const DOCUMENT_TYPES = [
-  { value: '', label: '-- Ningún documento requerido --' },
-  { value: 'dni', label: 'DNI / Carné de Extranjería' },
-  { value: 'cul', label: 'Certificado Único Laboral (CUL / Certiadulto)' },
-  { value: 'sucamec', label: 'Carné SUCAMEC' },
+  { value: '', label: '-- NingÃºn documento requerido --' },
+  { value: 'dni', label: 'DNI / CarnÃ© de ExtranjerÃ­a' },
+  { value: 'cul', label: 'Certificado Ãšnico Laboral (CUL / Certiadulto)' },
+  { value: 'sucamec', label: 'CarnÃ© SUCAMEC' },
   { value: 'cert_trabajo', label: 'Certificado Laboral de Trabajo' },
-  { value: 'cert_estudios', label: 'Certificado de Estudios (Secundaria/Técnico)' },
+  { value: 'cert_estudios', label: 'Certificado de Estudios (Secundaria/TÃ©cnico)' },
   { value: 'lic_armas', label: 'Licencia de Porte de Armas (L1/L2)' },
   { value: 'brevete', label: 'Brevete de Conducir (A1/A2B)' },
   { value: 'cv', label: 'Curriculum Vitae Documentado' },
@@ -88,7 +88,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
         setRequirements([
           {
             code: 'REQ_AGE',
-            title: 'Edad Permitida (21 a 55 años)',
+            title: 'Edad Permitida (21 a 55 aÃ±os)',
             requirement_type: 'eliminatory',
             rule_type: 'range',
             rule_config: { min: 21, max: 55 },
@@ -110,7 +110,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
           },
           {
             code: 'REQ_SUCAMEC',
-            title: 'Carné SUCAMEC Vigente',
+            title: 'CarnÃ© SUCAMEC Vigente',
             requirement_type: 'eliminatory',
             rule_type: 'validity',
             rule_config: { expectedStatus: 'valid', allowInProcess: true },
@@ -121,7 +121,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
           },
           {
             code: 'REQ_CUL',
-            title: 'Certificado Único Laboral (CUL)',
+            title: 'Certificado Ãšnico Laboral (CUL)',
             requirement_type: 'documental',
             rule_type: 'document_evidence',
             rule_config: { documentType: 'cul', maxAgeDays: 90 },
@@ -191,7 +191,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
     setRequirements(updated);
   };
 
-  // Cálculo de pesos totales
+  // CÃ¡lculo de pesos totales
   const totalScoreableWeight = requirements
     .filter((r) => r.is_active && (r.requirement_type === 'scoreable' || r.requirement_type === 'eliminatory_scoreable' || r.requirement_type === 'documental'))
     .reduce((sum, r) => sum + Number(r.weight_score || 0), 0);
@@ -234,7 +234,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: 'rgba(0,0,0,0.8)',
+        background: 'rgba(100,100,100,0.8)',
         backdropFilter: 'blur(6px)',
         display: 'flex',
         alignItems: 'flex-start',
@@ -245,13 +245,13 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
     >
       <div
         style={{
-          background: '#0d0d0d',
-          border: '1px solid #222',
+          background: '#f5f5f7',
+          border: '1px solid #c8c8d0',
           borderRadius: '1rem',
           width: '100%',
           maxWidth: '960px',
-          color: '#e2e8f0',
-          boxShadow: '0 25px 80px rgba(0,0,0,0.9)',
+          color: '#333333',
+          boxShadow: '0 25px 80px rgba(100,100,100,0.9)',
         }}
       >
         {/* Header */}
@@ -261,8 +261,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '1.5rem 2rem',
-            borderBottom: '1px solid #1e1e1e',
-            background: 'linear-gradient(135deg, #111, #1a0505)',
+            borderBottom: '1px solid #d8d8e0',
+            background: 'linear-gradient(135deg, #ffffff, #f5f5f7)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -281,28 +281,28 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
               <Sliders size={20} color="#dc2626" />
             </div>
             <div>
-              <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#fff' }}>
+              <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#1a1a1a' }}>
                 Configuración de Requisitos y Pesos del Prefiltro
               </div>
-              <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: 2 }}>
+              <div style={{ fontSize: '0.8rem', color: '#1a1a1a', marginTop: 2 }}>
                 Convocatoria: <span style={{ color: '#dc2626', fontWeight: 600 }}>{openingTitle}</span>
               </div>
             </div>
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b', padding: 4 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888888', padding: 4 }}
           >
             <X size={22} />
           </button>
         </div>
 
-        {/* Banner de Información y Pesos */}
+        {/* Banner de InformaciÃ³n y Pesos */}
         <div
           style={{
             padding: '1rem 2rem',
-            background: '#111',
-            borderBottom: '1px solid #1e1e1e',
+            background: '#e8e8f0',
+            borderBottom: '1px solid #d8d8e0',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -310,10 +310,10 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
             gap: '1rem',
           }}
         >
-          <div style={{ fontSize: '0.8rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ fontSize: '0.8rem', color: '#1a1a1a', display: 'flex', alignItems: 'center', gap: 6 }}>
             <HelpCircle size={16} color="#64748b" />
             <span>
-              Los requisitos <b style={{ color: '#dc2626' }}>Eliminatorios</b> descalifican automáticamente si no se cumplen. Los <b style={{ color: '#f59e0b' }}>Puntuables</b> definen el ranking (0-100 pts).
+              Los requisitos <b style={{ color: '#dc2626' }}>Eliminatorios</b> descalifican automÃ¡ticamente si no se cumplen. Los <b style={{ color: '#f59e0b' }}>Puntuables</b> definen el ranking (0-100 pts).
             </span>
           </div>
 
@@ -328,14 +328,14 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
               border: `1px solid ${totalScoreableWeight === 100 ? '#16a34a' : '#d97706'}`,
             }}
           >
-            <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>PESO TOTAL PUNTUABLE:</span>
+            <span style={{ fontSize: '0.75rem', color: '#1a1a1a', fontWeight: 600 }}>PESO TOTAL PUNTUABLE:</span>
             <span style={{ fontSize: '0.95rem', fontWeight: 800, color: totalScoreableWeight === 100 ? '#22c55e' : '#f59e0b' }}>
               {totalScoreableWeight} / 100 pts
             </span>
             {totalScoreableWeight === 100 ? (
               <CheckCircle2 size={16} color="#22c55e" />
             ) : (
-              <span style={{ fontSize: '0.7rem', color: '#f59e0b' }}>(Se normalizará a 100)</span>
+              <span style={{ fontSize: '0.7rem', color: '#f59e0b' }}>(Se normalizarÃ¡ a 100)</span>
             )}
           </div>
         </div>
@@ -355,7 +355,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
         {/* Lista de Requisitos */}
         <div style={{ padding: '1.5rem 2rem', maxHeight: '55vh', overflowY: 'auto' }}>
           {loading ? (
-            <div style={{ textAlign: 'center', padding: '3rem', color: '#64748b' }}>
+            <div style={{ textAlign: 'center', padding: '3rem', color: '#0f1419' }}>
               Cargando reglas y requisitos...
             </div>
           ) : (
@@ -373,7 +373,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                     gap: '0.875rem',
                   }}
                 >
-                  {/* Fila 1: Título y Acciones */}
+                  {/* Fila 1: TÃ­tulo y Acciones */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div style={{ color: '#475569', display: 'flex', alignItems: 'center' }}>
                       <GripVertical size={16} />
@@ -387,8 +387,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                       placeholder="Nombre del requisito (ej: Edad Permitida, SUCAMEC Vigente)"
                       style={{
                         flex: 1,
-                        background: '#0d0d0d',
-                        border: '1px solid #2b2b2b',
+                        background: '#f5f5f7',
+                        border: '1px solid #c8c8d0',
                         borderRadius: '0.5rem',
                         padding: '0.625rem 0.875rem',
                         color: '#fff',
@@ -401,14 +401,14 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                       type="text"
                       value={req.code}
                       onChange={(e) => updateRequirement(index, 'code', e.target.value.toUpperCase())}
-                      placeholder="CÓDIGO (ej: REQ_AGE)"
+                      placeholder="CÃ“DIGO (ej: REQ_AGE)"
                       style={{
                         width: '140px',
-                        background: '#0d0d0d',
-                        border: '1px solid #2b2b2b',
+                        background: '#f5f5f7',
+                        border: '1px solid #c8c8d0',
                         borderRadius: '0.5rem',
                         padding: '0.625rem 0.75rem',
-                        color: '#94a3b8',
+                        color: '#1a1a1a',
                         fontSize: '0.75rem',
                         fontFamily: 'monospace',
                       }}
@@ -434,7 +434,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
                     {/* Tipo de Requisito */}
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
                         Tipo de Requisito
                       </label>
                       <select
@@ -442,11 +442,11 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                         onChange={(e) => updateRequirement(index, 'requirement_type', e.target.value)}
                         style={{
                           width: '100%',
-                          background: '#0d0d0d',
-                          border: '1px solid #2b2b2b',
+                          background: '#f5f5f7',
+                          border: '1px solid #c8c8d0',
                           borderRadius: '0.5rem',
                           padding: '0.5rem 0.75rem',
-                          color: '#e2e8f0',
+                          color: '#333333',
                           fontSize: '0.8rem',
                         }}
                       >
@@ -460,19 +460,19 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 
                     {/* Tipo de Regla */}
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
-                        Regla de Validación
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
+                        Regla de ValidaciÃ³n
                       </label>
                       <select
                         value={req.rule_type}
                         onChange={(e) => updateRequirement(index, 'rule_type', e.target.value)}
                         style={{
                           width: '100%',
-                          background: '#0d0d0d',
-                          border: '1px solid #2b2b2b',
+                          background: '#f5f5f7',
+                          border: '1px solid #c8c8d0',
                           borderRadius: '0.5rem',
                           padding: '0.5rem 0.75rem',
-                          color: '#e2e8f0',
+                          color: '#333333',
                           fontSize: '0.8rem',
                         }}
                       >
@@ -486,7 +486,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 
                     {/* Peso en Puntos */}
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
                         Peso (Puntos: 0 - 100)
                       </label>
                       <input
@@ -498,8 +498,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                         disabled={req.requirement_type === 'eliminatory' || req.requirement_type === 'informative'}
                         style={{
                           width: '100%',
-                          background: '#0d0d0d',
-                          border: '1px solid #2b2b2b',
+                          background: '#f5f5f7',
+                          border: '1px solid #c8c8d0',
                           borderRadius: '0.5rem',
                           padding: '0.5rem 0.75rem',
                           color: req.requirement_type === 'eliminatory' ? '#475569' : '#f59e0b',
@@ -512,7 +512,7 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 
                     {/* Documento Requerido */}
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#64748b', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
+                      <label style={{ display: 'block', fontSize: '0.7rem', color: '#0f1419', marginBottom: 4, textTransform: 'uppercase', fontWeight: 600 }}>
                         Documento Requerido
                       </label>
                       <select
@@ -520,11 +520,11 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                         onChange={(e) => updateRequirement(index, 'required_document_type', e.target.value)}
                         style={{
                           width: '100%',
-                          background: '#0d0d0d',
-                          border: '1px solid #2b2b2b',
+                          background: '#f5f5f7',
+                          border: '1px solid #c8c8d0',
                           borderRadius: '0.5rem',
                           padding: '0.5rem 0.75rem',
-                          color: '#e2e8f0',
+                          color: '#333333',
                           fontSize: '0.8rem',
                         }}
                       >
@@ -537,30 +537,30 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                     </div>
                   </div>
 
-                  {/* Fila 3: Parámetros específicos de la regla */}
-                  <div style={{ background: '#0a0a0a', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #1a1a1a' }}>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b', marginBottom: 6, fontWeight: 700, textTransform: 'uppercase' }}>
-                      ⚙️ Parámetros de la Regla: {req.rule_type}
+                  {/* Fila 3: ParÃ¡metros especÃ­ficos de la regla */}
+                  <div style={{ background: '#f5f5f7', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #e8e8f0' }}>
+                    <div style={{ fontSize: '0.68rem', color: '#0f1419', marginBottom: 6, fontWeight: 700, textTransform: 'uppercase' }}>
+                      âš™ï¸ ParÃ¡metros de la Regla: {req.rule_type}
                     </div>
 
                     {req.rule_type === 'range' && (
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Mínimo:</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>MÃ­nimo:</span>
                           <input
                             type="number"
                             value={req.rule_config?.min || 20}
                             onChange={(e) => updateRuleConfig(index, 'min', Number(e.target.value))}
-                            style={{ width: 70, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 70, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Máximo:</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>MÃ¡ximo:</span>
                           <input
                             type="number"
                             value={req.rule_config?.max || 55}
                             onChange={(e) => updateRuleConfig(index, 'max', Number(e.target.value))}
-                            style={{ width: 70, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 70, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                       </div>
@@ -568,12 +568,12 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 
                     {req.rule_type === 'min' && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Valor Mínimo Exigido:</span>
+                        <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Valor MÃ­nimo Exigido:</span>
                         <input
                           type="number"
                           value={req.rule_config?.min || 1}
                           onChange={(e) => updateRuleConfig(index, 'min', Number(e.target.value))}
-                          style={{ width: 90, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                          style={{ width: 90, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                         />
                       </div>
                     )}
@@ -581,21 +581,21 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                     {req.rule_type === 'experience_total' && (
                       <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Mínimo Meses:</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>MÃ­nimo Meses:</span>
                           <input
                             type="number"
                             value={req.rule_config?.minMonths || 12}
                             onChange={(e) => updateRuleConfig(index, 'minMonths', Number(e.target.value))}
-                            style={{ width: 70, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 70, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Meses para Puntaje Máximo:</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Meses para Puntaje MÃ¡ximo:</span>
                           <input
                             type="number"
                             value={req.rule_config?.maxScoreMonths || 36}
                             onChange={(e) => updateRuleConfig(index, 'maxScoreMonths', Number(e.target.value))}
-                            style={{ width: 70, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 70, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                       </div>
@@ -604,21 +604,21 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                     {req.rule_type === 'experience_specific' && (
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Patrón de Cargo (Regex):</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>PatrÃ³n de Cargo (Regex):</span>
                           <input
                             type="text"
                             value={req.rule_config?.positionPattern || 'supervisor|escolta|resguardo'}
                             onChange={(e) => updateRuleConfig(index, 'positionPattern', e.target.value)}
-                            style={{ width: 180, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 180, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Mínimo Meses Específicos:</span>
+                          <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>MÃ­nimo Meses EspecÃ­ficos:</span>
                           <input
                             type="number"
                             value={req.rule_config?.minMonths || 24}
                             onChange={(e) => updateRuleConfig(index, 'minMonths', Number(e.target.value))}
-                            style={{ width: 70, background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                            style={{ width: 70, background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                           />
                         </div>
                       </div>
@@ -626,24 +626,24 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 
                     {req.rule_type === 'validity' && (
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', color: '#94a3b8', cursor: 'pointer' }}>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', color: '#1a1a1a', cursor: 'pointer' }}>
                           <input
                             type="checkbox"
                             checked={req.rule_config?.allowInProcess ?? true}
                             onChange={(e) => updateRuleConfig(index, 'allowInProcess', e.target.checked)}
                           />
-                          Permitir estado &quot;En Trámite&quot; como Revisión (🟡)
+                          Permitir estado &quot;En TrÃ¡mite&quot; como RevisiÃ³n (ðŸŸ¡)
                         </label>
                       </div>
                     )}
 
                     {req.rule_type === 'boolean' && (
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Campo evaluado:</span>
+                        <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Campo evaluado:</span>
                         <select
                           value={req.rule_config?.field || 'gun_license'}
                           onChange={(e) => updateRuleConfig(index, 'field', e.target.value)}
-                          style={{ background: '#111', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
+                          style={{ background: '#ffffff', border: '1px solid #333', color: '#fff', padding: '4px 8px', borderRadius: 4, fontSize: '0.8rem' }}
                         >
                           <option value="gun_license">Licencia de Armas (gun_license)</option>
                           <option value="driver_license">Brevete de Conducir (driver_license)</option>
@@ -653,8 +653,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
                     )}
 
                     {req.rule_type === 'document_evidence' && (
-                      <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
-                        Valida la presencia física del documento cargado en la postulación.
+                      <div style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>
+                        Valida la presencia fÃ­sica del documento cargado en la postulaciÃ³n.
                       </div>
                     )}
                   </div>
@@ -668,8 +668,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
         <div
           style={{
             padding: '1.25rem 2rem',
-            borderTop: '1px solid #1e1e1e',
-            background: '#111',
+            borderTop: '1px solid #d8d8e0',
+            background: '#e8e8f0',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -681,9 +681,9 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              background: '#1e1e1e',
+              background: '#d8d8e0',
               border: '1px solid #333',
-              color: '#e2e8f0',
+              color: '#333333',
               padding: '8px 16px',
               borderRadius: '0.5rem',
               cursor: 'pointer',
@@ -699,8 +699,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
               onClick={onClose}
               style={{
                 background: 'none',
-                border: '1px solid #2b2b2b',
-                color: '#64748b',
+                border: '1px solid #c8c8d0',
+                color: '#0f1419',
                 padding: '8px 16px',
                 borderRadius: '0.5rem',
                 cursor: 'pointer',
@@ -739,3 +739,8 @@ export const RequirementConfigModal: React.FC<RequirementConfigModalProps> = ({
 };
 
 export default RequirementConfigModal;
+
+
+
+
+

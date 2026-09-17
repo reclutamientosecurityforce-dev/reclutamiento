@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
@@ -30,13 +30,13 @@ const DocumentCard = ({ doc, uploadedDocs, uploadProgress, onUpload, draftToken 
   const uploadedDocsForType = uploadedDocs.filter((d: any) => d.document_type === doc.type);
   
   // Estado visual
-  let statusIndicator = '🟡 PENDIENTE';
+  let statusIndicator = 'ðŸŸ¡ PENDIENTE';
   let statusColor = '#fbbf24';
   let statusBg = 'rgba(251, 191, 36, 0.1)';
   let statusBorder = 'rgba(251, 191, 36, 0.3)';
   
   if (isUploaded) {
-    statusIndicator = '🟢 RECIBIDO';
+    statusIndicator = 'ðŸŸ¢ RECIBIDO';
     statusColor = '#34d399';
     statusBg = 'rgba(16, 185, 129, 0.1)';
     statusBorder = 'rgba(16, 185, 129, 0.3)';
@@ -121,8 +121,8 @@ const DocumentCard = ({ doc, uploadedDocs, uploadProgress, onUpload, draftToken 
           alignItems: 'center', 
           justifyContent: 'center',
           gap: '0.5rem',
-          background: 'rgba(255, 255, 255, 0.05)', 
-          border: '1px solid rgba(255, 255, 255, 0.1)', 
+          background: '#e8e8f0', 
+          border: '1px solid #d8d8e0', 
           borderRadius: '8px', 
           padding: '0.6rem 1rem',
           fontSize: '0.85rem',
@@ -130,8 +130,8 @@ const DocumentCard = ({ doc, uploadedDocs, uploadProgress, onUpload, draftToken 
           color: '#ffffff',
           cursor: 'pointer',
           transition: 'all 0.2s ease',
-        }} onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
-           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}>
+        }} onMouseEnter={(e) => e.currentTarget.style.background = '#d8d8e0'}
+           onMouseLeave={(e) => e.currentTarget.style.background = '#e8e8f0'}>
           <Upload size={16} />
           <span>{isUploading ? 'Subiendo...' : 'Subir Archivo'}</span>
           <input
@@ -161,7 +161,7 @@ const ExpedienteDigitalCard = ({
   const isUploading = uploadProgress[requirement.id];
   
   // Determinar estado
-  let statusIndicator = '🟡 PENDIENTE';
+  let statusIndicator = 'ðŸŸ¡ PENDIENTE';
   let statusColor = '#fbbf24';
   let statusBg = 'rgba(251, 191, 36, 0.1)';
   let statusBorder = 'rgba(251, 191, 36, 0.3)';
@@ -171,24 +171,24 @@ const ExpedienteDigitalCard = ({
     const hasObserved = reqDocs.some((d: any) => d.verification_status === 'observed');
     
     if (hasObserved) {
-      statusIndicator = '🔴 OBSERVADO';
+      statusIndicator = 'ðŸ”´ OBSERVADO';
       statusColor = '#ef4444';
       statusBg = 'rgba(239, 68, 68, 0.1)';
       statusBorder = 'rgba(239, 68, 68, 0.3)';
     } else if (hasVerified) {
-      statusIndicator = '🟢 RECIBIDO';
+      statusIndicator = 'ðŸŸ¢ RECIBIDO';
       statusColor = '#34d399';
       statusBg = 'rgba(16, 185, 129, 0.1)';
       statusBorder = 'rgba(16, 185, 129, 0.3)';
     } else {
-      statusIndicator = '🟡 PENDIENTE';
+      statusIndicator = 'ðŸŸ¡ PENDIENTE';
       statusColor = '#fbbf24';
       statusBg = 'rgba(251, 191, 36, 0.1)';
       statusBorder = 'rgba(251, 191, 36, 0.3)';
     }
   }
 
-  const requiredLabel = requirement.is_required ? '🔴 OBLIGATORIO' : '🟢 ADICIONAL';
+  const requiredLabel = requirement.is_required ? 'ðŸ”´ OBLIGATORIO' : 'ðŸŸ¢ ADICIONAL';
   const requiredColor = requirement.is_required ? '#ef4444' : '#34d399';
 
   return (
@@ -265,7 +265,7 @@ const ExpedienteDigitalCard = ({
                 <span style={{ color: '#ccc' }}>{doc.file_name}</span>
                 {doc.classification_confidence && doc.classification_confidence < 0.9 && (
                   <span style={{ color: '#fbbf24', fontSize: '0.7rem' }}>
-                    ⚠️ Verificar tipo
+                    âš ï¸ Verificar tipo
                   </span>
                 )}
               </div>
@@ -324,8 +324,8 @@ const ExpedienteDigitalCard = ({
           alignItems: 'center', 
           justifyContent: 'center',
           gap: '0.5rem',
-          background: 'rgba(255, 255, 255, 0.05)', 
-          border: '1px solid rgba(255, 255, 255, 0.1)', 
+          background: '#e8e8f0', 
+          border: '1px solid #d8d8e0', 
           borderRadius: '8px', 
           padding: '0.6rem 1rem',
           fontSize: '0.85rem',
@@ -333,8 +333,8 @@ const ExpedienteDigitalCard = ({
           color: '#ffffff',
           cursor: 'pointer',
           transition: 'all 0.2s ease',
-        }} onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
-           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}>
+        }} onMouseEnter={(e) => e.currentTarget.style.background = '#d8d8e0'}
+           onMouseLeave={(e) => e.currentTarget.style.background = '#e8e8f0'}>
           <Upload size={16} />
           <span>{isUploading ? 'Subiendo...' : 'Subir Archivo'}</span>
           <input
@@ -433,7 +433,7 @@ export const ApplicationWizardPage: React.FC = () => {
   const [hasPreviousProfile, setHasPreviousProfile] = useState(false);
   const [compatibilityScore, setCompatibilityScore] = useState<number>(85);
 
-  // Análisis de requisitos de la convocatoria
+  // AnÃ¡lisis de requisitos de la convocatoria
   const [openingRequirements, setOpeningRequirements] = useState<OpeningRequirement[]>([]);
   const [requiresSucamec, setRequiresSucamec] = useState(false);
   const [requiresGunLicense, setRequiresGunLicense] = useState(false);
@@ -524,7 +524,7 @@ export const ApplicationWizardPage: React.FC = () => {
           }
         }
 
-        // Analizar requisitos dinámicos
+        // Analizar requisitos dinÃ¡micos
         if (data.requirements && Array.isArray(data.requirements)) {
           setOpeningRequirements(data.requirements);
           analyzeRequirements(data.requirements);
@@ -554,7 +554,7 @@ export const ApplicationWizardPage: React.FC = () => {
         const progress = await api.get(`/public/apply/${draftToken}/expediente-status-new`);
         setExpedienteProgress((progress as any)?.expediente_progress);
         
-        // Cargar documentos de la aplicación
+        // Cargar documentos de la aplicaciÃ³n
         const docs = await api.get(`/public/apply/${draftToken}/documents`);
         setApplicationDocuments(docs as any[]);
       } catch (err) {
@@ -571,7 +571,7 @@ export const ApplicationWizardPage: React.FC = () => {
     loadExpedienteStatus();
   }, [draftToken]);
 
-  // Analizar requisitos dinámicos del backend
+  // Analizar requisitos dinÃ¡micos del backend
   const analyzeRequirements = (requirements: OpeningRequirement[]) => {
     requirements.forEach(req => {
       const code = req.code.toLowerCase();
@@ -635,9 +635,9 @@ export const ApplicationWizardPage: React.FC = () => {
     }
   };
 
-  // ─── HANDLERS ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€ HANDLERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-  // Paso 1: Iniciar postulación sin login con trazabilidad de captación
+  // Paso 1: Iniciar postulaciÃ³n sin login con trazabilidad de captaciÃ³n
   const handleStep1Submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
@@ -670,7 +670,7 @@ export const ApplicationWizardPage: React.FC = () => {
 
       if (res.status === 'already_submitted') {
         setApplicationCode(res.applicationCode || '');
-        setStep(6); // Ir directo a pantalla de confirmación
+        setStep(6); // Ir directo a pantalla de confirmaciÃ³n
         return;
       }
 
@@ -679,7 +679,7 @@ export const ApplicationWizardPage: React.FC = () => {
         setApplicationCode(res.applicationCode || '');
         setHasPreviousProfile(!!res.hasPreviousProfile);
 
-        // Si ya tenía perfil previo, rellenar los datos
+        // Si ya tenÃ­a perfil previo, rellenar los datos
         if (res.candidate) {
           if (res.candidate.height_cm) setHeightCm(res.candidate.height_cm);
           if (res.candidate.weight_kg) setWeightKg(res.candidate.weight_kg);
@@ -703,19 +703,19 @@ export const ApplicationWizardPage: React.FC = () => {
         setStep(2);
       }
     } catch (err: unknown) {
-      setErrorMsg(err instanceof Error ? err.message : 'Error al iniciar postulación.');
+      setErrorMsg(err instanceof Error ? err.message : 'Error al iniciar postulaciÃ³n.');
     } finally {
       setActionLoading(false);
     }
   };
 
-  // Paso 2: Selección de Método
+  // Paso 2: SelecciÃ³n de MÃ©todo
   const handleSelectMethod = (selected: 'upload_cv' | 'photos' | 'create_cv' | 'existing') => {
     setMethod(selected);
     setStep(3);
   };
 
-  // Experiencias dinámicas
+  // Experiencias dinÃ¡micas
   const handleAddExperience = () => {
     setExperiences([
       ...experiences,
@@ -723,7 +723,7 @@ export const ApplicationWizardPage: React.FC = () => {
     ]);
   };
 
-  // Validación de licencia de armas vs requisito
+  // ValidaciÃ³n de licencia de armas vs requisito
   const handleGunLicenseTypeChange = (value: string) => {
     setGunLicenseType(value);
     
@@ -734,12 +734,12 @@ export const ApplicationWizardPage: React.FC = () => {
     }
   };
 
-  // Validación de brevete vs requisito
+  // ValidaciÃ³n de brevete vs requisito
   const handleDriverLicenseTypeChange = (value: string) => {
     setDriverLicenseType(value);
     
     if (requiredDriverLicenseType && value !== requiredDriverLicenseType && value !== 'OTRA') {
-      setDriverLicenseWarning(`Esta convocatoria requiere brevete ${requiredDriverLicenseType}. La categoría seleccionada (${value}) no coincide con el requisito.`);
+      setDriverLicenseWarning(`Esta convocatoria requiere brevete ${requiredDriverLicenseType}. La categorÃ­a seleccionada (${value}) no coincide con el requisito.`);
     } else {
       setDriverLicenseWarning(null);
     }
@@ -777,7 +777,7 @@ export const ApplicationWizardPage: React.FC = () => {
         const res = await api.post<{ documents: UploadedDoc[] }>(`/public/apply/${draftToken}/upload-photos`, formData);
         if (res.documents) {
           setUploadedDocs((d) => [...d.filter((item) => item.document_type !== docTypeKey), ...res.documents]);
-          // Recargar estado del expediente después de subir
+          // Recargar estado del expediente despuÃ©s de subir
           if (draftToken) {
             api.get(`/public/apply/${draftToken}/expediente-status`)
               .then((status) => setExpedienteStatus(status))
@@ -793,7 +793,7 @@ export const ApplicationWizardPage: React.FC = () => {
     }
   };
 
-  // Subir documento con clasificación automática (nuevo expediente digital)
+  // Subir documento con clasificaciÃ³n automÃ¡tica (nuevo expediente digital)
   const handleExpedienteUpload = async (
     e: React.ChangeEvent<HTMLInputElement>, 
     requirementId: string, 
@@ -820,7 +820,7 @@ export const ApplicationWizardPage: React.FC = () => {
       if (res.document) {
         setApplicationDocuments((d) => [...d, res.document]);
         
-        // Si la clasificación necesita confirmación
+        // Si la clasificaciÃ³n necesita confirmaciÃ³n
         if (res.classification && res.classification.needsConfirmation) {
           setClassificationModal({
             document: res.document,
@@ -844,7 +844,7 @@ export const ApplicationWizardPage: React.FC = () => {
     }
   };
 
-  // Confirmar clasificación de documento
+  // Confirmar clasificaciÃ³n de documento
   const handleConfirmClassification = async (confirmedType: string, confirmedCategory: string) => {
     if (!classificationModal || !draftToken) return;
 
@@ -866,7 +866,7 @@ export const ApplicationWizardPage: React.FC = () => {
       setClassificationModal(null);
     } catch (err: unknown) {
       console.error('Classification confirmation error:', err);
-      alert(err instanceof Error ? err.message : 'Error al confirmar clasificación');
+      alert(err instanceof Error ? err.message : 'Error al confirmar clasificaciÃ³n');
     }
   };
 
@@ -874,7 +874,7 @@ export const ApplicationWizardPage: React.FC = () => {
   const handleDeleteDocument = async (documentId: string) => {
     if (!draftToken) return;
 
-    if (!confirm('¿Estás seguro de eliminar este documento?')) return;
+    if (!confirm('Â¿EstÃ¡s seguro de eliminar este documento?')) return;
 
     try {
       await api.delete(`/public/apply/${draftToken}/documents/${documentId}`);
@@ -935,10 +935,10 @@ export const ApplicationWizardPage: React.FC = () => {
     }
   };
 
-  // Paso 5: Envío final con registro de consentimiento LOPD
+  // Paso 5: EnvÃ­o final con registro de consentimiento LOPD
   const handleSubmitFinal = async () => {
     if (!confirmedTruth) {
-      alert('Debe confirmar la veracidad de la información.');
+      alert('Debe confirmar la veracidad de la informaciÃ³n.');
       return;
     }
     if (!consentLopd) {
@@ -949,7 +949,7 @@ export const ApplicationWizardPage: React.FC = () => {
     setActionLoading(true);
 
     try {
-      // Registrar consentimiento explícito
+      // Registrar consentimiento explÃ­cito
       await api.post(`/public/apply/${draftToken}/consent`, {
         consentGiven: true,
         consentVersion: '1.0',
@@ -963,7 +963,7 @@ export const ApplicationWizardPage: React.FC = () => {
       setCompatibilityScore(res.compatibilityScore || 90);
       setStep(6);
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : 'Error al enviar postulación');
+      alert(err instanceof Error ? err.message : 'Error al enviar postulaciÃ³n');
     } finally {
       setActionLoading(false);
     }
@@ -989,28 +989,28 @@ export const ApplicationWizardPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#080808', color: '#fff' }}>
+      <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#fff' }}>
         <PublicHeader showBackToJobs />
         <div style={{ padding: '5rem 0', textAlign: 'center', color: '#888' }}>
-          Cargando asistente de postulación...
+          Cargando asistente de postulaciÃ³n...
         </div>
       </div>
     );
   }
 
   const reqDocs = (opening?.requirements as any)?.required_documents || [
-    { type: 'dni', label: 'DNI / Carné de Extranjería', required: true },
-    { type: 'cul', label: 'Certificado Único Laboral (CUL)', required: true },
-    { type: 'sucamec', label: 'Carné SUCAMEC Vigente', required: true },
+    { type: 'dni', label: 'DNI / CarnÃ© de ExtranjerÃ­a', required: true },
+    { type: 'cul', label: 'Certificado Ãšnico Laboral (CUL)', required: true },
+    { type: 'sucamec', label: 'CarnÃ© SUCAMEC Vigente', required: true },
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: '#ffffff' }}>
+    <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#ffffff' }}>
       <PublicHeader showBackToJobs />
 
       {/* Progress Bar Top */}
       {step < 6 && (
-        <div className="wizard-progress-container" style={{ background: '#101010', borderBottom: '1px solid rgba(220, 38, 38, 0.2)', padding: '1rem 1.5rem' }}>
+        <div className="wizard-progress-container" style={{ background: '#f5f5f7', borderBottom: '1px solid rgba(220, 38, 38, 0.2)', padding: '1rem 1.5rem' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#aaa', marginBottom: '0.75rem', fontWeight: 600 }}>
               <span style={{ color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -1030,8 +1030,8 @@ export const ApplicationWizardPage: React.FC = () => {
             {/* Visual Step Indicators */}
             <div className="wizard-progress-indicators" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
               {[
-                { id: 1, label: 'Identificación' },
-                { id: 2, label: 'Método' },
+                { id: 1, label: 'IdentificaciÃ³n' },
+                { id: 2, label: 'MÃ©todo' },
                 { id: 3, label: 'Perfil' },
                 { id: 4, label: 'Documentos' },
                 { id: 5, label: 'Enviar' },
@@ -1048,19 +1048,19 @@ export const ApplicationWizardPage: React.FC = () => {
                         width: '32px',
                         height: '32px',
                         borderRadius: '50%',
-                        background: isCompleted ? '#34d399' : isCurrent ? '#DC2626' : '#2a2a2a',
-                        border: isCurrent ? '2px solid #DC2626' : isCompleted ? '2px solid #34d399' : '2px solid #3a3a3a',
+                        background: isCompleted ? '#34d399' : isCurrent ? '#DC2626' : '#c8c8d0',
+                        border: isCurrent ? '2px solid #DC2626' : isCompleted ? '2px solid #34d399' : '2px solid #b8b8c0',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: '0.85rem',
                         fontWeight: 700,
-                        color: isCompleted ? '#080808' : isCurrent ? '#FFFFFF' : '#666',
+                        color: isCompleted ? '#f5f5f7' : isCurrent ? '#FFFFFF' : '#666',
                         marginBottom: '0.5rem',
                         transition: 'all 0.3s ease',
                       }}
                     >
-                      {isCompleted ? '✓' : item.id}
+                      {isCompleted ? 'âœ“' : item.id}
                     </div>
                   </div>
                 );
@@ -1084,22 +1084,22 @@ export const ApplicationWizardPage: React.FC = () => {
       )}
 
       <main style={{ maxWidth: '780px', margin: '0 auto', padding: '2rem 1.5rem 5rem' }}>
-        {/* ══════════════════════════════════════════════════════════════════════
-            PASO 1: DATOS BÁSICOS INMEDIATOS (SIN LOGIN)
-        ══════════════════════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            PASO 1: DATOS BÃSICOS INMEDIATOS (SIN LOGIN)
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 1 && (
           <div
             style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.25)',
               borderRadius: '20px',
               padding: '2.5rem 2rem',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.85)',
+              boxShadow: '0 20px 60px rgba(100,100,100,0.85)',
             }}
           >
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Paso 1 de 5 • Identificación Rápida
+                Paso 1 de 5 â€¢ IdentificaciÃ³n RÃ¡pida
               </span>
               <h2
                 style={{
@@ -1111,10 +1111,10 @@ export const ApplicationWizardPage: React.FC = () => {
                   marginTop: '0.2rem',
                 }}
               >
-                Comienza tu Postulación
+                Comienza tu PostulaciÃ³n
               </h2>
               <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '0.25rem' }}>
-                Ingresa tus datos básicos para generar tu código de postulación. No necesitas contraseña.
+                Ingresa tus datos bÃ¡sicos para generar tu cÃ³digo de postulaciÃ³n. No necesitas contraseÃ±a.
               </p>
             </div>
 
@@ -1133,19 +1133,19 @@ export const ApplicationWizardPage: React.FC = () => {
                   </label>
                   <select value={docType} onChange={(e) => setDocType(e.target.value)}>
                     <option value="DNI">DNI</option>
-                    <option value="CE">Carné Extranjería (CE)</option>
+                    <option value="CE">CarnÃ© ExtranjerÃ­a (CE)</option>
                     <option value="PTP">PTP</option>
                   </select>
                 </div>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.35rem', textTransform: 'uppercase' }}>
-                    Número de Documento <span style={{ color: '#dc2626' }}>*</span>
+                    NÃºmero de Documento <span style={{ color: '#dc2626' }}>*</span>
                   </label>
                   <input
                     type="text"
                     value={docNumber}
                     onChange={(e) => setDocNumber(e.target.value)}
-                    placeholder="8 dígitos"
+                    placeholder="8 dÃ­gitos"
                     required
                     maxLength={15}
                   />
@@ -1173,7 +1173,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Ej: Pérez Quispe"
+                    placeholder="Ej: PÃ©rez Quispe"
                     required
                   />
                 </div>
@@ -1217,7 +1217,7 @@ export const ApplicationWizardPage: React.FC = () => {
 
               <div style={{ marginBottom: '2rem' }}>
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.35rem', textTransform: 'uppercase' }}>
-                  Correo Electrónico (Opcional)
+                  Correo ElectrÃ³nico (Opcional)
                 </label>
                 <input
                   type="email"
@@ -1233,21 +1233,21 @@ export const ApplicationWizardPage: React.FC = () => {
                 disabled={actionLoading}
                 style={{ width: '100%', padding: '0.95rem', fontSize: '1.05rem', letterSpacing: '0.06em' }}
               >
-                <span>{actionLoading ? 'VERIFICANDO...' : 'CONTINUAR CON LA POSTULACIÓN'}</span>
+                <span>{actionLoading ? 'VERIFICANDO...' : 'CONTINUAR CON LA POSTULACIÃ“N'}</span>
                 <ArrowRight size={18} />
               </button>
             </form>
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════════════════════
-            PASO 2: ¿CÓMO QUIERES PRESENTAR TU INFORMACIÓN?
-        ══════════════════════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            PASO 2: Â¿CÃ“MO QUIERES PRESENTAR TU INFORMACIÃ“N?
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 2 && (
           <div>
             <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Paso 2 de 5 • Método de Postulación
+                Paso 2 de 5 â€¢ MÃ©todo de PostulaciÃ³n
               </span>
               <h2
                 style={{
@@ -1259,10 +1259,10 @@ export const ApplicationWizardPage: React.FC = () => {
                   marginTop: '0.2rem',
                 }}
               >
-                ¿Cómo deseas presentar tu información?
+                Â¿CÃ³mo deseas presentar tu informaciÃ³n?
               </h2>
               <p style={{ fontSize: '0.9rem', color: '#ccc', marginTop: '0.5rem', maxWidth: '500px', margin: '0.5rem auto 0', lineHeight: 1.5 }}>
-                Elige la forma más fácil para ti. Puedes subir tu CV, crear uno desde cero o presentar tus documentos.
+                Elige la forma mÃ¡s fÃ¡cil para ti. Puedes subir tu CV, crear uno desde cero o presentar tus documentos.
               </p>
             </div>
 
@@ -1286,8 +1286,8 @@ export const ApplicationWizardPage: React.FC = () => {
                     <UserCheck size={26} color="#38bdf8" />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '1rem', color: '#fff', marginBottom: '0.25rem' }}>Encontramos información registrada anteriormente</h4>
-                    <p style={{ fontSize: '0.8rem', color: '#aaa', lineHeight: 1.4 }}>Puedes usar tus datos anteriores y postular más rápido.</p>
+                    <h4 style={{ fontSize: '1rem', color: '#fff', marginBottom: '0.25rem' }}>Encontramos informaciÃ³n registrada anteriormente</h4>
+                    <p style={{ fontSize: '0.8rem', color: '#aaa', lineHeight: 1.4 }}>Puedes usar tus datos anteriores y postular mÃ¡s rÃ¡pido.</p>
                   </div>
                 </div>
                 <button
@@ -1301,18 +1301,18 @@ export const ApplicationWizardPage: React.FC = () => {
             )}
 
             <div className="wizard-step-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {/* Opción 1: TENGO MI CV */}
+              {/* OpciÃ³n 1: TENGO MI CV */}
               <div
                 onClick={() => handleSelectMethod('upload_cv')}
                 className="wizard-step-card card-lift"
                 style={{
-                  background: '#0d0d0d',
+                  background: '#f5f5f7',
                   border: '1px solid rgba(220, 38, 38, 0.25)',
                   borderRadius: '16px',
                   padding: '2rem',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
+                  boxShadow: '0 10px 30px rgba(100,100,100,0.7)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -1330,7 +1330,7 @@ export const ApplicationWizardPage: React.FC = () => {
                 </div>
                 <h3 style={{ fontSize: '1.35rem', color: '#fff', marginBottom: '0.5rem', fontWeight: 700 }}>TENGO MI CV</h3>
                 <p style={{ fontSize: '0.85rem', color: '#aaa', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Sube tu CV y extraemos automáticamente la información para completar tu perfil.
+                  Sube tu CV y extraemos automÃ¡ticamente la informaciÃ³n para completar tu perfil.
                 </p>
                 <button
                   style={{
@@ -1358,12 +1358,12 @@ export const ApplicationWizardPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Opción 2: CREAR MI CV - VISIBILIDAD ALTA */}
+              {/* OpciÃ³n 2: CREAR MI CV - VISIBILIDAD ALTA */}
               <div
                 onClick={() => handleSelectMethod('create_cv')}
                 className="wizard-step-card card-lift"
                 style={{
-                  background: 'linear-gradient(135deg, #0d0d0d 0%, #111 100%)',
+                  background: 'linear-gradient(135deg, #f5f5f7 0%, #e8e8f0 100%)',
                   border: '2px solid rgba(220, 38, 38, 0.6)',
                   borderRadius: '16px',
                   padding: '2rem',
@@ -1385,14 +1385,14 @@ export const ApplicationWizardPage: React.FC = () => {
                 }}
               >
                 <div style={{ position: 'absolute', top: 0, right: 0, background: 'rgba(220, 38, 38, 0.2)', color: '#fff', fontSize: '0.7rem', fontWeight: 700, padding: '0.4rem 0.8rem', borderBottomLeftRadius: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  ★ Recomendado
+                  â˜… Recomendado
                 </div>
                 <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'rgba(220, 38, 38, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#DC2626', marginBottom: '1.25rem' }}>
                   <Sparkles size={28} />
                 </div>
                 <h3 style={{ fontSize: '1.35rem', color: '#fff', marginBottom: '0.5rem', fontWeight: 700 }}>CREAR MI CV</h3>
                 <p style={{ fontSize: '0.85rem', color: '#aaa', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  ¿No tienes CV? Te ayudamos a crear uno paso a paso desde tu celular.
+                  Â¿No tienes CV? Te ayudamos a crear uno paso a paso desde tu celular.
                 </p>
                 <button
                   style={{
@@ -1420,18 +1420,18 @@ export const ApplicationWizardPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Opción 3: TENGO MIS DOCUMENTOS */}
+              {/* OpciÃ³n 3: TENGO MIS DOCUMENTOS */}
               <div
                 onClick={() => handleSelectMethod('photos')}
                 className="wizard-step-card card-lift"
                 style={{
-                  background: '#0d0d0d',
+                  background: '#f5f5f7',
                   border: '1px solid rgba(220, 38, 38, 0.25)',
                   borderRadius: '16px',
                   padding: '2rem',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
+                  boxShadow: '0 10px 30px rgba(100,100,100,0.7)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -1462,7 +1462,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     borderRadius: '6px',
                     background: '#fbbf24',
                     border: '1px solid #fbbf24',
-                    color: '#080808',
+                    color: '#f5f5f7',
                     cursor: 'pointer',
                     transition: 'background 0.2s ease',
                   }}
@@ -1477,19 +1477,19 @@ export const ApplicationWizardPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Opción 4: YA POSTULÉ ANTES */}
+              {/* OpciÃ³n 4: YA POSTULÃ‰ ANTES */}
               {!hasPreviousProfile && (
                 <div
                   onClick={() => handleSelectMethod('existing')}
                   className="wizard-step-card card-lift"
                   style={{
-                    background: '#0d0d0d',
+                    background: '#f5f5f7',
                     border: '1px solid rgba(220, 38, 38, 0.25)',
                     borderRadius: '16px',
                     padding: '2rem',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
+                    boxShadow: '0 10px 30px rgba(100,100,100,0.7)',
                     position: 'relative',
                     overflow: 'hidden',
                   }}
@@ -1505,9 +1505,9 @@ export const ApplicationWizardPage: React.FC = () => {
                   <div style={{ width: '56px', height: '56px', borderRadius: '14px', background: 'rgba(56, 189, 248, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', marginBottom: '1.25rem' }}>
                     <Briefcase size={28} />
                   </div>
-                  <h3 style={{ fontSize: '1.35rem', color: '#fff', marginBottom: '0.5rem', fontWeight: 700 }}>YA POSTULÉ ANTES</h3>
+                  <h3 style={{ fontSize: '1.35rem', color: '#fff', marginBottom: '0.5rem', fontWeight: 700 }}>YA POSTULÃ‰ ANTES</h3>
                   <p style={{ fontSize: '0.85rem', color: '#aaa', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                    Usa tus datos anteriores y postula más rápido.
+                    Usa tus datos anteriores y postula mÃ¡s rÃ¡pido.
                   </p>
                   <button
                     style={{
@@ -1520,7 +1520,7 @@ export const ApplicationWizardPage: React.FC = () => {
                       borderRadius: '6px',
                       background: '#38bdf8',
                       border: '1px solid #38bdf8',
-                      color: '#080808',
+                      color: '#f5f5f7',
                       cursor: 'pointer',
                       transition: 'background 0.2s ease',
                     }}
@@ -1539,13 +1539,13 @@ export const ApplicationWizardPage: React.FC = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             PASO 3: CONSTRUCTOR / EDITOR DE PERFIL Y CV
-        ══════════════════════════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 3 && (
           <div
             style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.25)',
               borderRadius: '20px',
               padding: '2.5rem 2rem',
@@ -1554,7 +1554,7 @@ export const ApplicationWizardPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
               <div>
                 <span style={{ fontSize: '0.75rem', color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  Paso 3 de 5 • Perfil Laboral y Seguridad
+                  Paso 3 de 5 â€¢ Perfil Laboral y Seguridad
                 </span>
                 <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '1.85rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase' }}>
                   {method === 'upload_cv' ? 'Verifica y Completa tus Datos' : 'Construye tu Perfil Laboral'}
@@ -1573,7 +1573,7 @@ export const ApplicationWizardPage: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <CheckCircle2 size={18} color="#dc2626" />
                 <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Completa solo la información que necesitamos para esta vacante
+                  Completa solo la informaciÃ³n que necesitamos para esta vacante
                 </span>
               </div>
               <div style={{ fontSize: '0.8rem', color: '#aaa', marginBottom: '1rem' }}>
@@ -1589,7 +1589,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.75rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ SUCAMEC
+                    âœ“ SUCAMEC
                   </span>
                 )}
                 {requiresGunLicense && (
@@ -1601,7 +1601,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.75rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ Licencia de Armas{requiredGunLicenseType ? ` ${requiredGunLicenseType}` : ''}
+                    âœ“ Licencia de Armas{requiredGunLicenseType ? ` ${requiredGunLicenseType}` : ''}
                   </span>
                 )}
                 {requiresDriverLicense && (
@@ -1613,7 +1613,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.75rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ Brevete{requiredDriverLicenseType ? ` ${requiredDriverLicenseType}` : ''}
+                    âœ“ Brevete{requiredDriverLicenseType ? ` ${requiredDriverLicenseType}` : ''}
                   </span>
                 )}
                 {requiresMilitaryService && (
@@ -1625,7 +1625,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.75rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ Servicio Militar
+                    âœ“ Servicio Militar
                   </span>
                 )}
                 {requiresExperience && (
@@ -1637,7 +1637,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.75rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ Experiencia{minExperienceYears ? ` (mín. ${minExperienceYears} años)` : ''}
+                    âœ“ Experiencia{minExperienceYears ? ` (mÃ­n. ${minExperienceYears} aÃ±os)` : ''}
                   </span>
                 )}
                 {!requiresSucamec && !requiresGunLicense && !requiresDriverLicense && !requiresMilitaryService && !requiresExperience && (
@@ -1649,23 +1649,23 @@ export const ApplicationWizardPage: React.FC = () => {
                     fontSize: '0.8rem', 
                     fontWeight: 600 
                   }}>
-                    ✓ Requisitos básicos únicamente
+                    âœ“ Requisitos bÃ¡sicos Ãºnicamente
                   </span>
                 )}
               </div>
               {(!requiresSucamec && !requiresGunLicense && !requiresDriverLicense && !requiresMilitaryService && !requiresExperience) && (
                 <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.75rem', fontStyle: 'italic' }}>
-                  Esta convocatoria no requiere requisitos especiales. Solo completa tus datos básicos y documentos.
+                  Esta convocatoria no requiere requisitos especiales. Solo completa tus datos bÃ¡sicos y documentos.
                 </p>
               )}
             </div>
 
-            {/* Si eligió subir archivo de CV en paso 2 */}
+            {/* Si eligiÃ³ subir archivo de CV en paso 2 */}
             {method === 'upload_cv' && (
               <div style={{ background: 'rgba(220, 38, 38, 0.08)', border: '1px dashed rgba(220, 38, 38, 0.4)', borderRadius: '12px', padding: '1.5rem', textAlign: 'center', marginBottom: '2rem' }}>
                 <Upload size={28} color="#dc2626" style={{ margin: '0 auto 0.5rem' }} />
                 <h4 style={{ fontSize: '1rem', color: '#fff' }}>Adjunta tu archivo de CV</h4>
-                <p style={{ fontSize: '0.78rem', color: '#888', marginBottom: '1rem' }}>Aceptamos PDF, DOC, DOCX (Máx. 10MB)</p>
+                <p style={{ fontSize: '0.78rem', color: '#888', marginBottom: '1rem' }}>Aceptamos PDF, DOC, DOCX (MÃ¡x. 10MB)</p>
                 <input
                   type="file"
                   accept=".pdf,.doc,.docx"
@@ -1685,14 +1685,14 @@ export const ApplicationWizardPage: React.FC = () => {
               </div>
             )}
 
-            {/* 1. Datos Físicos y de Seguridad - Simplificado UX */}
+            {/* 1. Datos FÃ­sicos y de Seguridad - Simplificado UX */}
             <div style={{ borderBottom: '1px solid rgba(220, 38, 38, 0.2)', paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
               <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <Shield size={18} color="#dc2626" />
                 <span>Perfil Operativo y Seguridad</span>
               </h3>
 
-              {/* Datos físicos básicos - siempre visibles */}
+              {/* Datos fÃ­sicos bÃ¡sicos - siempre visibles */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
@@ -1732,7 +1732,7 @@ export const ApplicationWizardPage: React.FC = () => {
               {/* SUCAMEC - Solo si es requerido por la convocatoria */}
               {requiresSucamec && (
                 <div style={{ 
-                  background: '#0a0a0a', 
+                  background: '#f5f5f7', 
                   border: '1px solid rgba(220, 38, 38, 0.2)', 
                   borderRadius: '12px', 
                   padding: '1.25rem', 
@@ -1740,14 +1740,14 @@ export const ApplicationWizardPage: React.FC = () => {
                 }}>
                   <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                      ¿Tienes carné SUCAMEC?
+                      Â¿Tienes carnÃ© SUCAMEC?
                     </label>
                     <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                       {[
-                        { value: 'valid', label: '🟢 Vigente', color: '#34d399' },
-                        { value: 'in_process', label: '🟡 En Trámite', color: '#fbbf24' },
-                        { value: 'none', label: '⚫ No Tengo', color: '#888' },
-                        { value: 'expired', label: '🔴 Vencido', color: '#f87171' }
+                        { value: 'valid', label: 'ðŸŸ¢ Vigente', color: '#34d399' },
+                        { value: 'in_process', label: 'ðŸŸ¡ En TrÃ¡mite', color: '#fbbf24' },
+                        { value: 'none', label: 'âš« No Tengo', color: '#888' },
+                        { value: 'expired', label: 'ðŸ”´ Vencido', color: '#f87171' }
                       ].map((option) => (
                         <button
                           key={option.value}
@@ -1760,9 +1760,9 @@ export const ApplicationWizardPage: React.FC = () => {
                             fontSize: '0.85rem',
                             fontWeight: 600,
                             borderRadius: '6px',
-                            background: sucamecStatus === option.value ? option.color : '#1a1a1a',
-                            border: sucamecStatus === option.value ? `1px solid ${option.color}` : '1px solid rgba(255,255,255,0.1)',
-                            color: sucamecStatus === option.value ? '#080808' : '#ccc',
+                            background: sucamecStatus === option.value ? option.color : '#e8e8f0',
+                            border: sucamecStatus === option.value ? `1px solid ${option.color}` : '1px solid rgba(100,100,100,0.1)',
+                            color: sucamecStatus === option.value ? '#f5f5f7' : '#ccc',
                             cursor: 'pointer',
                             transition: 'all 0.2s ease'
                           }}
@@ -1773,11 +1773,11 @@ export const ApplicationWizardPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Código SUCAMEC condicional */}
+                  {/* CÃ³digo SUCAMEC condicional */}
                   {(sucamecStatus === 'valid' || sucamecStatus === 'in_process') && (
-                    <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(100,100,100,0.1)' }}>
                       <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
-                        Código SUCAMEC (opcional)
+                        CÃ³digo SUCAMEC (opcional)
                       </label>
                       <input
                         type="text"
@@ -1795,8 +1795,8 @@ export const ApplicationWizardPage: React.FC = () => {
               {requiresExperience && (
                 <div style={{ marginBottom: '1.5rem' }}>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                    ¿Cuántos años de experiencia tienes en seguridad?
-                    {minExperienceYears && <span style={{ color: '#dc2626', marginLeft: '0.5rem' }}>(mínimo {minExperienceYears} años)</span>}
+                    Â¿CuÃ¡ntos aÃ±os de experiencia tienes en seguridad?
+                    {minExperienceYears && <span style={{ color: '#dc2626', marginLeft: '0.5rem' }}>(mÃ­nimo {minExperienceYears} aÃ±os)</span>}
                   </label>
                   <input
                     type="number"
@@ -1807,7 +1807,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     style={{ maxWidth: '200px' }}
                   />
                   <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.5rem' }}>
-                    Este dato nos ayuda a entender tu perfil. El sistema calculará tu experiencia acreditada based on tu historial laboral.
+                    Este dato nos ayuda a entender tu perfil. El sistema calcularÃ¡ tu experiencia acreditada based on tu historial laboral.
                   </p>
                 </div>
               )}
@@ -1819,14 +1819,14 @@ export const ApplicationWizardPage: React.FC = () => {
                   {/* Licencia de Armas - Solo si es requerida */}
                   {requiresGunLicense && (
                     <div style={{ 
-                      background: '#0a0a0a', 
+                      background: '#f5f5f7', 
                       border: '1px solid rgba(220, 38, 38, 0.2)', 
                       borderRadius: '12px', 
                       padding: '1.25rem' 
                     }}>
                       <div style={{ marginBottom: '0.75rem' }}>
                         <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                          🔫 ¿Tienes licencia de armas?
+                          ðŸ”« Â¿Tienes licencia de armas?
                           {requiredGunLicenseType && <span style={{ color: '#dc2626', marginLeft: '0.5rem' }}>(Requerido: {requiredGunLicenseType})</span>}
                         </label>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -1839,13 +1839,13 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: gunLicense ? '#DC2626' : '#1a1a1a',
-                              border: gunLicense ? '1px solid #DC2626' : '1px solid rgba(255,255,255,0.1)',
+                              background: gunLicense ? '#DC2626' : '#e8e8f0',
+                              border: gunLicense ? '1px solid #DC2626' : '1px solid rgba(100,100,100,0.1)',
                               color: gunLicense ? '#fff' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
-                            SÍ
+                            SÃ
                           </button>
                           <button
                             type="button"
@@ -1856,9 +1856,9 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: !gunLicense ? '#34d399' : '#1a1a1a',
-                              border: !gunLicense ? '1px solid #34d399' : '1px solid rgba(255,255,255,0.1)',
-                              color: !gunLicense ? '#080808' : '#ccc',
+                              background: !gunLicense ? '#34d399' : '#e8e8f0',
+                              border: !gunLicense ? '1px solid #34d399' : '1px solid rgba(100,100,100,0.1)',
+                              color: !gunLicense ? '#f5f5f7' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
@@ -1869,7 +1869,7 @@ export const ApplicationWizardPage: React.FC = () => {
 
                       {/* Tipo de licencia condicional */}
                       {gunLicense && (
-                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(100,100,100,0.1)' }}>
                           <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
                             Tipo de licencia
                           </label>
@@ -1886,7 +1886,7 @@ export const ApplicationWizardPage: React.FC = () => {
                           </select>
                           {licenseWarning && (
                             <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: 'rgba(251, 191, 36, 0.1)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: '4px', fontSize: '0.75rem', color: '#fbbf24' }}>
-                              ⚠️ {licenseWarning}
+                              âš ï¸ {licenseWarning}
                             </div>
                           )}
                         </div>
@@ -1897,14 +1897,14 @@ export const ApplicationWizardPage: React.FC = () => {
                   {/* Licencia de Conducir - Solo si es requerida */}
                   {requiresDriverLicense && (
                     <div style={{ 
-                      background: '#0a0a0a', 
+                      background: '#f5f5f7', 
                       border: '1px solid rgba(220, 38, 38, 0.2)', 
                       borderRadius: '12px', 
                       padding: '1.25rem' 
                     }}>
                       <div style={{ marginBottom: '0.75rem' }}>
                         <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                          🚗 ¿Tienes licencia de conducir?
+                          ðŸš— Â¿Tienes licencia de conducir?
                           {requiredDriverLicenseType && <span style={{ color: '#dc2626', marginLeft: '0.5rem' }}>(Requerido: {requiredDriverLicenseType})</span>}
                         </label>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -1917,13 +1917,13 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: driverLicense ? '#DC2626' : '#1a1a1a',
-                              border: driverLicense ? '1px solid #DC2626' : '1px solid rgba(255,255,255,0.1)',
+                              background: driverLicense ? '#DC2626' : '#e8e8f0',
+                              border: driverLicense ? '1px solid #DC2626' : '1px solid rgba(100,100,100,0.1)',
                               color: driverLicense ? '#fff' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
-                            SÍ
+                            SÃ
                           </button>
                           <button
                             type="button"
@@ -1934,9 +1934,9 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: !driverLicense ? '#34d399' : '#1a1a1a',
-                              border: !driverLicense ? '1px solid #34d399' : '1px solid rgba(255,255,255,0.1)',
-                              color: !driverLicense ? '#080808' : '#ccc',
+                              background: !driverLicense ? '#34d399' : '#e8e8f0',
+                              border: !driverLicense ? '1px solid #34d399' : '1px solid rgba(100,100,100,0.1)',
+                              color: !driverLicense ? '#f5f5f7' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
@@ -1947,9 +1947,9 @@ export const ApplicationWizardPage: React.FC = () => {
 
                       {/* Tipo de brevete condicional */}
                       {driverLicense && (
-                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(100,100,100,0.1)' }}>
                           <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
-                            Categoría de brevete
+                            CategorÃ­a de brevete
                           </label>
                           <select 
                             value={driverLicenseType} 
@@ -1958,14 +1958,14 @@ export const ApplicationWizardPage: React.FC = () => {
                           >
                             <option value="A1">A1 - Motocicleta</option>
                             <option value="A2">A2 - Motocicleta</option>
-                            <option value="B">B - Automóvil</option>
+                            <option value="B">B - AutomÃ³vil</option>
                             <option value="C">C - Camioneta</option>
-                            <option value="D">D - Camión</option>
+                            <option value="D">D - CamiÃ³n</option>
                             <option value="OTRA">Otra</option>
                           </select>
                           {driverLicenseWarning && (
                             <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: 'rgba(251, 191, 36, 0.1)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: '4px', fontSize: '0.75rem', color: '#fbbf24' }}>
-                              ⚠️ {driverLicenseWarning}
+                              âš ï¸ {driverLicenseWarning}
                             </div>
                           )}
                         </div>
@@ -1976,14 +1976,14 @@ export const ApplicationWizardPage: React.FC = () => {
                   {/* Servicio Militar - Solo si es requerido */}
                   {requiresMilitaryService && (
                     <div style={{ 
-                      background: '#0a0a0a', 
+                      background: '#f5f5f7', 
                       border: '1px solid rgba(220, 38, 38, 0.2)', 
                       borderRadius: '12px', 
                       padding: '1.25rem' 
                     }}>
                       <div style={{ marginBottom: '0.75rem' }}>
                         <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                          ⚔️ ¿Realizaste servicio militar?
+                          âš”ï¸ Â¿Realizaste servicio militar?
                         </label>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
                           <button
@@ -1995,13 +1995,13 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: militaryService ? '#DC2626' : '#1a1a1a',
-                              border: militaryService ? '1px solid #DC2626' : '1px solid rgba(255,255,255,0.1)',
+                              background: militaryService ? '#DC2626' : '#e8e8f0',
+                              border: militaryService ? '1px solid #DC2626' : '1px solid rgba(100,100,100,0.1)',
                               color: militaryService ? '#fff' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
-                            SÍ
+                            SÃ
                           </button>
                           <button
                             type="button"
@@ -2012,9 +2012,9 @@ export const ApplicationWizardPage: React.FC = () => {
                               fontSize: '0.85rem',
                               fontWeight: 600,
                               borderRadius: '6px',
-                              background: !militaryService ? '#34d399' : '#1a1a1a',
-                              border: !militaryService ? '1px solid #34d399' : '1px solid rgba(255,255,255,0.1)',
-                              color: !militaryService ? '#080808' : '#ccc',
+                              background: !militaryService ? '#34d399' : '#e8e8f0',
+                              border: !militaryService ? '1px solid #34d399' : '1px solid rgba(100,100,100,0.1)',
+                              color: !militaryService ? '#f5f5f7' : '#ccc',
                               cursor: 'pointer'
                             }}
                           >
@@ -2023,11 +2023,11 @@ export const ApplicationWizardPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Información militar condicional */}
+                      {/* InformaciÃ³n militar condicional */}
                       {militaryService && (
-                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(100,100,100,0.1)' }}>
                           <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
-                            Institución
+                            InstituciÃ³n
                           </label>
                           <select 
                             value={militaryBranch}
@@ -2035,10 +2035,10 @@ export const ApplicationWizardPage: React.FC = () => {
                             style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}
                           >
                             <option value="">Seleccionar...</option>
-                            <option value="EJERCITO">Ejército</option>
+                            <option value="EJERCITO">EjÃ©rcito</option>
                             <option value="MARINA">Marina</option>
-                            <option value="FUERZA_AEREA">Fuerza Aérea</option>
-                            <option value="POLICIA">Policía</option>
+                            <option value="FUERZA_AEREA">Fuerza AÃ©rea</option>
+                            <option value="POLICIA">PolicÃ­a</option>
                             <option value="OTRA">Otra</option>
                           </select>
                         </div>
@@ -2049,7 +2049,7 @@ export const ApplicationWizardPage: React.FC = () => {
               )}
             </div>
 
-            {/* 2. Experiencia Laboral Dinámica - Pregunta Progresiva */}
+            {/* 2. Experiencia Laboral DinÃ¡mica - Pregunta Progresiva */}
             {requiresExperience && (
               <div style={{ borderBottom: '1px solid rgba(220, 38, 38, 0.2)', paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
                 <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
@@ -2074,7 +2074,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     <CheckCircle2 size={20} />
                     <div>
                       <span style={{ fontWeight: 700 }}>Encontramos {experiences.filter(e => e.company).length} experiencia{experiences.filter(e => e.company).length !== 1 ? 's' : ''} en tu CV.</span>
-                      <span style={{ color: '#aaa', marginLeft: '0.5rem' }}>Puedes editarla o agregar más.</span>
+                      <span style={{ color: '#aaa', marginLeft: '0.5rem' }}>Puedes editarla o agregar mÃ¡s.</span>
                     </div>
                   </div>
                 )}
@@ -2082,14 +2082,14 @@ export const ApplicationWizardPage: React.FC = () => {
                 {/* Pregunta inicial progresiva - Solo si no hay experiencia del CV */}
                 {(method !== 'upload_cv' || !experiences.some(e => e.company)) && (
                   <div style={{ 
-                    background: '#0a0a0a', 
+                    background: '#f5f5f7', 
                     border: '1px solid rgba(220, 38, 38, 0.2)', 
                     borderRadius: '12px', 
                     padding: '1.25rem', 
                     marginBottom: '1.5rem' 
                   }}>
                     <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
-                      ¿Has trabajado anteriormente?
+                      Â¿Has trabajado anteriormente?
                     </label>
                     <div style={{ display: 'flex', gap: '0.75rem' }}>
                       <button
@@ -2105,13 +2105,13 @@ export const ApplicationWizardPage: React.FC = () => {
                           fontSize: '0.9rem',
                           fontWeight: 600,
                           borderRadius: '6px',
-                          background: experiences.some(e => e.company) ? '#DC2626' : '#1a1a1a',
-                          border: experiences.some(e => e.company) ? '1px solid #DC2626' : '1px solid rgba(255,255,255,0.1)',
+                          background: experiences.some(e => e.company) ? '#DC2626' : '#e8e8f0',
+                          border: experiences.some(e => e.company) ? '1px solid #DC2626' : '1px solid rgba(100,100,100,0.1)',
                           color: experiences.some(e => e.company) ? '#fff' : '#ccc',
                           cursor: 'pointer'
                         }}
                       >
-                        SÍ
+                        SÃ
                       </button>
                       <button
                         type="button"
@@ -2124,9 +2124,9 @@ export const ApplicationWizardPage: React.FC = () => {
                           fontSize: '0.9rem',
                           fontWeight: 600,
                           borderRadius: '6px',
-                          background: !experiences.some(e => e.company) ? '#34d399' : '#1a1a1a',
-                          border: !experiences.some(e => e.company) ? '1px solid #34d399' : '1px solid rgba(255,255,255,0.1)',
-                          color: !experiences.some(e => e.company) ? '#080808' : '#ccc',
+                          background: !experiences.some(e => e.company) ? '#34d399' : '#e8e8f0',
+                          border: !experiences.some(e => e.company) ? '1px solid #34d399' : '1px solid rgba(100,100,100,0.1)',
+                          color: !experiences.some(e => e.company) ? '#f5f5f7' : '#ccc',
                           cursor: 'pointer'
                         }}
                       >
@@ -2136,7 +2136,7 @@ export const ApplicationWizardPage: React.FC = () => {
                   </div>
                 )}
 
-                {/* Formulario de experiencia - solo si respondió SÍ o viene de CV */}
+                {/* Formulario de experiencia - solo si respondiÃ³ SÃ o viene de CV */}
                 {experiences.some(e => e.company) && (
                   <>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
@@ -2241,7 +2241,7 @@ export const ApplicationWizardPage: React.FC = () => {
                                 checked={exp.current} 
                                 onChange={(e) => handleUpdateExperience(originalIndex, 'current', e.target.checked)} 
                               />
-                              <span>Actualmente trabajo aquí</span>
+                              <span>Actualmente trabajo aquÃ­</span>
                             </label>
                           </div>
 
@@ -2251,7 +2251,7 @@ export const ApplicationWizardPage: React.FC = () => {
                               type="text"
                               value={exp.functions}
                               onChange={(e) => handleUpdateExperience(originalIndex, 'functions', e.target.value)}
-                              placeholder="Control de accesos, vigilancia perimétrica y rondas"
+                              placeholder="Control de accesos, vigilancia perimÃ©trica y rondas"
                             />
                           </div>
                         </div>
@@ -2266,7 +2266,7 @@ export const ApplicationWizardPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', marginTop: '2rem' }}>
               <button type="button" className="btn-secondary" onClick={() => setStep(2)}>
                 <ArrowLeft size={16} />
-                <span>Atrás</span>
+                <span>AtrÃ¡s</span>
               </button>
               <button
                 type="button"
@@ -2282,13 +2282,13 @@ export const ApplicationWizardPage: React.FC = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             PASO 4: EXPEDIENTE DIGITAL DEL POSTULANTE
-        ══════════════════════════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 4 && (
           <div
             style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.25)',
               borderRadius: '20px',
               padding: '2.5rem 2rem',
@@ -2296,10 +2296,10 @@ export const ApplicationWizardPage: React.FC = () => {
           >
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Paso 4 de 5 • Expediente Digital
+                Paso 4 de 5 â€¢ Expediente Digital
               </span>
               <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase' }}>
-                📂 Completa tu Expediente
+                ðŸ“‚ Completa tu Expediente
               </h2>
               <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '0.25rem' }}>
                 Para esta convocatoria necesitamos los siguientes documentos:
@@ -2333,7 +2333,7 @@ export const ApplicationWizardPage: React.FC = () => {
                 
                 {/* Barra de progreso */}
                 <div style={{ 
-                  background: 'rgba(255, 255, 255, 0.1)', 
+                  background: '#d8d8e0', 
                   borderRadius: '8px', 
                   height: '12px', 
                   overflow: 'hidden',
@@ -2353,7 +2353,7 @@ export const ApplicationWizardPage: React.FC = () => {
                   display: 'flex', 
                   gap: '2rem', 
                   paddingTop: '1rem', 
-                  borderTop: '1px solid rgba(255, 255, 255, 0.1)' 
+                  borderTop: '1px solid #d8d8e0' 
                 }}>
                   <div>
                     <span style={{ color: '#34d399', fontSize: '0.75rem', textTransform: 'uppercase' }}>
@@ -2396,7 +2396,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     gap: '0.5rem', 
                     marginBottom: '1rem' 
                   }}>
-                    <span style={{ color: '#dc2626', fontSize: '1.2rem' }}>🔴</span>
+                    <span style={{ color: '#dc2626', fontSize: '1.2rem' }}>ðŸ”´</span>
                     <h3 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>
                       OBLIGATORIOS
                     </h3>
@@ -2429,7 +2429,7 @@ export const ApplicationWizardPage: React.FC = () => {
                       gap: '0.5rem', 
                       marginBottom: '1rem' 
                     }}>
-                      <span style={{ color: '#34d399', fontSize: '1.2rem' }}>🟢</span>
+                      <span style={{ color: '#34d399', fontSize: '1.2rem' }}>ðŸŸ¢</span>
                       <h3 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>
                         ADICIONALES
                       </h3>
@@ -2462,13 +2462,13 @@ export const ApplicationWizardPage: React.FC = () => {
                   const isUploading = uploadProgress[docItem.type];
                   
                   // Estado visual
-                  let statusIndicator = '🟡 PENDIENTE';
+                  let statusIndicator = 'ðŸŸ¡ PENDIENTE';
                   let statusColor = '#fbbf24';
                   let statusBg = 'rgba(251, 191, 36, 0.1)';
                   let statusBorder = 'rgba(251, 191, 36, 0.3)';
                   
                   if (isUploaded) {
-                    statusIndicator = '🟢 RECIBIDO';
+                    statusIndicator = 'ðŸŸ¢ RECIBIDO';
                     statusColor = '#34d399';
                     statusBg = 'rgba(16, 185, 129, 0.1)';
                     statusBorder = 'rgba(16, 185, 129, 0.3)';
@@ -2547,8 +2547,8 @@ export const ApplicationWizardPage: React.FC = () => {
                           alignItems: 'center', 
                           justifyContent: 'center',
                           gap: '0.5rem',
-                          background: 'rgba(255, 255, 255, 0.05)', 
-                          border: '1px solid rgba(255, 255, 255, 0.1)', 
+                          background: '#e8e8f0', 
+                          border: '1px solid #d8d8e0', 
                           borderRadius: '8px', 
                           padding: '0.6rem 1rem',
                           fontSize: '0.85rem',
@@ -2556,8 +2556,8 @@ export const ApplicationWizardPage: React.FC = () => {
                           color: '#ffffff',
                           cursor: 'pointer',
                           transition: 'all 0.2s ease',
-                        }} onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
-                           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}>
+                        }} onMouseEnter={(e) => e.currentTarget.style.background = '#d8d8e0'}
+                           onMouseLeave={(e) => e.currentTarget.style.background = '#e8e8f0'}>
                           <Upload size={16} />
                           <span>{isUploading ? 'Subiendo...' : 'Subir Archivo'}</span>
                           <input
@@ -2579,7 +2579,7 @@ export const ApplicationWizardPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
               <button type="button" className="btn-secondary" onClick={() => setStep(3)}>
                 <ArrowLeft size={16} />
-                <span>Atrás</span>
+                <span>AtrÃ¡s</span>
               </button>
               <button
                 type="button"
@@ -2598,7 +2598,7 @@ export const ApplicationWizardPage: React.FC = () => {
           </div>
         )}
 
-        {/* Modal de Confirmación de Clasificación */}
+        {/* Modal de ConfirmaciÃ³n de ClasificaciÃ³n */}
         {classificationModal && (
           <div style={{
             position: 'fixed',
@@ -2613,7 +2613,7 @@ export const ApplicationWizardPage: React.FC = () => {
             zIndex: 1000,
           }}>
             <div style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.3)',
               borderRadius: '16px',
               padding: '2rem',
@@ -2634,7 +2634,7 @@ export const ApplicationWizardPage: React.FC = () => {
                   <HelpCircle size={30} color="#fbbf24" />
                 </div>
                 <h3 style={{ color: '#ffffff', fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
-                  ¿Confirmar tipo de documento?
+                  Â¿Confirmar tipo de documento?
                 </h3>
                 <p style={{ color: '#888', fontSize: '0.9rem', margin: 0 }}>
                   El sistema sugiere que este documento es:
@@ -2668,7 +2668,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     border: '1px solid #34d399',
                     borderRadius: '8px',
                     padding: '0.75rem 1rem',
-                    color: '#080808',
+                    color: '#f5f5f7',
                     fontSize: '0.9rem',
                     fontWeight: 700,
                     cursor: 'pointer',
@@ -2684,8 +2684,8 @@ export const ApplicationWizardPage: React.FC = () => {
                 <button
                   onClick={() => setClassificationModal(null)}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: '#e8e8f0',
+                    border: '1px solid #d8d8e0',
                     borderRadius: '8px',
                     padding: '0.75rem 1rem',
                     color: '#ffffff',
@@ -2694,8 +2694,8 @@ export const ApplicationWizardPage: React.FC = () => {
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#d8d8e0'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#e8e8f0'}
                 >
                   Cambiar Tipo Manualmente
                 </button>
@@ -2719,13 +2719,13 @@ export const ApplicationWizardPage: React.FC = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════════════════════
-            PASO 5: REVISIÓN, PREEVALUACIÓN Y CONFIRMACIÓN
-        ══════════════════════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            PASO 5: REVISIÃ“N, PREEVALUACIÃ“N Y CONFIRMACIÃ“N
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 5 && (
           <div
             style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.25)',
               borderRadius: '20px',
               padding: '2.5rem 2rem',
@@ -2733,22 +2733,22 @@ export const ApplicationWizardPage: React.FC = () => {
           >
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#dc2626', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Paso 5 de 5 • Revisión Final
+                Paso 5 de 5 â€¢ RevisiÃ³n Final
               </span>
               <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2rem', fontWeight: 900, color: '#ffffff', textTransform: 'uppercase' }}>
-                Revisa tu Postulación
+                Revisa tu PostulaciÃ³n
               </h2>
               <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '0.25rem' }}>
-                Verifica tus datos antes de enviar la postulación a Security Force P&V.
+                Verifica tus datos antes de enviar la postulaciÃ³n a Security Force P&V.
               </p>
             </div>
 
-            {/* Preevaluación de Compatibilidad FitScore */}
+            {/* PreevaluaciÃ³n de Compatibilidad FitScore */}
             <div
               style={{
                 background: `
                   radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 60%),
-                  #101010
+                  #f5f5f7
                 `,
                 border: '1px solid rgba(16, 185, 129, 0.3)',
                 borderRadius: '16px',
@@ -2768,7 +2768,7 @@ export const ApplicationWizardPage: React.FC = () => {
               <p style={{ fontSize: '0.8rem', color: '#aaa', lineHeight: 1.5, margin: 0 }}>
                 {fitScoreData?.isEligible !== false
                   ? `Tu perfil cumple con los requisitos principales de estatura, SUCAMEC y experiencia solicitados para ${opening?.title}.`
-                  : `Atención: Revisa los requisitos de la vacante. Algunos requisitos eliminatorios podrían requerir convalidación.`}
+                  : `AtenciÃ³n: Revisa los requisitos de la vacante. Algunos requisitos eliminatorios podrÃ­an requerir convalidaciÃ³n.`}
               </p>
             </div>
 
@@ -2784,12 +2784,12 @@ export const ApplicationWizardPage: React.FC = () => {
                   <p style={{ color: '#fff', fontWeight: 700 }}>{docNumber}</p>
                 </div>
                 <div>
-                  <span style={{ color: '#888', fontSize: '0.72rem' }}>WhatsApp / Teléfono:</span>
+                  <span style={{ color: '#888', fontSize: '0.72rem' }}>WhatsApp / TelÃ©fono:</span>
                   <p style={{ color: '#34d399', fontWeight: 700 }}>{phone}</p>
                 </div>
                 <div>
                   <span style={{ color: '#888', fontSize: '0.72rem' }}>SUCAMEC:</span>
-                  <p style={{ color: '#fff', fontWeight: 700 }}>{sucamecStatus === 'valid' ? '🟢 Carné Vigente' : sucamecStatus}</p>
+                  <p style={{ color: '#fff', fontWeight: 700 }}>{sucamecStatus === 'valid' ? 'ðŸŸ¢ CarnÃ© Vigente' : sucamecStatus}</p>
                 </div>
                 <div>
                   <span style={{ color: '#888', fontSize: '0.72rem' }}>Estatura:</span>
@@ -2802,7 +2802,7 @@ export const ApplicationWizardPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Declaración Jurada y Consentimiento LOPD */}
+            {/* DeclaraciÃ³n Jurada y Consentimiento LOPD */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
               <div style={{ background: 'rgba(220, 38, 38, 0.08)', border: '1px solid rgba(220, 38, 38, 0.3)', borderRadius: '12px', padding: '1.25rem' }}>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', cursor: 'pointer' }}>
@@ -2813,7 +2813,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     style={{ marginTop: '3px', accentColor: '#dc2626' }}
                   />
                   <span style={{ fontSize: '0.85rem', color: '#eee', lineHeight: 1.5 }}>
-                    <strong>Declaración Jurada:</strong> Confirmo bajo juramento que toda la información ingresada y los documentos adjuntos son legítimos y verídicos. Autorizo a Security Force P&V a verificar mis antecedentes.
+                    <strong>DeclaraciÃ³n Jurada:</strong> Confirmo bajo juramento que toda la informaciÃ³n ingresada y los documentos adjuntos son legÃ­timos y verÃ­dicos. Autorizo a Security Force P&V a verificar mis antecedentes.
                   </span>
                 </label>
               </div>
@@ -2827,7 +2827,7 @@ export const ApplicationWizardPage: React.FC = () => {
                     style={{ marginTop: '3px', accentColor: '#3b82f6' }}
                   />
                   <span style={{ fontSize: '0.85rem', color: '#eee', lineHeight: 1.5 }}>
-                    <strong>Consentimiento LOPD (Ley N° 29733):</strong> Autorizo el tratamiento de mis datos personales para fines de postulación, evaluación y selección por parte de Security Force P&V S.A.C.
+                    <strong>Consentimiento LOPD (Ley NÂ° 29733):</strong> Autorizo el tratamiento de mis datos personales para fines de postulaciÃ³n, evaluaciÃ³n y selecciÃ³n por parte de Security Force P&V S.A.C.
                   </span>
                 </label>
               </div>
@@ -2837,7 +2837,7 @@ export const ApplicationWizardPage: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
               <button type="button" className="btn-secondary" onClick={() => setStep(4)}>
                 <ArrowLeft size={16} />
-                <span>Atrás</span>
+                <span>AtrÃ¡s</span>
               </button>
               <button
                 type="button"
@@ -2846,28 +2846,28 @@ export const ApplicationWizardPage: React.FC = () => {
                 disabled={actionLoading || !confirmedTruth}
                 style={{ padding: '0.95rem 2.25rem', fontSize: '1.05rem', letterSpacing: '0.06em' }}
               >
-                <span>{actionLoading ? 'ENVIANDO...' : 'ENVIAR MI POSTULACIÓN AHORA'}</span>
+                <span>{actionLoading ? 'ENVIANDO...' : 'ENVIAR MI POSTULACIÃ“N AHORA'}</span>
                 <CheckCircle2 size={18} />
               </button>
             </div>
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════════════════════
-            PASO 6: ÉXITO Y CÓDIGO OFICIAL DE SEGUIMIENTO
-        ══════════════════════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            PASO 6: Ã‰XITO Y CÃ“DIGO OFICIAL DE SEGUIMIENTO
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {step === 6 && (
           <div
             style={{
               background: `
                 radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.15) 0%, transparent 70%),
-                #0d0d0d
+                #f5f5f7
               `,
               border: '1px solid rgba(220, 38, 38, 0.4)',
               borderRadius: '24px',
               padding: '3rem 2rem',
               textAlign: 'center',
-              boxShadow: '0 30px 80px rgba(0,0,0,0.9)',
+              boxShadow: '0 30px 80px rgba(100,100,100,0.9)',
             }}
           >
             {/* Success Icon */}
@@ -2898,11 +2898,11 @@ export const ApplicationWizardPage: React.FC = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              ¡POSTULACIÓN RECIBIDA CON ÉXITO!
+              Â¡POSTULACIÃ“N RECIBIDA CON Ã‰XITO!
             </h1>
 
             <p style={{ fontSize: '0.95rem', color: '#ccc', maxWidth: '540px', margin: '0 auto 2rem', lineHeight: 1.5 }}>
-              Gracias por postular a <strong>{opening?.title}</strong>. Tu postulación ha ingresado directamente a la bandeja de nuestro equipo de Selección.
+              Gracias por postular a <strong>{opening?.title}</strong>. Tu postulaciÃ³n ha ingresado directamente a la bandeja de nuestro equipo de SelecciÃ³n.
             </p>
 
             {/* Official Code Card */}
@@ -2918,7 +2918,7 @@ export const ApplicationWizardPage: React.FC = () => {
               }}
             >
               <span style={{ fontSize: '0.75rem', color: '#888', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-                Tu Código Oficial de Postulación
+                Tu CÃ³digo Oficial de PostulaciÃ³n
               </span>
               <div
                 style={{
@@ -2933,7 +2933,7 @@ export const ApplicationWizardPage: React.FC = () => {
                 {applicationCode}
               </div>
               <p style={{ fontSize: '0.78rem', color: '#aaa' }}>
-                Guarda este código. Lo necesitarás para consultar el estado de tu evaluación en <strong>/postular/consultar</strong>.
+                Guarda este cÃ³digo. Lo necesitarÃ¡s para consultar el estado de tu evaluaciÃ³n en <strong>/postular/consultar</strong>.
               </p>
             </div>
 
@@ -2953,7 +2953,7 @@ export const ApplicationWizardPage: React.FC = () => {
                 className="btn-primary"
                 style={{ width: '100%', padding: '0.95rem', fontSize: '1rem' }}
               >
-                Ver Más Convocatorias
+                Ver MÃ¡s Convocatorias
               </button>
             </div>
           </div>
@@ -2962,3 +2962,6 @@ export const ApplicationWizardPage: React.FC = () => {
     </div>
   );
 };
+
+
+

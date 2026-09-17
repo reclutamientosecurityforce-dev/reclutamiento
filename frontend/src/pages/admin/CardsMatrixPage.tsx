@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../api/client';
 import { ConfirmUseModal } from '../../components/ConfirmUseModal';
@@ -134,13 +134,13 @@ export const CardsMatrixPage: React.FC = () => {
   const getStatusBadge = (status: CardItem['status']) => {
     switch (status) {
       case 'available':
-        return <span className="badge badge-available">🟢 Disponible</span>;
+        return <span className="badge badge-available">ðŸŸ¢ Disponible</span>;
       case 'reserved':
-        return <span className="badge badge-reserved">🟡 Reservada</span>;
+        return <span className="badge badge-reserved">ðŸŸ¡ Reservada</span>;
       case 'used':
-        return <span className="badge badge-used">🔴 Utilizada</span>;
+        return <span className="badge badge-used">ðŸ”´ Utilizada</span>;
       case 'cancelled':
-        return <span className="badge badge-cancelled">⚫ Anulada</span>;
+        return <span className="badge badge-cancelled">âš« Anulada</span>;
     }
   };
 
@@ -149,11 +149,11 @@ export const CardsMatrixPage: React.FC = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Matriz de Control de Cartas
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Visualización detallada, uso seguro concurrente y trazabilidad completa
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            VisualizaciÃ³n detallada, uso seguro concurrente y trazabilidad completa
           </p>
         </div>
 
@@ -171,7 +171,7 @@ export const CardsMatrixPage: React.FC = () => {
               style={{
                 padding: '0.45rem 0.75rem',
                 background: viewMode === 'grid' ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-                color: viewMode === 'grid' ? '#818cf8' : '#94a3b8',
+                color: viewMode === 'grid' ? '#818cf8' : '#666666',
                 borderRadius: 'var(--radius-sm)',
               }}
             >
@@ -182,7 +182,7 @@ export const CardsMatrixPage: React.FC = () => {
               style={{
                 padding: '0.45rem 0.75rem',
                 background: viewMode === 'table' ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-                color: viewMode === 'table' ? '#818cf8' : '#94a3b8',
+                color: viewMode === 'table' ? '#818cf8' : '#666666',
                 borderRadius: 'var(--radius-sm)',
               }}
             >
@@ -192,7 +192,7 @@ export const CardsMatrixPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── CONTROLES DE BÚSQUEDA Y FILTROS ─────────────────────────────────── */}
+      {/* â”€â”€â”€ CONTROLES DE BÃšSQUEDA Y FILTROS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         className="glass-panel"
         style={{
@@ -208,10 +208,10 @@ export const CardsMatrixPage: React.FC = () => {
         {/* Exact search */}
         <form onSubmit={handleSearchSubmit} style={{ display: 'flex', gap: '0.5rem', flex: '1 1 300px' }}>
           <div style={{ position: 'relative', width: '100%' }}>
-            <Search size={18} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+            <Search size={18} style={{ position: 'absolute', left: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: '#0f1419' }} />
             <input
               type="text"
-              placeholder="Buscar por número exacto (ej: 573)..."
+              placeholder="Buscar por nÃºmero exacto (ej: 573)..."
               value={exactSearch}
               onChange={(e) => setExactSearch(e.target.value)}
               style={{ width: '100%', paddingLeft: '2.5rem' }}
@@ -237,7 +237,7 @@ export const CardsMatrixPage: React.FC = () => {
         {/* Filters */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Filter size={16} color="#94a3b8" />
+            <Filter size={16} color="#666666" />
             <select
               value={statusFilter}
               onChange={(e) => {
@@ -247,15 +247,15 @@ export const CardsMatrixPage: React.FC = () => {
               style={{ minWidth: '150px' }}
             >
               <option value="">Todos los Estados</option>
-              <option value="available">🟢 Disponibles</option>
-              <option value="used">🔴 Utilizadas</option>
-              <option value="reserved">🟡 Reservadas</option>
-              <option value="cancelled">⚫ Anuladas</option>
+              <option value="available">ðŸŸ¢ Disponibles</option>
+              <option value="used">ðŸ”´ Utilizadas</option>
+              <option value="reserved">ðŸŸ¡ Reservadas</option>
+              <option value="cancelled">âš« Anuladas</option>
             </select>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Por página:</span>
+            <span style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>Por pÃ¡gina:</span>
             <select
               value={pagination.limit}
               onChange={(e) => setPagination((prev) => ({ ...prev, limit: Number(e.target.value), page: 1 }))}
@@ -274,15 +274,15 @@ export const CardsMatrixPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── VISTA CUADRÍCULA / TABLA ───────────────────────────────────────── */}
+      {/* â”€â”€â”€ VISTA CUADRÃCULA / TABLA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {loading ? (
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#94a3b8' }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#1a1a1a' }}>
           Cargando cartas...
         </div>
       ) : cards.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#64748b' }}>
+        <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', color: '#0f1419' }}>
           <p style={{ fontSize: '1.1rem', fontWeight: 600 }}>No se encontraron cartas</p>
-          <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Ajusta los filtros o busca otro número</p>
+          <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Ajusta los filtros o busca otro nÃºmero</p>
         </div>
       ) : viewMode === 'grid' ? (
         /* GRID VIEW */
@@ -318,12 +318,12 @@ export const CardsMatrixPage: React.FC = () => {
                   fontSize: '1.85rem',
                   fontWeight: 800,
                   fontFamily: 'var(--font-heading)',
-                  color: '#f8fafc',
+                  color: '#1a1a1a',
                   letterSpacing: '-0.02em',
                   marginBottom: '0.5rem',
                 }}
               >
-                N.º {card.number}
+                N.Âº {card.number}
               </div>
 
               {/* Status Badge */}
@@ -331,8 +331,8 @@ export const CardsMatrixPage: React.FC = () => {
 
               {/* Responsible user if used */}
               {card.used_by_name && (
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.75rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
-                  👤 {card.used_by_name}
+                <div style={{ fontSize: '0.75rem', color: '#1a1a1a', marginBottom: '0.75rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
+                  ðŸ‘¤ {card.used_by_name}
                 </div>
               )}
 
@@ -389,7 +389,7 @@ export const CardsMatrixPage: React.FC = () => {
                   style={{
                     padding: '0.45rem 0.55rem',
                     background: 'var(--bg-surface-elevated)',
-                    color: '#94a3b8',
+                    color: '#1a1a1a',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-sm)',
                     fontSize: '0.75rem',
@@ -407,8 +407,8 @@ export const CardsMatrixPage: React.FC = () => {
         <div className="glass-panel" style={{ overflowX: 'auto', marginBottom: '2rem' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '1rem 1.25rem' }}>Número</th>
+              <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: '1rem 1.25rem' }}>NÃºmero</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Estado</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Responsable</th>
                 <th style={{ padding: '1rem 1.25rem' }}>Fecha de Uso</th>
@@ -422,17 +422,17 @@ export const CardsMatrixPage: React.FC = () => {
                   key={card.id}
                   style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.04)', transition: 'background 0.15s ease' }}
                 >
-                  <td style={{ padding: '1rem 1.25rem', fontWeight: 800, fontSize: '1.05rem', color: '#f8fafc' }}>
-                    N.º {card.number}
+                  <td style={{ padding: '1rem 1.25rem', fontWeight: 800, fontSize: '1.05rem', color: '#1a1a1a' }}>
+                    N.Âº {card.number}
                   </td>
                   <td style={{ padding: '1rem 1.25rem' }}>{getStatusBadge(card.status)}</td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#cbd5e1' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a' }}>
                     {card.used_by_name || card.reserved_by_name || '-'}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', fontSize: '0.8rem' }}>
                     {card.used_at ? new Date(card.used_at).toLocaleString('es-PE') : '-'}
                   </td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#94a3b8', maxWidth: '250px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <td style={{ padding: '1rem 1.25rem', color: '#1a1a1a', maxWidth: '250px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {card.observations || '-'}
                   </td>
                   <td style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>
@@ -472,7 +472,7 @@ export const CardsMatrixPage: React.FC = () => {
         </div>
       )}
 
-      {/* ─── PAGINACIÓN ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ PAGINACIÃ“N â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         style={{
           display: 'flex',
@@ -482,8 +482,8 @@ export const CardsMatrixPage: React.FC = () => {
           borderTop: '1px solid var(--border-subtle)',
         }}
       >
-        <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-          Mostrando página {pagination.page} de {pagination.totalPages} ({pagination.total} cartas en total)
+        <span style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+          Mostrando pÃ¡gina {pagination.page} de {pagination.totalPages} ({pagination.total} cartas en total)
         </span>
 
         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -508,7 +508,7 @@ export const CardsMatrixPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── MODALS ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ MODALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedCardForUse && (
         <ConfirmUseModal
           isOpen={true}
@@ -541,3 +541,7 @@ export const CardsMatrixPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

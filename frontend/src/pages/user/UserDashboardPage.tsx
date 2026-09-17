@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../api/client';
@@ -62,7 +62,7 @@ export const UserDashboardPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ padding: '3rem', textAlign: 'center', color: '#94a3b8' }}>
+      <div style={{ padding: '3rem', textAlign: 'center', color: '#1a1a1a' }}>
         Cargando resumen de usuario...
       </div>
     );
@@ -90,11 +90,11 @@ export const UserDashboardPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
             Bienvenido, {user?.fullName || user?.username}
           </h1>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-            Panel de control operativo — Security Force S.A.C.
+          <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+            Panel de control operativo â€” Security Force S.A.C.
           </p>
         </div>
 
@@ -105,11 +105,11 @@ export const UserDashboardPage: React.FC = () => {
           style={{ padding: '0.85rem 1.75rem', fontSize: '1rem', boxShadow: '0 4px 20px rgba(79, 70, 229, 0.4)' }}
         >
           <CreditCard size={20} />
-          <span>IR A LA MATRIZ DE CARTAS →</span>
+          <span>IR A LA MATRIZ DE CARTAS â†’</span>
         </button>
       </div>
 
-      {/* ─── MIS INDICADORES ─────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ MIS INDICADORES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         style={{
           display: 'grid',
@@ -127,31 +127,31 @@ export const UserDashboardPage: React.FC = () => {
           <div className="stat-value" style={{ color: '#34d399' }}>
             {data?.summary?.available ?? 0}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Listas para emisión</span>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>Listas para emisiÃ³n</span>
         </div>
 
-        {/* Cartas Utilizadas por Mí */}
+        {/* Cartas Utilizadas por MÃ­ */}
         <div className="stat-card" style={{ borderLeft: '4px solid #6366f1' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="stat-label">Utilizadas por Mí</span>
+            <span className="stat-label">Utilizadas por MÃ­</span>
             <CreditCard size={20} color="#818cf8" />
           </div>
           <div className="stat-value" style={{ color: '#818cf8' }}>
             {data?.summary?.used_by_me ?? 0}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Mis emisiones</span>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>Mis emisiones</span>
         </div>
 
-        {/* Última Carta Utilizada */}
+        {/* Ãšltima Carta Utilizada */}
         <div className="stat-card" style={{ borderLeft: '4px solid #f59e0b' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="stat-label">Última Utilizada</span>
+            <span className="stat-label">Ãšltima Utilizada</span>
             <Clock size={20} color="#f59e0b" />
           </div>
           <div className="stat-value" style={{ color: '#fbbf24' }}>
-            {data?.summary?.last_used_number ? `N.º ${data.summary.last_used_number}` : 'Ninguna'}
+            {data?.summary?.last_used_number ? `N.Âº ${data.summary.last_used_number}` : 'Ninguna'}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>
             {data?.summary?.last_used_at
               ? new Date(data.summary.last_used_at).toLocaleDateString('es-PE')
               : 'Sin registros'}
@@ -167,18 +167,18 @@ export const UserDashboardPage: React.FC = () => {
           <div className="stat-value" style={{ color: '#38bdf8', fontSize: '1.75rem' }}>
             {data?.currentRange ? `${data.currentRange.range_start} - ${data.currentRange.range_end}` : 'N/A'}
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
+          <span style={{ fontSize: '0.75rem', color: '#0f1419' }}>
             {data?.currentRange?.name || 'Rango asignado'}
           </span>
         </div>
       </div>
 
-      {/* ─── ACTIVIDAD RECIENTE (MIS ÚLTIMAS CARTAS) ─────────────────────────── */}
+      {/* â”€â”€â”€ ACTIVIDAD RECIENTE (MIS ÃšLTIMAS CARTAS) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="glass-panel" style={{ padding: '1.75rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <FileText size={20} color="#818cf8" />
-            <h3 style={{ fontSize: '1.1rem', color: '#f8fafc' }}>Mis Cartas Utilizadas Recientes</h3>
+            <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a' }}>Mis Cartas Utilizadas Recientes</h3>
           </div>
           <button
             onClick={() => navigate('/app/cartas')}
@@ -198,8 +198,8 @@ export const UserDashboardPage: React.FC = () => {
         </div>
 
         {(!data?.recentCards || data.recentCards.length === 0) ? (
-          <div style={{ padding: '2.5rem', textAlign: 'center', color: '#64748b' }}>
-            <p>Aún no has utilizado ninguna carta de numeración.</p>
+          <div style={{ padding: '2.5rem', textAlign: 'center', color: '#0f1419' }}>
+            <p>AÃºn no has utilizado ninguna carta de numeraciÃ³n.</p>
             <button
               className="btn-primary"
               onClick={() => navigate('/app/cartas')}
@@ -212,12 +212,12 @@ export const UserDashboardPage: React.FC = () => {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  <th style={{ padding: '0.75rem 1rem' }}>Número</th>
+                <tr style={{ borderBottom: '1px solid var(--border-subtle)', color: '#1a1a1a', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <th style={{ padding: '0.75rem 1rem' }}>NÃºmero</th>
                   <th style={{ padding: '0.75rem 1rem' }}>Fecha</th>
                   <th style={{ padding: '0.75rem 1rem' }}>Hora</th>
                   <th style={{ padding: '0.75rem 1rem' }}>Estado</th>
-                  <th style={{ padding: '0.75rem 1rem' }}>Observación</th>
+                  <th style={{ padding: '0.75rem 1rem' }}>ObservaciÃ³n</th>
                 </tr>
               </thead>
               <tbody>
@@ -226,19 +226,19 @@ export const UserDashboardPage: React.FC = () => {
                     key={idx}
                     style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.04)' }}
                   >
-                    <td style={{ padding: '0.85rem 1rem', fontWeight: 800, color: '#f8fafc', fontSize: '1.05rem' }}>
-                      N.º {card.number}
+                    <td style={{ padding: '0.85rem 1rem', fontWeight: 800, color: '#1a1a1a', fontSize: '1.05rem' }}>
+                      N.Âº {card.number}
                     </td>
-                    <td style={{ padding: '0.85rem 1rem', color: '#cbd5e1' }}>
+                    <td style={{ padding: '0.85rem 1rem', color: '#1a1a1a' }}>
                       {new Date(card.used_at).toLocaleDateString('es-PE')}
                     </td>
-                    <td style={{ padding: '0.85rem 1rem', color: '#94a3b8' }}>
+                    <td style={{ padding: '0.85rem 1rem', color: '#1a1a1a' }}>
                       {new Date(card.used_at).toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' })}
                     </td>
                     <td style={{ padding: '0.85rem 1rem' }}>
-                      <span className="badge badge-used">🔴 Utilizada</span>
+                      <span className="badge badge-used">ðŸ”´ Utilizada</span>
                     </td>
-                    <td style={{ padding: '0.85rem 1rem', color: '#94a3b8' }}>
+                    <td style={{ padding: '0.85rem 1rem', color: '#1a1a1a' }}>
                       {card.observations || '-'}
                     </td>
                   </tr>
@@ -251,3 +251,7 @@ export const UserDashboardPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

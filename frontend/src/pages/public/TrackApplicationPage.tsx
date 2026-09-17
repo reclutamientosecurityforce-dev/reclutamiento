@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { api } from '../../api/client';
 import { PublicHeader } from './PublicHeader';
 import {
@@ -50,7 +50,7 @@ export const TrackApplicationPage: React.FC = () => {
       });
       setResult(data);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'No se encontró la postulación.');
+      setError(err instanceof Error ? err.message : 'No se encontrÃ³ la postulaciÃ³n.');
     } finally {
       setLoading(false);
     }
@@ -59,69 +59,69 @@ export const TrackApplicationPage: React.FC = () => {
   const getStageDisplay = (stage: string) => {
     const map: Record<string, { label: string; color: string; desc: string }> = {
       registered: {
-        label: 'Postulación Registrada',
+        label: 'PostulaciÃ³n Registrada',
         color: '#38bdf8',
-        desc: 'Tu postulación ha sido recibida y se encuentra en cola de prefiltro curricular por el equipo de Selección.',
+        desc: 'Tu postulaciÃ³n ha sido recibida y se encuentra en cola de prefiltro curricular por el equipo de SelecciÃ³n.',
       },
       phone_screening: {
-        label: 'En Filtro Telefónico',
+        label: 'En Filtro TelefÃ³nico',
         color: '#818cf8',
-        desc: 'Un reclutador revisará tu perfil y podría contactarte vía WhatsApp o llamada para validar tu disponibilidad.',
+        desc: 'Un reclutador revisarÃ¡ tu perfil y podrÃ­a contactarte vÃ­a WhatsApp o llamada para validar tu disponibilidad.',
       },
       psychological_eval: {
-        label: 'Evaluación Psicológica',
+        label: 'EvaluaciÃ³n PsicolÃ³gica',
         color: '#fbbf24',
-        desc: 'En proceso de pruebas psicotécnicas y evaluación de perfil de seguridad.',
+        desc: 'En proceso de pruebas psicotÃ©cnicas y evaluaciÃ³n de perfil de seguridad.',
       },
       background_check: {
-        label: 'Verificación de Antecedentes',
+        label: 'VerificaciÃ³n de Antecedentes',
         color: '#f59e0b',
-        desc: 'Validando antecedentes policiales, judiciales, penales y carné SUCAMEC.',
+        desc: 'Validando antecedentes policiales, judiciales, penales y carnÃ© SUCAMEC.',
       },
       interview: {
-        label: 'Entrevista de Selección',
+        label: 'Entrevista de SelecciÃ³n',
         color: '#a855f7',
-        desc: 'Tienes una entrevista asignada o en proceso de coordinación con nuestro equipo.',
+        desc: 'Tienes una entrevista asignada o en proceso de coordinaciÃ³n con nuestro equipo.',
       },
       medical_exam: {
-        label: 'Examen Médico Ocupacional',
+        label: 'Examen MÃ©dico Ocupacional',
         color: '#f43f5e',
-        desc: 'Etapa de evaluación médica ocupacional previa a la contratación.',
+        desc: 'Etapa de evaluaciÃ³n mÃ©dica ocupacional previa a la contrataciÃ³n.',
       },
       approved: {
-        label: '🟢 APROBADO APTO',
+        label: 'ðŸŸ¢ APROBADO APTO',
         color: '#34d399',
-        desc: '¡Felicitaciones! Has aprobado todas las etapas y te encuentras apto para asignación y contratación a la unidad.',
+        desc: 'Â¡Felicitaciones! Has aprobado todas las etapas y te encuentras apto para asignaciÃ³n y contrataciÃ³n a la unidad.',
       },
       hired: {
-        label: '🟣 CONTRATADO',
+        label: 'ðŸŸ£ CONTRATADO',
         color: '#c084fc',
         desc: 'Ingreso confirmado a planilla directa de Security Force P&V S.A.C.',
       },
       rejected: {
-        label: '🔴 Proceso Concluido',
+        label: 'ðŸ”´ Proceso Concluido',
         color: '#ef4444',
-        desc: 'Tu postulación no continuará en esta convocatoria, pero tu perfil queda en nuestra base de datos para futuros requerimientos.',
+        desc: 'Tu postulaciÃ³n no continuarÃ¡ en esta convocatoria, pero tu perfil queda en nuestra base de datos para futuros requerimientos.',
       },
     };
 
-    return map[stage] || { label: stage, color: '#aaa', desc: 'En revisión por el área de Recursos Humanos.' };
+    return map[stage] || { label: stage, color: '#aaa', desc: 'En revisiÃ³n por el Ã¡rea de Recursos Humanos.' };
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: '#ffffff' }}>
+    <div style={{ minHeight: '100vh', background: '#f5f5f7', color: '#ffffff' }}>
       <PublicHeader showBackToJobs />
 
       <main style={{ maxWidth: '680px', margin: '0 auto', padding: '3rem 1.5rem 5rem' }}>
         {/* Search Card */}
         <div
           style={{
-            background: '#0d0d0d',
+            background: '#f5f5f7',
             border: '1px solid rgba(220, 38, 38, 0.25)',
             borderRadius: '20px',
             padding: '2.5rem 2rem',
             marginBottom: '2rem',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.85)',
+            boxShadow: '0 20px 60px rgba(100,100,100,0.85)',
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -149,10 +149,10 @@ export const TrackApplicationPage: React.FC = () => {
                 textTransform: 'uppercase',
               }}
             >
-              Consulta el Estado de tu Postulación
+              Consulta el Estado de tu PostulaciÃ³n
             </h1>
             <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '0.25rem' }}>
-              Ingresa tu DNI y el Código Oficial generado al postular (ej: SF-2026-8K42P).
+              Ingresa tu DNI y el CÃ³digo Oficial generado al postular (ej: SF-2026-8K42P).
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export const TrackApplicationPage: React.FC = () => {
           <form onSubmit={handleTrackSubmit}>
             <div style={{ marginBottom: '1.25rem' }}>
               <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.35rem', textTransform: 'uppercase' }}>
-                Número de DNI / Documento <span style={{ color: '#dc2626' }}>*</span>
+                NÃºmero de DNI / Documento <span style={{ color: '#dc2626' }}>*</span>
               </label>
               <input
                 type="text"
@@ -180,7 +180,7 @@ export const TrackApplicationPage: React.FC = () => {
 
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#aaa', marginBottom: '0.35rem', textTransform: 'uppercase' }}>
-                Código de Postulación <span style={{ color: '#dc2626' }}>*</span>
+                CÃ³digo de PostulaciÃ³n <span style={{ color: '#dc2626' }}>*</span>
               </label>
               <input
                 type="text"
@@ -208,11 +208,11 @@ export const TrackApplicationPage: React.FC = () => {
         {result && (
           <div
             style={{
-              background: '#0d0d0d',
+              background: '#f5f5f7',
               border: '1px solid rgba(220, 38, 38, 0.3)',
               borderRadius: '20px',
               padding: '2.5rem 2rem',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.85)',
+              boxShadow: '0 20px 60px rgba(100,100,100,0.85)',
               animation: 'fadeIn 0.3s ease',
             }}
           >
@@ -230,7 +230,7 @@ export const TrackApplicationPage: React.FC = () => {
               </div>
 
               <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '0.75rem', color: '#888' }}>Código:</span>
+                <span style={{ fontSize: '0.75rem', color: '#888' }}>CÃ³digo:</span>
                 <div style={{ fontFamily: "'Barlow Condensed', monospace", fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>
                   {result.applicationCode}
                 </div>
@@ -241,7 +241,7 @@ export const TrackApplicationPage: React.FC = () => {
             <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '1rem 1.25rem', borderRadius: '12px', marginBottom: '1.5rem' }}>
               <span style={{ fontSize: '0.72rem', color: '#888', textTransform: 'uppercase' }}>Convocatoria:</span>
               <h4 style={{ fontSize: '1.1rem', color: '#fff', margin: '0.2rem 0' }}>{result.jobTitle}</h4>
-              <span style={{ fontSize: '0.8rem', color: '#aaa' }}>📍 Sede: {result.jobLocation}</span>
+              <span style={{ fontSize: '0.8rem', color: '#aaa' }}>ðŸ“ Sede: {result.jobLocation}</span>
             </div>
 
             {/* Estado Actual */}
@@ -283,18 +283,18 @@ export const TrackApplicationPage: React.FC = () => {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#c084fc', marginBottom: '0.5rem' }}>
                   <Calendar size={18} />
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700 }}>Entrevista de Selección Programada</h4>
+                  <h4 style={{ fontSize: '1rem', fontWeight: 700 }}>Entrevista de SelecciÃ³n Programada</h4>
                 </div>
                 <div style={{ fontSize: '0.85rem', color: '#eee', lineHeight: 1.6 }}>
                   <p>
-                    📅 <strong>Fecha y Hora:</strong> {new Date(result.scheduledInterview.date).toLocaleString('es-PE')}
+                    ðŸ“… <strong>Fecha y Hora:</strong> {new Date(result.scheduledInterview.date).toLocaleString('es-PE')}
                   </p>
                   <p>
-                    {result.scheduledInterview.locationType === 'virtual' ? '💻 Modalidad: Virtual' : '🏢 Modalidad: Presencial'}
+                    {result.scheduledInterview.locationType === 'virtual' ? 'ðŸ’» Modalidad: Virtual' : 'ðŸ¢ Modalidad: Presencial'}
                   </p>
                   {result.scheduledInterview.notes && (
                     <p style={{ color: '#aaa', fontSize: '0.8rem', marginTop: '0.3rem' }}>
-                      📍 Indicaciones: {result.scheduledInterview.notes}
+                      ðŸ“ Indicaciones: {result.scheduledInterview.notes}
                     </p>
                   )}
                 </div>
@@ -306,3 +306,5 @@ export const TrackApplicationPage: React.FC = () => {
     </div>
   );
 };
+
+

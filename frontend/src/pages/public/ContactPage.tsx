@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PublicHeader } from './PublicHeader';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, MessageCircle, ArrowLeft, ChevronRight } from 'lucide-react';
@@ -16,13 +16,13 @@ export const ContactPage: React.FC = () => {
         const data = await api.get('/public/contact-info');
         setContactData(data);
       } catch (err) {
-        console.error('Error al cargar información de contacto:', err);
+        console.error('Error al cargar informaciÃ³n de contacto:', err);
         // Datos de respaldo en caso de error
         setContactData({
           phone: '+51 1 234 5678',
           whatsapp: '+51 999 888 777',
           email: 'info@securityforce.pe',
-          address: 'Av. Principal 123, Lima, Perú',
+          address: 'Av. Principal 123, Lima, PerÃº',
           hours: 'Lunes a Viernes: 8:00 AM - 6:00 PM',
           facebook_url: 'https://facebook.com/securityforce',
           instagram_url: 'https://instagram.com/securityforce',
@@ -56,7 +56,7 @@ export const ContactPage: React.FC = () => {
       <div style={{ minHeight: '100vh', background: '#FFFFFF' }}>
         <PublicHeader />
         <div style={{ padding: '4rem 2rem', textAlign: 'center', color: '#666' }}>
-          Cargando información de contacto...
+          Cargando informaciÃ³n de contacto...
         </div>
       </div>
     );
@@ -67,7 +67,7 @@ export const ContactPage: React.FC = () => {
       <PublicHeader />
 
       {/* HERO SECTION */}
-      <section style={{ background: '#080808', padding: '4rem 2rem' }}>
+      <section style={{ background: '#f5f5f7', padding: '4rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ width: '60px', height: '3px', background: '#DC2626', marginBottom: '1rem', margin: '0 auto' }} />
           <h1
@@ -84,7 +84,7 @@ export const ContactPage: React.FC = () => {
             CONTACTO
           </h1>
           <p style={{ fontSize: '1.2rem', color: '#E5E5E5', lineHeight: 1.6, maxWidth: '700px', margin: '0 auto 2rem' }}>
-            Estamos aquí para ayudarte. Contáctanos por cualquier consulta sobre nuestras convocatorias o servicios.
+            Estamos aquÃ­ para ayudarte. ContÃ¡ctanos por cualquier consulta sobre nuestras convocatorias o servicios.
           </p>
         </div>
       </section>
@@ -106,7 +106,7 @@ export const ContactPage: React.FC = () => {
                 transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = '0 4px 16px #e8e8f0';
                 e.currentTarget.style.borderColor = '#DC2626';
               }}
               onMouseLeave={(e) => {
@@ -118,8 +118,8 @@ export const ContactPage: React.FC = () => {
                 <Phone size={28} color="#DC2626" />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-                  Teléfono
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                  TelÃ©fono
                 </h3>
                 <p style={{ fontSize: '1rem', color: '#666', marginBottom: '1rem' }}>
                   {contactData?.phone || 'No configurado'}
@@ -166,7 +166,7 @@ export const ContactPage: React.FC = () => {
                 transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = '0 4px 16px #e8e8f0';
                 e.currentTarget.style.borderColor = '#DC2626';
               }}
               onMouseLeave={(e) => {
@@ -178,7 +178,7 @@ export const ContactPage: React.FC = () => {
                 <MessageCircle size={28} color="#DC2626" />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
                   WhatsApp
                 </h3>
                 <p style={{ fontSize: '1rem', color: '#666', marginBottom: '1rem' }}>
@@ -226,7 +226,7 @@ export const ContactPage: React.FC = () => {
                 transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = '0 4px 16px #e8e8f0';
                 e.currentTarget.style.borderColor = '#DC2626';
               }}
               onMouseLeave={(e) => {
@@ -238,8 +238,8 @@ export const ContactPage: React.FC = () => {
                 <Mail size={28} color="#DC2626" />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-                  Correo Electrónico
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                  Correo ElectrÃ³nico
                 </h3>
                 <p style={{ fontSize: '1rem', color: '#666', marginBottom: '1rem' }}>
                   {contactData?.email || 'No configurado'}
@@ -289,8 +289,8 @@ export const ContactPage: React.FC = () => {
                 <MapPin size={28} color="#DC2626" />
               </div>
               <div style={{ flex: 1 }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#080808', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-                  Dirección
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                  DirecciÃ³n
                 </h3>
                 <p style={{ fontSize: '1rem', color: '#666', marginBottom: '0.5rem' }}>
                   {contactData?.address || 'No configurado'}
@@ -322,7 +322,7 @@ export const ContactPage: React.FC = () => {
                   }}
                 >
                   <MapPin size={16} />
-                  CÓMO LLEGAR
+                  CÃ“MO LLEGAR
                 </button>
               </div>
             </div>
@@ -330,8 +330,8 @@ export const ContactPage: React.FC = () => {
 
           {/* Social Media */}
           <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#080808', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-              Síguenos en Redes Sociales
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
+              SÃ­guenos en Redes Sociales
             </h3>
             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
               {contactData?.facebook_url && (
@@ -418,7 +418,7 @@ export const ContactPage: React.FC = () => {
       <section style={{ background: '#DC2626', padding: '4rem 2rem' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, color: '#FFFFFF', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            ¿LISTO PARA POSTULAR?
+            Â¿LISTO PARA POSTULAR?
           </h2>
           <p style={{ fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
             Explora nuestras convocatorias disponibles y comienza tu camino profesional con Security Force P&V.
@@ -459,7 +459,7 @@ export const ContactPage: React.FC = () => {
               borderRadius: '4px',
               background: '#FFFFFF',
               border: '1px solid #E5E5E5',
-              color: '#080808',
+              color: '#f5f5f7',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -474,3 +474,5 @@ export const ContactPage: React.FC = () => {
     </div>
   );
 };
+
+

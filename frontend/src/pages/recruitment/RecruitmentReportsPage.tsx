@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { api } from '../../api/client';
 import {
   FileSpreadsheet,
@@ -58,11 +58,11 @@ export const RecruitmentReportsPage: React.FC = () => {
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#f8fafc' }}>
-          Reportes de Selección y Reclutamiento
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: '#1a1a1a' }}>
+          Reportes de SelecciÃ³n y Reclutamiento
         </h1>
-        <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-          Exportación de expedientes de postulantes, candidatos aptos y contratados
+        <p style={{ fontSize: '0.9rem', color: '#1a1a1a', marginTop: '0.25rem' }}>
+          ExportaciÃ³n de expedientes de postulantes, candidatos aptos y contratados
         </p>
       </div>
 
@@ -75,14 +75,14 @@ export const RecruitmentReportsPage: React.FC = () => {
 
       {/* Filter Section */}
       <div className="glass-panel" style={{ padding: '1.75rem', marginBottom: '2rem' }}>
-        <h3 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <h3 style={{ fontSize: '1.1rem', color: '#1a1a1a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <Filter size={18} color="#818cf8" />
-          <span>Filtros de Exportación</span>
+          <span>Filtros de ExportaciÃ³n</span>
         </h3>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
               Convocatoria / Puesto
             </label>
             <select value={openingId} onChange={(e) => setOpeningId(e.target.value)} style={{ width: '100%' }}>
@@ -96,31 +96,31 @@ export const RecruitmentReportsPage: React.FC = () => {
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
-              Etapa de Selección
+            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
+              Etapa de SelecciÃ³n
             </label>
             <select value={stage} onChange={(e) => setStage(e.target.value)} style={{ width: '100%' }}>
               <option value="">Todas las etapas</option>
-              <option value="phone_screening">Filtro Telefónico</option>
-              <option value="psychological_eval">Evaluación Psicológica</option>
-              <option value="background_check">Verificación Antecedentes</option>
+              <option value="phone_screening">Filtro TelefÃ³nico</option>
+              <option value="psychological_eval">EvaluaciÃ³n PsicolÃ³gica</option>
+              <option value="background_check">VerificaciÃ³n Antecedentes</option>
               <option value="interview">Entrevista Personal</option>
-              <option value="medical_exam">Examen Médico</option>
-              <option value="approved">🟢 Aprobados Aptos</option>
-              <option value="hired">🟣 Contratados</option>
-              <option value="rejected">🔴 Descartados</option>
+              <option value="medical_exam">Examen MÃ©dico</option>
+              <option value="approved">ðŸŸ¢ Aprobados Aptos</option>
+              <option value="hired">ðŸŸ£ Contratados</option>
+              <option value="rejected">ðŸ”´ Descartados</option>
             </select>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
               Fecha Desde
             </label>
             <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} style={{ width: '100%' }} />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.35rem' }}>
+            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: '#1a1a1a', marginBottom: '0.35rem' }}>
               Fecha Hasta
             </label>
             <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} style={{ width: '100%' }} />
@@ -137,12 +137,12 @@ export const RecruitmentReportsPage: React.FC = () => {
               <FileText size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Informe PDF Oficial</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Formato ejecutivo membretado</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>Informe PDF Oficial</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Formato ejecutivo membretado</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-            Genera un PDF con membrete corporativo de Security Force S.A.C., estado SUCAMEC, licencia de armas y calificación de cada postulante.
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+            Genera un PDF con membrete corporativo de Security Force S.A.C., estado SUCAMEC, licencia de armas y calificaciÃ³n de cada postulante.
           </p>
           <button
             className="btn-primary"
@@ -162,12 +162,12 @@ export const RecruitmentReportsPage: React.FC = () => {
               <FileSpreadsheet size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Padrón Excel (.xlsx)</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Hoja de cálculo para RRHH y Planilla</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>PadrÃ³n Excel (.xlsx)</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>Hoja de cÃ¡lculo para RRHH y Planilla</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
-            Exporta todas las columnas operativas: DNI, teléfono, distrito, SUCAMEC, brevete y etapa para cruzar con contratos.
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
+            Exporta todas las columnas operativas: DNI, telÃ©fono, distrito, SUCAMEC, brevete y etapa para cruzar con contratos.
           </p>
           <button
             className="btn-primary"
@@ -187,11 +187,11 @@ export const RecruitmentReportsPage: React.FC = () => {
               <FileText size={24} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.15rem', color: '#f8fafc' }}>Formato Plano CSV</h4>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Integración con sistemas ERP</span>
+              <h4 style={{ fontSize: '1.15rem', color: '#1a1a1a' }}>Formato Plano CSV</h4>
+              <span style={{ fontSize: '0.75rem', color: '#1a1a1a' }}>IntegraciÃ³n con sistemas ERP</span>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+          <p style={{ fontSize: '0.85rem', color: '#1a1a1a' }}>
             Archivo separado por comas UTF-8 con BOM para importar en bases de datos o ERPs de seguridad.
           </p>
           <button
@@ -208,3 +208,7 @@ export const RecruitmentReportsPage: React.FC = () => {
     </div>
   );
 };
+
+
+
+

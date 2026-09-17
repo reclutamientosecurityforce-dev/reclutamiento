@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../api/client';
@@ -34,7 +34,7 @@ export const LoginPage: React.FC = () => {
       login(res.token, res.user);
       navigate('/recruitment/dashboard');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Credenciales inválidas.');
+      setError(err instanceof Error ? err.message : 'Credenciales invÃ¡lidas.');
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export const LoginPage: React.FC = () => {
         background: `
           radial-gradient(circle at 25% 35%, rgba(220, 38, 38, 0.1) 0%, transparent 55%),
           radial-gradient(circle at 75% 65%, rgba(150, 0, 0, 0.07) 0%, transparent 55%),
-          #080808
+          #f5f5f7
         `,
       }}
     >
@@ -72,11 +72,11 @@ export const LoginPage: React.FC = () => {
         style={{
           width: '100%',
           maxWidth: '460px',
-          background: '#0d0d0d',
+          background: '#f5f5f7',
           border: '1px solid rgba(220, 38, 38, 0.25)',
           borderRadius: '16px',
           padding: '3rem 2.75rem',
-          boxShadow: '0 30px 100px rgba(0,0,0,0.95), 0 0 60px rgba(220, 38, 38, 0.08)',
+          boxShadow: '0 30px 100px rgba(100,100,100,0.95), 0 0 60px rgba(220, 38, 38, 0.08)',
         }}
       >
         {/* Brand Header */}
@@ -87,7 +87,7 @@ export const LoginPage: React.FC = () => {
               width: '88px',
               height: '88px',
               borderRadius: '50%',
-              background: 'radial-gradient(circle at center, #1a0000 0%, #0d0d0d 70%)',
+              background: 'radial-gradient(circle at center, #f0e8e8 0%, #f5f5f7 70%)',
               border: '2px solid rgba(220, 38, 38, 0.5)',
               display: 'inline-flex',
               alignItems: 'center',
@@ -127,7 +127,7 @@ export const LoginPage: React.FC = () => {
             P&V
           </div>
           <p style={{ fontSize: '0.8rem', color: '#666', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            Reclutamiento y Selección de Personal
+            Reclutamiento y SelecciÃ³n de Personal
           </p>
 
           <div
@@ -208,7 +208,7 @@ export const LoginPage: React.FC = () => {
                 letterSpacing: '0.08em',
               }}
             >
-              Contraseña
+              ContraseÃ±a
             </label>
             <div style={{ position: 'relative' }}>
               <Lock
@@ -225,7 +225,7 @@ export const LoginPage: React.FC = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••••••"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                 required
                 style={{ paddingLeft: '2.75rem' }}
               />
@@ -257,10 +257,12 @@ export const LoginPage: React.FC = () => {
           }}
         >
           <p style={{ fontSize: '0.7rem', color: '#444', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            Protegemos lo que más importa
+            Protegemos lo que mÃ¡s importa
           </p>
         </div>
       </div>
     </div>
   );
 };
+
+
