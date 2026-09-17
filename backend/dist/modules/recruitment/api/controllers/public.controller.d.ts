@@ -1,0 +1,21 @@
+import { Request, Response } from 'express';
+export declare function getPublicOpenings(_req: Request, res: Response): Promise<void>;
+export declare function getPublicOpeningById(req: Request, res: Response): Promise<void>;
+export declare function initApplication(req: Request, res: Response): Promise<void>;
+export declare function getDraftApplication(req: Request, res: Response): Promise<void>;
+export declare function saveDraftProfile(req: Request, res: Response): Promise<void>;
+export declare function uploadCVFile(req: Request, res: Response): Promise<void>;
+export declare function uploadDocumentPhotos(req: Request, res: Response): Promise<void>;
+export declare function deleteDraftDocument(req: Request, res: Response): Promise<void>;
+export declare function submitApplication(req: Request, res: Response): Promise<void>;
+export declare function trackApplication(req: Request, res: Response): Promise<void>;
+export declare function generateCVPdf(req: Request, res: Response): Promise<void>;
+export declare function getPublicPublicationBySlug(req: Request, res: Response): Promise<void>;
+export declare function registerPublicationView(req: Request, res: Response): Promise<void>;
+export declare function getDocumentRequirements(req: Request, res: Response): Promise<void>;
+export declare function getExpedienteStatus(req: Request, res: Response): Promise<void>;
+export declare function autosaveDraft(req: Request, res: Response): Promise<void>;
+export declare function registerConsent(req: Request, res: Response): Promise<void>;
+export declare function getApplicationFitScore(req: Request, res: Response): Promise<void>;
+export declare function getPublicContactInfo(req: Request, res: Response): Promise<void>;
+//# sourceMappingURL=public.controller.d.ts.map

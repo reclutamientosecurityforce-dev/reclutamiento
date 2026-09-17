@@ -1,0 +1,15 @@
+{
+  "name": "security-force-root",
+  "version": "1.0.0",
+  "description": "Sistema de Control de Numeración de Cartas - Security Force S.A.C.",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:backend": "npm --prefix backend test",
+    "db:migrate": "npm --prefix backend run db:migrate",
+    "db:seed": "npm --prefix backend run db:seed",
+    "db:reset": "npm --prefix backend run db:reset"
+  }
+}
